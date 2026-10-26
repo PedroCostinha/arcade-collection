@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 PedroCostinha
 export function clamp(value: number, min: number, max: number): number { return Math.max(min, Math.min(max, value)); }
 export function approach(value: number, target: number, amount: number): number {
   return value < target ? Math.min(value + amount, target) : Math.max(value - amount, target);

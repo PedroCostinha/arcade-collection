@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 PedroCostinha
 export const WORLD = Object.freeze({ width: 960, height: 600, left: 80, right: 880, floors: 5 });
 export const PHYSICS = Object.freeze({ speed: 170, gravity: 1000, jump: 285, climb: 104,
   halfWidth: 14, bodyHeight: 40, barrelRadius: 9, barrelSpeed: 84, spawnEvery: 3.1 });

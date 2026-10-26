@@ -1,0 +1,83 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 PedroCostinha
+name: Publish approved game to Pages
+
+# Preparation only: no push, PR, tag or release event can publish.
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: 'I approve publishing the stable 1.1.0 build'
+        type: boolean
+        required: true
+        default: false
+      expected_sha:
+        description: 'Full main commit SHA reviewed and approved for publication'
+        type: string
+        required: true
+
+permissions: {}
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: >-
+      github.repository == 'PedroCostinha/arcade-collection' &&
+      github.ref == 'refs/heads/main' && inputs.publish &&
+      inputs.expected_sha == github.sha
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Require the approved stable version and matching labels
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { readFileSync } from 'node:fs';
+          const pkg = JSON.parse(readFileSync('package.json', 'utf8'));
+          const lock = JSON.parse(readFileSync('package-lock.json', 'utf8'));
+          const html = readFileSync('public/index.html', 'utf8');
+          assert.equal(pkg.version, '1.1.0');
+          assert.equal(lock.version, pkg.version);
+          assert.equal(lock.packages[''].version, pkg.version);
+          assert(!/em revis[aã]o/i.test(html), 'Remove candidate UI labels after approval');
+          assert(html.includes('V1.1.0'), 'Expose the stable version in the UI');
+          NODE
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm test
+      - name: Upload only the static build
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
+        with:
+          path: dist
+          retention-days: 1
+          include-hidden-files: true # The artifact allowlist admits only .nojekyll.
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Read existing Pages configuration without enabling it
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
+        with:
+          enablement: false
+      - name: Publish the build artifact
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5

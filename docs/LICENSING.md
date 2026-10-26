@@ -1,51 +1,55 @@
-# Recomendação de licenciamento / decisão pendente
+# Licenciamento aplicado em 1.1.0
 
-O titular autorizou a criação do repositório público, mas não escolheu uma
-licença. **Este documento é uma recomendação, não uma concessão de licença.**
-Não foi adicionado um `LICENSE` genérico nem um campo `license` no pacote.
-`private: true` no package.json evita publicação acidental no npm; não define
-a visibilidade ou licença do repositório GitHub.
+Em 26/10/2026, o titular PedroCostinha aprovou explicitamente:
 
-## Proposta para decisão do titular
+- MIT exclusivamente para o código original do projeto.
+- Direitos reservados para Ember-7, sprites, arte, elementos visuais exclusivos
+  e identidade do projeto.
+- Separação dos dados artísticos, preservando aparência e comportamento.
 
-| Material | Origem / escopo | Recomendação, ainda não aplicada |
+A decisão está aplicada no [mapa normativo da raiz](../LICENSING.md), na
+[MIT do código](../LICENSE-CODE.txt) e nos [direitos da arte](../ART-RIGHTS.txt).
+A proposta anterior de CC BY não foi adotada. Não há licença MIT genérica
+para o conjunto do jogo.
+
+## Separação implementada
+
+| Antes | Agora | Escopo |
 | --- | --- | --- |
-| Motor, controles, renderer, scripts, testes, HTML e CSS | Código escrito para este projeto | MIT, para permitir reutilização com preservação do aviso de copyright e licença |
-| Dados dos onze sprites Ember-7 e paleta em `src/render/sprites.ts` | Arte própria exportada do perfil, revisão `24d458b` | CC BY 4.0, com atribuição a PedroCostinha e indicação de alterações |
-| Favicon próprio e capturas em `docs/evidence/` | Desenho e renderizações próprios | CC BY 4.0, separadamente do código que os produz |
-| Textos de documentação | Escritos para este projeto | CC BY 4.0, se o titular desejar o mesmo regime dos materiais de apresentação |
-| Dependências e Actions | Projetos externos | Mantêm suas próprias licenças; não recebem automaticamente a licença do jogo |
+| Paleta e grades em `src/render/sprites.ts` | `src/art/ember7.ts`; o caminho antigo é um reexport técnico | Dados reservados; adaptador MIT |
+| Composição artística embutida em `src/render/canvas.ts` | `src/art/scene.ts` com constantes tipadas | Dados reservados; algoritmos do renderer MIT |
+| Nomes e identidade misturados à estrutura HTML/app | `src/art/identity.ts`, importado pela app e resolvido pelo build no HTML | Valores reservados; estrutura e orquestração MIT |
+| Layout, cores e tipografia juntos em CSS | `public/styles.css` funcional e `public/theme.css` visual | Layout MIT; tema reservado |
+| Favicon sem aviso no arquivo | Mesmo desenho, com aviso de direitos reservados | Reservado |
 
-A [MIT](https://choosealicense.com/licenses/mit/) é uma opção permissiva para
-código e requer preservar seus avisos. A
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) permite compartilhar
-e adaptar materiais, inclusive comercialmente, exigindo crédito, referência
-à licença e indicação de modificações. Cabe ao titular confirmar se deseja
-permitir esses usos da arte antes de adotá-la.
+As grades e paleta permanecem idênticas à RC. Os tipos de arte em
+`src/render/art-types.d.ts` são MIT e não geram módulo desnecessário no build.
+O renderer não contém paletas ou composições exclusivas embutidas. A cena
+artística é representada por dados; a simulação continua independente dela.
 
-Se aprovadas, as licenças deverão ter escopos explícitos: um arquivo para
-código, outro para arte/documentação e avisos por caminho. Em `sprites.ts`,
-a grade/paleta visual e qualquer código auxiliar precisam ser distinguidos.
-Não aplicar automaticamente uma licença de código a todos os pixels ou vice-versa.
-Os nomes Barrel Quest, Ember-7 e a identidade do perfil precisam de orientação
-própria de uso de marca; uma licença de copyright não é um endosso do titular.
+A declaração de pacote é `SEE LICENSE IN LICENSING.md`, também no lockfile,
+com `private: true` preservado. Os avisos SPDX identificam os arquivos MIT
+ou `LicenseRef-Arcade-Art-Reserved`, conforme o inventário.
 
-## Recursos externos
+## Distribuição e verificação
 
-Não há sprites, personagens, sons ou código do projeto Pac-Man incorporados.
-Os detalhes de autoria estão em [PROVENANCE.md](PROVENANCE.md). Uma inspiração
-de mecânica não concede autorização para copiar personagens, marcas ou arte
-de franquias comerciais.
+O build inclui `LICENSE-CODE.txt`, `ART-RIGHTS.txt` e `LICENSING.txt`.
+O crédito no rodapé passou a ser um link para o mapa de escopos, com a mesma
+aparência. Nenhum aviso modifica a MIT padrão para proibir uso comercial,
+forks ou redistribuição do código coberto. Quem reutilizar o código deverá
+substituir a arte reservada ou obter autorização específica para ela.
 
-TypeScript e Playwright 1.62.1 são ferramentas de desenvolvimento sob
-Apache-2.0 conforme os pacotes instalados; o pacote opcional fsevents declara
-MIT. O lockfile registra cada dependência e sua integridade. Navegadores
-usados para QA e a imagem oficial Playwright do CI têm licenças próprias e
-não são redistribuídos no jogo.
-Actions e ferramentas não são enviadas no `dist/`. Qualquer futuro asset ou
-dependência deve entrar no inventário com sua origem e licença específica.
+Os testes verificam o inventário do build, a íntegra dos avisos distribuídos,
+os identificadores dos módulos artísticos e do adaptador, e o campo de
+licença do pacote/lockfile. A preservação visual é verificada por hashes dos
+sprites e das sequências do renderer, pixels do Canvas e estilos computados.
+Veja [PREPARATION_1_1_0.md](PREPARATION_1_1_0.md).
 
-Antes de anunciar o projeto como open source ou adicionar selos de licença,
-obter a escolha explícita do titular e aplicar os textos corretos. A
-publicação pública autorizada nesta etapa permite revisão do código, sem
-inventar uma licença abrangente para terceiros.
+A autorização de licenciamento e commit/push não autoriza merge, habilitar
+Pages, publicar, fazer deploy, criar tag ou release. O repositório do perfil
+e o CODE QUEST V2 não foram alterados. A origem dos recursos permanece
+registrada em [PROVENANCE.md](PROVENANCE.md).
+
+O texto MIT padrão foi conferido na
+[Open Source Initiative](https://opensource.org/license/mit).
+Ferramentas externas mantêm suas licenças; o inventário está na raiz.

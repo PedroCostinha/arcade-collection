@@ -1,0 +1,40 @@
+{
+  "baseline": "629322d3eb1a94d56e4e022ce3daefa37337ad4e",
+  "files": [
+    {
+      "path": "src/core/clock.ts",
+      "unchangedExceptLicenseHeader": true,
+      "sha256": "859846b68efa47e3cbc0122c9c57f4ec3104e78d7e4cebaa50e1e2ca2d4ce0dd"
+    },
+    {
+      "path": "src/core/collision.ts",
+      "unchangedExceptLicenseHeader": true,
+      "sha256": "55183f11fa706f172665999ddfd30993ec40879bcd54cec7f228e79eeb45713b"
+    },
+    {
+      "path": "src/core/game.ts",
+      "unchangedExceptLicenseHeader": true,
+      "sha256": "17f87ab57f355ccf009a607a09278bca1a4e25c5cbd3c28f939a6a755efd3d56"
+    },
+    {
+      "path": "src/core/input.ts",
+      "unchangedExceptLicenseHeader": true,
+      "sha256": "6e32f7b5d7a5b901a4ea8cf9c073861861f36be631b154235fba46e65469d69d"
+    },
+    {
+      "path": "src/core/level.ts",
+      "unchangedExceptLicenseHeader": true,
+      "sha256": "a520b5be3e5864f7b99cbfbf691f54834f6d20aac3f5cb46b1f4f3829194c3a0"
+    },
+    {
+      "path": "src/core/types.ts",
+      "unchangedExceptLicenseHeader": true,
+      "sha256": "b2c12b2439e8ca081f777b5bf964a1874a32ebe5ef5d1055a4f24b5f1ab0a1ce"
+    },
+    {
+      "path": "src/browser/controls.ts",
+      "unchangedExceptLicenseHeader": true,
+      "sha256": "35e47a06c49de54977d628834e099fded9149b2afd94421c3cbc991b915f3244"
+    }
+  ]
+}

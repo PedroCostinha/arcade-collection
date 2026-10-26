@@ -1,5 +1,11 @@
 # Validação local / 26 de outubro de 2026
 
+Estado atual da preparação definitiva e licenças aplicadas: [PREPARATION_1_1_0.md](PREPARATION_1_1_0.md).
+
+Registro histórico do protótipo. O estado atual de preparação, os 29 testes
+e o workflow manual ainda não executado estão em
+[RELEASE_PLAN_1_1_0.md](RELEASE_PLAN_1_1_0.md).
+
 Para a candidata **V1.1**, consulte [REVIEW_V1_1.md](REVIEW_V1_1.md), que
 separa os problemas reproduzidos, correções, capturas antes/depois e pendências.
 Os dados abaixo permanecem como registro da validação inicial do protótipo.

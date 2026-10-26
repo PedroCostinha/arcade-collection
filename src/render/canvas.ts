@@ -1,7 +1,11 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 PedroCostinha
 import { Game } from '../core/game.js';
 import { DELIVERY_X, LADDERS, WORLD, floorY } from '../core/level.js';
 import { clamp } from '../core/collision.js';
 import { PALETTE, SPRITES } from './sprites.js';
+import { SCENE as art } from '../art/scene.js';
+import type { LabelArt, RectArt } from './art-types.js';
 
 export class CanvasRenderer {
   private ctx: CanvasRenderingContext2D;
@@ -22,16 +26,19 @@ export class CanvasRenderer {
     this.ctx.fillStyle = color;
     this.ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));
   }
-  private label(value: string, x: number, y: number, color = '#9A8594', size = 11): void {
-    this.ctx.font = `${size}px ui-monospace, Consolas, monospace`;
-    this.ctx.fillStyle = color; this.ctx.fillText(value, x, y);
+  private rectAt(x: number, y: number, shape: RectArt): void {
+    this.rect(x + shape[0], y + shape[1], shape[2], shape[3], shape[4]);
+  }
+  private label(shape: LabelArt, dy = 0): void {
+    this.ctx.font = `${shape[4]}px ${art.font}`;
+    this.ctx.fillStyle = shape[3]; this.ctx.fillText(shape[0], shape[1], shape[2] + dy);
   }
   private robot(game: Game): void {
-    const p = game.player;
-    const frame = this.reducedMotion ? 0 : Math.floor(game.elapsed * 8);
+    const p = game.player, style = art.robot;
+    const frame = this.reducedMotion ? 0 : Math.floor(game.elapsed * style.framesPerSecond);
     const pose = game.state === 'won' ? 'victory' : p.ladder !== null ? `climb${frame % 2}`
-      : p.floor === null ? 'jump' : Math.abs(p.vx) > 120 ? `run${frame % 4}`
-      : Math.abs(p.vx) > 10 ? `walk${frame % 2}` : 'idle';
+      : p.floor === null ? 'jump' : Math.abs(p.vx) > style.runThreshold ? `run${frame % 4}`
+      : Math.abs(p.vx) > style.walkThreshold ? `walk${frame % 2}` : 'idle';
     const grid = SPRITES[pose]!;
     const ctx = this.ctx;
     ctx.save(); ctx.translate(Math.round(p.x), Math.round(p.y)); ctx.scale(p.facing || 1, 1);
@@ -39,76 +46,72 @@ export class CanvasRenderer {
       const row = grid[y]!;
       for (let x = 0; x < row.length; x++) {
         const color = PALETTE[row[x]!];
-        if (color) this.rect(x * 2 - 16, y * 2 - 40, 2, 2, color);
+        if (color) this.rect(x * style.pixelSize + style.x, y * style.pixelSize + style.y, style.pixelSize, style.pixelSize, color);
       }
     }
-    if (p.invulnerable > 0) { ctx.strokeStyle = '#EBC88D'; ctx.lineWidth = 1; ctx.strokeRect(-16, -42, 32, 44); }
+    if (p.invulnerable > 0) { ctx.strokeStyle = style.shield.color; ctx.lineWidth = style.shield.lineWidth; ctx.strokeRect(...style.shield.rect); }
     ctx.restore();
   }
   draw(game: Game): void {
     const ctx = this.ctx, { width, height } = this.canvas;
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.imageSmoothingEnabled = false;
-    this.rect(0, 0, width, height, '#101015');
-    // On a small display the camera follows, instead of shrinking Ember-7 to
-    // a few pixels. The world and collision geometry stay identical.
+    this.rect(0, 0, width, height, art.background);
+    // Camera and world geometry remain independent of the artistic data.
     const cameraX = this.compact ? clamp(game.player.x - 240, 0, WORLD.width - width) : 0;
     const cameraY = this.compact ? clamp(game.player.y - 260, 0, WORLD.height - height) : 0;
     ctx.save(); ctx.translate(-Math.round(cameraX), -Math.round(cameraY));
-    for (let x = 96; x < 920; x += 128) {
-      this.rect(x, 140, 4, 438, '#211B25');
-      ctx.strokeStyle = '#211B25'; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(x, 180); ctx.lineTo(x + 120, 280); ctx.moveTo(x, 360); ctx.lineTo(x + 120, 460); ctx.stroke();
+    for (let x = art.beams.first; x < art.beams.end; x += art.beams.step) {
+      this.rectAt(x, 0, art.beams.column);
+      ctx.strokeStyle = art.beams.stroke; ctx.lineWidth = art.beams.lineWidth;
+      ctx.beginPath();
+      for (const [x1, y1, x2, y2] of art.beams.braces) { ctx.moveTo(x + x1, y1); ctx.lineTo(x + x2, y2); }
+      ctx.stroke();
     }
-    this.rect(56, 36, 848, 1, '#30232E');
-    this.label('ESTACAO 01 / EMBER WORKS', 80, 25, '#B79AA9', 12);
-    this.label('5 CARGAS. UM DESTINO.', 650, 25, '#A77385', 11);
+    this.rectAt(0, 0, art.header.rule);
+    for (const label of art.header.labels) this.label(label);
     for (let floor = 0; floor < WORLD.floors; floor++) {
-      const a = floorY(floor, WORLD.left), b = floorY(floor, WORLD.right);
-      ctx.fillStyle = '#542330'; ctx.beginPath(); ctx.moveTo(WORLD.left, a); ctx.lineTo(WORLD.right, b);
-      ctx.lineTo(WORLD.right, b + 10); ctx.lineTo(WORLD.left, a + 10); ctx.fill();
-      ctx.strokeStyle = '#EC626E'; ctx.lineWidth = 3;
+      const a = floorY(floor, WORLD.left), b = floorY(floor, WORLD.right), style = art.floor;
+      ctx.fillStyle = style.fill; ctx.beginPath(); ctx.moveTo(WORLD.left, a); ctx.lineTo(WORLD.right, b);
+      ctx.lineTo(WORLD.right, b + style.depth); ctx.lineTo(WORLD.left, a + style.depth); ctx.fill();
+      ctx.strokeStyle = style.stroke; ctx.lineWidth = style.lineWidth;
       ctx.beginPath(); ctx.moveTo(WORLD.left, a); ctx.lineTo(WORLD.right, b); ctx.stroke();
-      for (let x = 88; x < 880; x += 24) this.rect(x, floorY(floor, x) + 4, 8, 2, '#9A4153');
-      this.label(`0${floor + 1}`, 47, a + 5, '#BC8D9F', 12);
-      const terminalX = DELIVERY_X[floor]!, terminalY = floorY(floor, terminalX);
-      this.rect(terminalX - 12, terminalY - 25, 24, 23, '#29222D');
-      this.rect(terminalX - 8, terminalY - 21, 16, 9, game.deliveries[floor]!.collected ? '#EF777D' : '#643343');
-      this.rect(terminalX - 5, terminalY - 8, 10, 2, '#9D7A8B');
-      if (!game.deliveries[floor]!.collected) {
-        this.rect(terminalX - 6, terminalY - 34, 12, 8, '#EBC88D');
-        this.rect(terminalX - 3, terminalY - 32, 6, 4, '#714939');
-      }
+      for (let x = style.rivets.first; x < style.rivets.end; x += style.rivets.step) this.rectAt(x, floorY(floor, x), style.rivets.rect);
+      this.label([`0${floor + 1}`, style.label.x, a + style.label.dy, style.label.color, style.label.size]);
+      const terminalX = DELIVERY_X[floor]!, terminalY = floorY(floor, terminalX), terminal = art.terminal;
+      this.rectAt(terminalX, terminalY, terminal.body);
+      this.rect(terminalX + terminal.screen.x, terminalY + terminal.screen.y, terminal.screen.width, terminal.screen.height,
+        game.deliveries[floor]!.collected ? terminal.screen.collected : terminal.screen.pending);
+      this.rectAt(terminalX, terminalY, terminal.detail);
+      if (!game.deliveries[floor]!.collected) for (const shape of terminal.cargo) this.rectAt(terminalX, terminalY, shape);
     }
     for (const ladder of LADDERS) {
-      const top = floorY(ladder.to, ladder.x), bottom = floorY(ladder.from, ladder.x);
-      // A visible hatch/grating indicates the only intentional pass-through.
-      this.rect(ladder.x - 16, top - 3, 32, 15, '#101015');
-      this.rect(ladder.x - 13, top - 4, 3, bottom - top + 4, '#B593A4');
-      this.rect(ladder.x + 10, top - 4, 3, bottom - top + 4, '#B593A4');
-      for (let y = top + 4; y < bottom; y += 10) this.rect(ladder.x - 10, y, 20, 2, '#A48192');
+      const top = floorY(ladder.to, ladder.x), bottom = floorY(ladder.from, ladder.x), style = art.ladder;
+      this.rectAt(ladder.x, top, style.hatch);
+      for (const offset of style.railOffsets) this.rect(ladder.x + offset, top + style.topOffset, style.railWidth, bottom - top + style.extension, style.color);
+      for (let y = top + style.rungs.start; y < bottom; y += style.rungs.step) this.rectAt(ladder.x, y, style.rungs.rect);
     }
-    const goalY = floorY(4, 842);
-    this.rect(835, goalY - 52, 5, 52, '#92919E');
-    this.rect(840, goalY - 50, 28, 20, game.cargo === 5 ? '#F07880' : '#743343');
-    this.rect(846, goalY - 45, 6, 6, '#E8DDE4');
-    this.label('SAIDA', 810, goalY - 60, '#D7BDC9', 11);
-    this.rect(858, floorY(4, 858) - 23, 35, 15, '#462533');
-    this.rect(864, floorY(4, 858) - 20, 23, 6, '#B84D5E');
+    const goal = art.goal, goalY = floorY(goal.floor, goal.x);
+    this.rectAt(0, goalY, goal.pole);
+    this.rect(goal.flag.x, goalY + goal.flag.y, goal.flag.width, goal.flag.height, game.cargo === 5 ? goal.flag.ready : goal.flag.pending);
+    this.rectAt(0, goalY, goal.mark);
+    this.label(goal.label, goalY);
+    for (const shape of goal.machine) this.rectAt(0, floorY(goal.floor, goal.machineX), shape);
     for (const barrel of game.barrels) {
+      const style = art.barrel;
       ctx.save(); ctx.translate(Math.round(barrel.x), Math.round(barrel.y));
       if (!this.reducedMotion) ctx.rotate(barrel.angle);
-      ctx.fillStyle = '#9B4352'; ctx.beginPath();
-      for (let i = 0; i < 8; i++) {
-        const angle = Math.PI / 8 + i * Math.PI / 4;
-        const x = 9 * Math.cos(angle), y = 9 * Math.sin(angle);
+      ctx.fillStyle = style.fill; ctx.beginPath();
+      for (let i = 0; i < style.sides; i++) {
+        const angle = Math.PI / style.angleOffsetDivisor + i * Math.PI / style.angleStepDivisor;
+        const x = style.radius * Math.cos(angle), y = style.radius * Math.sin(angle);
         if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
       }
       ctx.closePath(); ctx.fill();
-      this.rect(-7, -5, 14, 2, '#E89396'); this.rect(-7, 3, 14, 2, '#E89396'); this.rect(-2, -7, 2, 14, '#472330');
+      for (const shape of style.details) this.rectAt(0, 0, shape);
       ctx.restore();
     }
     this.robot(game);
     ctx.restore();
-    this.rect(0, height - 3, width, 3, '#4E2737');
+    this.rect(0, height - art.bottom.height, width, art.bottom.height, art.bottom.color);
   }
 }

@@ -1,0 +1,61 @@
+{
+  "versionLabelsExcluded": true,
+  "footerCreditCursorChangedToLink": true,
+  "note": "Screenshot compositor under mocked RAF intermittently produces black Canvas or different text antialiasing. Compare all computed DOM styles and actual backing-buffer pixels instead; renderer commands separately pinned in 32 scenarios.",
+  "results": [
+    {
+      "width": 390,
+      "state": "menu",
+      "computedStylesIdentical": true,
+      "canvasPixelsIdentical": true,
+      "canvasSha256": "e0ad5c4a9632f29ec601cf6ee0c1ef1ec5218f5a7d24ccd3860fd347d071f83d",
+      "nodes": 110,
+      "differences": []
+    },
+    {
+      "width": 390,
+      "state": "instructions",
+      "computedStylesIdentical": true,
+      "canvasPixelsIdentical": true,
+      "canvasSha256": "e0ad5c4a9632f29ec601cf6ee0c1ef1ec5218f5a7d24ccd3860fd347d071f83d",
+      "nodes": 114,
+      "differences": []
+    },
+    {
+      "width": 900,
+      "state": "menu",
+      "computedStylesIdentical": true,
+      "canvasPixelsIdentical": true,
+      "canvasSha256": "bd60054f4eaf4ddcc1090e63176f9793da33ab1772598cd5cac551adee2af1dd",
+      "nodes": 110,
+      "differences": []
+    },
+    {
+      "width": 900,
+      "state": "instructions",
+      "computedStylesIdentical": true,
+      "canvasPixelsIdentical": true,
+      "canvasSha256": "bd60054f4eaf4ddcc1090e63176f9793da33ab1772598cd5cac551adee2af1dd",
+      "nodes": 114,
+      "differences": []
+    },
+    {
+      "width": 1440,
+      "state": "menu",
+      "computedStylesIdentical": true,
+      "canvasPixelsIdentical": true,
+      "canvasSha256": "bd60054f4eaf4ddcc1090e63176f9793da33ab1772598cd5cac551adee2af1dd",
+      "nodes": 110,
+      "differences": []
+    },
+    {
+      "width": 1440,
+      "state": "instructions",
+      "computedStylesIdentical": true,
+      "canvasPixelsIdentical": true,
+      "canvasSha256": "bd60054f4eaf4ddcc1090e63176f9793da33ab1772598cd5cac551adee2af1dd",
+      "nodes": 114,
+      "differences": []
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+/* SPDX-License-Identifier: LicenseRef-Arcade-Art-Reserved; Copyright (c) 2026 PedroCostinha. All rights reserved. See ART-RIGHTS.txt. */
+:root{color-scheme:dark;--bg:#0c0c10;--panel:#131217;--line:#35232d;--red:#ec626e;--text:#f1e8ed;--muted:#ad98a6;--gold:#ebc88d;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+button,input{font:inherit}
+button:disabled{opacity:.4}
+button:focus-visible,a:focus-visible,canvas:focus-visible,input:focus-visible{outline:3px solid var(--gold)}
+.masthead{border-bottom:1px solid var(--line);font:11px ui-monospace,Consolas,monospace;letter-spacing:1.5px}
+.brand{font-weight:700}
+.brand-mark{width:13px;height:13px;background:var(--red);box-shadow:5px 5px 0 #5a2939}
+.brand-divider{color:#61414e}
+.muted{color:var(--muted)}
+.build-label{color:var(--muted);font-size:10px;letter-spacing:1px}
+.build-label span{color:var(--red)}
+.eyebrow{font:10px ui-monospace,Consolas,monospace;letter-spacing:1.6px;color:#d196a7}
+.intro h1{font:700 clamp(30px,4.1vw,58px)/1 ui-monospace,Consolas,monospace;letter-spacing:-3px}
+.intro h1 span{color:var(--red)}
+.intro-copy{font-size:14px;line-height:1.7;color:#cbb7c4}
+.game-panel{border:1px solid #49303d;background:var(--panel);border-radius:8px;box-shadow:0 20px 65px #0004}
+.hud{background:#19131a;border-bottom:1px solid var(--line)}
+.hud dt{font:9px ui-monospace,Consolas,monospace;color:#c39cac;text-transform:uppercase;letter-spacing:1px}
+.hud dd{font:22px/1 ui-monospace,Consolas,monospace}
+.hud dl>div:first-child dd{color:#f4e9ee}
+.viewport{background:#101015}
+.overlay{background:#0c0b11b8}
+.screen-card{border:1px solid #774151;border-top:3px solid var(--red);background:#151117f5;box-shadow:0 14px 45px #0006}
+.screen-card h2{font:700 clamp(27px,3vw,42px)/1.02 ui-monospace,Consolas,monospace;letter-spacing:-1.8px}
+.screen-card p{color:#cdbac6;font-size:14px;line-height:1.6}
+.screen-card .eyebrow{font-size:10px;color:#ee9dab;letter-spacing:1px}
+.screen-card ul{font-size:13px;line-height:1.65;color:#dbc4d1}
+.screen-card strong{color:var(--text)}
+.button{border:1px solid #624050;background:#211721;color:var(--text);border-radius:4px;font-size:13px;font-weight:600}
+.button:hover:not(:disabled){background:#38222e;border-color:#af677d}
+.button.primary{background:#da5263;border-color:#da5263;color:#fff}
+.button.primary:hover{background:#ee6c7b}
+.button.small{font-size:12px}
+.button.subtle{background:transparent;color:#c9acbb}
+.stage-footer{border-top:1px solid var(--line);font:9px ui-monospace,Consolas,monospace;letter-spacing:1px;color:#ba94a5}
+.live-dot{color:#dfc5d4}
+.touch-controls{border-top:1px solid #29202a;background:#141016}
+.direction{border:1px solid #65424f;border-radius:4px;background:#261a23;color:#edccda;font:23px ui-monospace,Consolas,monospace}
+.direction:hover{background:#39232f}
+.direction:active,.jump-button:active{background:#a83d53}
+.jump-button{border:1px solid #b75267;border-radius:5px;background:#522333;color:#ffe6ed;font-size:12px;font-weight:700;letter-spacing:1px}
+.jump-button>span{font-size:25px;line-height:1}
+.jump-button small{font:9px ui-monospace,Consolas,monospace;color:#f5a7b9}
+.control-caption{font-size:12px;line-height:2;color:#d2b3c3}
+kbd{font:11px ui-monospace,Consolas,monospace;border:1px solid #654151;border-radius:3px;color:#f2d5e3}
+.side-card{border:1px solid var(--line);border-radius:6px;background:#121015}
+.side-card h2{font-size:26px;line-height:1.1;letter-spacing:-.7px}
+.side-card p:not(.eyebrow){font-size:13px;line-height:1.7;color:#bfa7b7}
+.manifest{border-top:1px solid #32232d}
+.manifest li{font:11px ui-monospace,Consolas,monospace;letter-spacing:.5px;border-bottom:1px solid #2b2029;color:#b99baa}
+.manifest .delivered{color:#edafbb}
+.manifest .cargo-mark{background:#654155;box-shadow:0 0 0 3px #291c27}
+.manifest .delivered .cargo-mark{background:var(--red);box-shadow:0 0 0 3px #542536}
+.score-rule{font-size:12px;color:#c9aebe;border-bottom:1px solid #2f222c}
+.score-rule strong{font:13px ui-monospace,Consolas,monospace;color:var(--gold)}
+.small-copy{font-size:11px!important;line-height:1.7;color:#a991a1!important}
+.effects{font-size:12px;color:#c6a7b8}
+.effects input{accent-color:#d95569}
+.footer{border-top:1px solid var(--line);font:9px ui-monospace,Consolas,monospace;letter-spacing:1px;color:#a78497}
+.sr-only{border:0}
+.skip{background:#efc58e;color:#161017}
+.notice{border:1px solid #a74458;background:#301824;color:#f1c0cd}
+@media(max-width:1100px){.hud dd{font-size:19px}
+.intro h1{font-size:42px}
+.intro-copy{font-size:12px}
+}
+@media(max-width:800px){.footer{font-size:9px}
+}
+@media(max-width:640px){.brand{font-size:10px}
+.intro h1{font-size:35px;letter-spacing:-2px}
+.intro .eyebrow{font-size:8px;letter-spacing:1px}
+.hud dt{font-size:8px;letter-spacing:.5px}
+.hud dd{font-size:18px}
+.screen-card h2{font-size:29px}
+.screen-card p{font-size:12px;line-height:1.5}
+.screen-card ul{font-size:12px}
+.screen-card .eyebrow{font-size:8px}
+.stage-footer{font-size:8px}
+.side-card h2{font-size:21px}
+.side-card p:not(.eyebrow){font-size:12px}
+.score-rule{font-size:11px}
+.side-card .eyebrow{font-size:8px;letter-spacing:.8px}
+}
+.event-feedback{border-top:1px solid var(--line);background:#18131b;color:#dbc4d1;font-size:12px;line-height:1.5}
+.event-feedback[data-kind="damage"]{color:#f6b2bc}
+.event-feedback[data-kind="checkpoint"],.event-feedback[data-kind="victory"]{color:var(--gold)}
+@media(max-width:640px){.event-feedback{font-size:12px}
+}

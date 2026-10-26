@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 PedroCostinha
 import { InputBuffer, type Action } from '../core/input.js';
 
 const KEYS: Readonly<Record<string, Action>> = Object.freeze({ ArrowLeft: 'left', KeyA: 'left', ArrowRight: 'right',

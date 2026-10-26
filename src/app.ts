@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 PedroCostinha
+import { IDENTITY } from './art/identity.js';
 import { Game } from './core/game.js';
 import { FixedClock } from './core/clock.js';
 import { InputBuffer } from './core/input.js';
@@ -63,7 +66,7 @@ function boot(): void {
     }
     if (changed || force) {
       controls?.clear(); overlay.hidden = playing; copy.replaceChildren(); actions.replaceChildren();
-      label.textContent = 'MISSÃO 01 / EMBER-7';
+      label.textContent = `MISSÃO 01 / ${IDENTITY.CHARACTER_NAME_UPPER}`;
       if (game.state === 'menu') {
         title.textContent = 'ENTREGA\nEM NÍVEL MÁXIMO.';
         paragraph('Colete as cinco cargas e alcance a bandeira. Setas/WASD: mover e subir. Espaço: pular.');
@@ -136,7 +139,7 @@ function boot(): void {
   element('help').addEventListener('click', () => act(() => game.instructions()));
   const resize = (): void => {
     renderer.resize(sizeQuery.matches); dirty = true;
-    setText(fields.camera, sizeQuery.matches ? 'CÂMERA ACOMPANHA EMBER-7' : 'CENÁRIO COMPLETO');
+    setText(fields.camera, sizeQuery.matches ? `CÂMERA ACOMPANHA ${IDENTITY.CHARACTER_NAME_UPPER}` : 'CENÁRIO COMPLETO');
   };
   const motion = (): void => { reduced.checked = motionQuery.matches; renderer.reducedMotion = reduced.checked; dirty = true; };
   reduced.addEventListener('change', () => { renderer.reducedMotion = reduced.checked; dirty = true; });

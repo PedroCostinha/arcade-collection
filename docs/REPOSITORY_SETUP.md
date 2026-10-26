@@ -1,5 +1,11 @@
 # Preparação do repositório público
 
+Estado atual da preparação definitiva e licenças aplicadas: [PREPARATION_1_1_0.md](PREPARATION_1_1_0.md).
+
+Registro da preparação inicial de código/CI. A etapa posterior de preparação
+local de Pages, sem execução ou habilitação, está em
+[RELEASE_PLAN_1_1_0.md](RELEASE_PLAN_1_1_0.md).
+
 ## Autorização e histórico
 
 PedroCostinha autorizou criar `PedroCostinha/arcade-collection` público,

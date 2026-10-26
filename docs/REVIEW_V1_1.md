@@ -1,5 +1,11 @@
 # Barrel Quest V1.1 / candidata em revisão
 
+Estado atual da preparação definitiva e licenças aplicadas: [PREPARATION_1_1_0.md](PREPARATION_1_1_0.md).
+
+Este relatório preserva a revisão da candidata `629322d`. A preparação
+posterior para publicação, novos testes e pendências atuais estão em
+[RELEASE_PLAN_1_1_0.md](RELEASE_PLAN_1_1_0.md).
+
 ## Análise anterior às alterações
 
 Base examinada: `0ac1276721a0a0c17b3e3ab5ae9394f96d180176`, branch
