@@ -1,0 +1,16 @@
+{
+  "name": "arcade-collection",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Barrel Quest: original local-first Canvas 2D platform game.",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/dev.mjs",
+    "start": "node scripts/serve.mjs",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "test:browser": "node tests/browser.mjs"
+  },
+  "devDependencies": { "typescript": "7.0.2", "playwright": "1.62.1" }
+}

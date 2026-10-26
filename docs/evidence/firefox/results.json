@@ -1,0 +1,153 @@
+{
+  "engine": "firefox",
+  "browser": "153.0",
+  "tests": [
+    "menu, instructions, keyboard walking/jumping, pause freezes clock, blur pause, three lives, game over, restart without navigation",
+    "complete playable mission with real keyboard events, live barrels, five deliveries and victory; no state mutation",
+    "reduced motion default, compact camera, 320/390/768/1440px without overflow, project subpath, no external requests"
+  ],
+  "mission": {
+    "state": "won",
+    "player": {
+      "x": 842.6111111111051,
+      "y": 120.7477777777779,
+      "vx": 158.33333333333334,
+      "vy": 0,
+      "floor": 4,
+      "lastFloor": 4,
+      "ladder": null,
+      "facing": 1,
+      "invulnerable": 0,
+      "coyote": 0.09,
+      "jumpBuffer": 0
+    },
+    "barrels": [
+      {
+        "id": 1,
+        "x": 175.09999999998342,
+        "y": 430.90199999999965,
+        "previousX": 174.39999999998344,
+        "previousY": 430.8879999999997,
+        "direction": 1,
+        "vy": 0,
+        "floor": 1,
+        "targetFloor": 1,
+        "angle": -75.21111111111126,
+        "credited": true
+      },
+      {
+        "id": 3,
+        "x": 487.29999999997835,
+        "y": 330.85400000000044,
+        "previousX": 487.99999999997834,
+        "previousY": 330.84000000000043,
+        "direction": -1,
+        "vy": 0,
+        "floor": 2,
+        "targetFloor": 2,
+        "angle": -40.52222222222227,
+        "credited": true
+      },
+      {
+        "id": 4,
+        "x": 747.6999999999932,
+        "y": 325.64600000000013,
+        "previousX": 748.3999999999933,
+        "previousY": 325.6320000000001,
+        "direction": -1,
+        "vy": 0,
+        "floor": 2,
+        "targetFloor": 2,
+        "angle": -11.588888888888865,
+        "credited": true
+      },
+      {
+        "id": 5,
+        "x": 770.0999999999947,
+        "y": 230.8019999999999,
+        "previousX": 769.3999999999946,
+        "previousY": 230.7879999999999,
+        "direction": 1,
+        "vy": 0,
+        "floor": 3,
+        "targetFloor": 3,
+        "angle": -9.099999999999985,
+        "credited": true
+      },
+      {
+        "id": 6,
+        "x": 509.699999999978,
+        "y": 225.59399999999957,
+        "previousX": 508.999999999978,
+        "previousY": 225.57999999999956,
+        "direction": 1,
+        "vy": 0,
+        "floor": 3,
+        "targetFloor": 3,
+        "angle": -38.033333333333445,
+        "credited": false
+      },
+      {
+        "id": 7,
+        "x": 249.29999999998222,
+        "y": 220.38599999999965,
+        "previousX": 248.59999999998223,
+        "previousY": 220.37199999999964,
+        "direction": 1,
+        "vy": 0,
+        "floor": 3,
+        "targetFloor": 3,
+        "angle": -66.96666666666628,
+        "credited": true
+      },
+      {
+        "id": 8,
+        "x": 152.6999999999838,
+        "y": 125.54600000000033,
+        "previousX": 153.39999999998378,
+        "previousY": 125.53200000000032,
+        "direction": -1,
+        "vy": 0,
+        "floor": 4,
+        "targetFloor": 3,
+        "angle": -77.70000000000032,
+        "credited": true
+      },
+      {
+        "id": 9,
+        "x": 413.09999999997956,
+        "y": 120.33800000000042,
+        "previousX": 413.79999999997955,
+        "previousY": 120.32400000000041,
+        "direction": -1,
+        "vy": 0,
+        "floor": 4,
+        "targetFloor": 3,
+        "angle": -48.766666666666495,
+        "credited": true
+      },
+      {
+        "id": 10,
+        "x": 673.4999999999884,
+        "y": 115.13000000000024,
+        "previousX": 674.1999999999884,
+        "previousY": 115.11600000000023,
+        "direction": -1,
+        "vy": 0,
+        "floor": 4,
+        "targetFloor": 3,
+        "angle": -19.833333333333368,
+        "credited": true
+      }
+    ],
+    "cargo": 5,
+    "score": 2550,
+    "lives": 1,
+    "elapsed": 32.224999999998815,
+    "checkpoint": 4
+  },
+  "errors": [],
+  "requestCount": 24,
+  "testClock": "Playwright RAF clock; inputs go through DOM keyboard/pointer events",
+  "limitations": "Mobile is emulation, not physical hardware. Safari and real screen readers not executed."
+}
