@@ -1,0 +1,301 @@
+{
+  "controls": {
+    "accelerateSeconds": 0.125,
+    "stopSeconds": 0.125,
+    "stopDistance": 9.625
+  },
+  "jumpWindows": [
+    {
+      "floor": 1,
+      "distancesPx": [
+        45,
+        50,
+        55,
+        60,
+        65,
+        70,
+        75,
+        80,
+        85,
+        90,
+        95
+      ]
+    },
+    {
+      "floor": 2,
+      "distancesPx": [
+        45,
+        50,
+        55,
+        60,
+        65,
+        70,
+        75,
+        80,
+        85,
+        90,
+        95
+      ]
+    },
+    {
+      "floor": 3,
+      "distancesPx": [
+        45,
+        50,
+        55,
+        60,
+        65,
+        70,
+        75,
+        80,
+        85,
+        90,
+        95
+      ]
+    },
+    {
+      "floor": 4,
+      "distancesPx": [
+        45,
+        50,
+        55,
+        60,
+        65,
+        70,
+        75,
+        80,
+        85,
+        90,
+        95
+      ]
+    },
+    {
+      "floor": 5,
+      "distancesPx": [
+        45,
+        50,
+        55,
+        60,
+        65,
+        70,
+        75,
+        80,
+        85,
+        90,
+        95
+      ]
+    }
+  ],
+  "ladderDetach": [
+    {
+      "ladder": 0,
+      "climbTicks": 1,
+      "floor": 0,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 3
+    },
+    {
+      "ladder": 0,
+      "climbTicks": 20,
+      "floor": 0,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 3
+    },
+    {
+      "ladder": 0,
+      "climbTicks": 50,
+      "floor": 0,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 3
+    },
+    {
+      "ladder": 0,
+      "climbTicks": 90,
+      "floor": 1,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 3
+    },
+    {
+      "ladder": 0,
+      "climbTicks": 100,
+      "floor": 1,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 3
+    },
+    {
+      "ladder": 1,
+      "climbTicks": 1,
+      "floor": null,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 2
+    },
+    {
+      "ladder": 1,
+      "climbTicks": 20,
+      "floor": 1,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 2
+    },
+    {
+      "ladder": 1,
+      "climbTicks": 50,
+      "floor": 1,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 2
+    },
+    {
+      "ladder": 1,
+      "climbTicks": 90,
+      "floor": 0,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 2
+    },
+    {
+      "ladder": 1,
+      "climbTicks": 100,
+      "floor": 0,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 2
+    },
+    {
+      "ladder": 2,
+      "climbTicks": 1,
+      "floor": 2,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 3
+    },
+    {
+      "ladder": 2,
+      "climbTicks": 20,
+      "floor": 2,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 3
+    },
+    {
+      "ladder": 2,
+      "climbTicks": 50,
+      "floor": 2,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 3
+    },
+    {
+      "ladder": 2,
+      "climbTicks": 90,
+      "floor": 3,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 3
+    },
+    {
+      "ladder": 2,
+      "climbTicks": 100,
+      "floor": 3,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 3
+    },
+    {
+      "ladder": 3,
+      "climbTicks": 1,
+      "floor": null,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 3
+    },
+    {
+      "ladder": 3,
+      "climbTicks": 20,
+      "floor": null,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 3
+    },
+    {
+      "ladder": 3,
+      "climbTicks": 50,
+      "floor": null,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 3
+    },
+    {
+      "ladder": 3,
+      "climbTicks": 90,
+      "floor": null,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 3
+    },
+    {
+      "ladder": 3,
+      "climbTicks": 100,
+      "floor": null,
+      "ladderAfter": null,
+      "finite": true,
+      "lives": 3
+    }
+  ],
+  "reactive": [
+    {
+      "sampleMs": 8.333333333333334,
+      "state": "won",
+      "cargo": 5,
+      "lives": 1,
+      "score": 2550,
+      "time": 32.06666666666549
+    },
+    {
+      "sampleMs": 50,
+      "state": "won",
+      "cargo": 5,
+      "lives": 2,
+      "score": 2550,
+      "time": 28.716666666665677
+    },
+    {
+      "sampleMs": 100,
+      "state": "won",
+      "cargo": 5,
+      "lives": 2,
+      "score": 2550,
+      "time": 28.766666666665675
+    },
+    {
+      "sampleMs": 150,
+      "state": "won",
+      "cargo": 5,
+      "lives": 2,
+      "score": 2550,
+      "time": 28.916666666665666
+    },
+    {
+      "sampleMs": 200,
+      "state": "won",
+      "cargo": 5,
+      "lives": 1,
+      "score": 2650,
+      "time": 32.433333333332136
+    },
+    {
+      "sampleMs": 250,
+      "state": "won",
+      "cargo": 5,
+      "lives": 1,
+      "score": 2650,
+      "time": 32.166666666665485
+    }
+  ]
+}

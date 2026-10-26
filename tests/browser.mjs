@@ -45,11 +45,36 @@ async function setup(options = {}) {
 try {
   const { context, page } = await setup();
   assert.equal((await snapshot(page)).state, 'menu');
+  assert.match(await page.locator('#screen-copy').innerText(), /bandeira.*Setas\/WASD.*Espaço/s);
+  assert(await page.locator('#announcer').isVisible());
   await save(page, '01-menu');
   await page.getByRole('button', { name: 'Como jogar', exact: true }).first().click({ force: true });
   assert.equal((await snapshot(page)).state, 'instructions'); await save(page, '02-instructions');
-  await page.getByRole('button', { name: 'Voltar', exact: true }).click({ force: true });
-  await page.getByRole('button', { name: 'Jogar agora', exact: true }).click({ force: true });
+  const panelBounds = [];
+  for (const width of [320, 390, 641, 720, 801, 900, 1100, 1440]) {
+    await page.setViewportSize({ width, height: 1000 }); await page.clock.runFor(34);
+    const bounds = await page.evaluate(() => {
+      const card = document.querySelector('.screen-card').getBoundingClientRect(), view = document.querySelector('.viewport').getBoundingClientRect();
+      return { width: innerWidth, cardTop: card.top, cardBottom: card.bottom, viewportTop: view.top, viewportBottom: view.bottom };
+    });
+    assert(bounds.cardTop >= bounds.viewportTop - 1 && bounds.cardBottom <= bounds.viewportBottom + 1, `Instructions contained at ${width}px: ${JSON.stringify(bounds)}`);
+    panelBounds.push(bounds);
+    if (width >= 641) {
+      const back = await page.getByRole('button', { name: 'Voltar', exact: true }).boundingBox();
+      assert(back.y >= bounds.viewportTop && back.y + back.height <= bounds.viewportBottom + 1, 'Tablet/desktop Back stays visible without scrolling');
+    }
+    if (width === 900) await save(page, '12-instructions-tablet');
+    await page.getByRole('button', { name: 'Voltar', exact: true }).scrollIntoViewIfNeeded();
+    const button = await page.getByRole('button', { name: 'Voltar', exact: true }).boundingBox();
+    assert(button.y >= bounds.viewportTop && button.y + button.height <= bounds.viewportBottom + 1, 'Back button reachable inside the card');
+    await page.locator('.screen-card').evaluate(card => { card.scrollTop = 0; });
+  }
+  await page.setViewportSize({ width: 1440, height: 1100 }); await page.clock.runFor(34);
+  await page.getByRole('button', { name: 'Voltar', exact: true }).click();
+  checks.push('V1.1: onboarding states objective/controls; visible status; instruction panel and Back contained at 320/390/641/720/801/900/1100/1440px');
+  await page.getByRole('button', { name: 'Jogar agora', exact: true }).focus();
+  await page.keyboard.press('Space');
+  assert.equal((await snapshot(page)).state, 'playing', 'Native Space activation on HTML button is preserved');
   await page.clock.runFor(34);
   await page.keyboard.down('ArrowRight'); await page.clock.runFor(600); await page.keyboard.up('ArrowRight');
   assert((await snapshot(page)).player.x > 210); await save(page, '03-walking');
@@ -67,13 +92,30 @@ try {
   assert.equal((await snapshot(page)).state, 'paused');
   await page.getByRole('button', { name: 'Reiniciar partida', exact: true }).click({ force: true });
   assert.equal((await snapshot(page)).lives, 3); assert.equal((await snapshot(page)).score, 0);
+  await page.clock.runFor(34); await page.keyboard.down('Space'); await page.clock.runFor(100);
+  await page.keyboard.press('Escape');
+  await page.getByRole('button', { name: 'Continuar missão', exact: true }).click(); await page.clock.runFor(700);
+  assert.equal((await snapshot(page)).player.floor, 0);
+  await page.evaluate(() => document.activeElement.dispatchEvent(new KeyboardEvent('keydown', { code: 'Space', repeat: true, bubbles: true })));
+  await page.clock.runFor(50); assert.equal((await snapshot(page)).player.floor, 0, 'OS repeat after resume must not create a new jump');
+  await page.keyboard.up('Space'); await page.keyboard.press('Space'); await page.clock.runFor(50);
+  assert.equal((await snapshot(page)).player.floor, null, 'A fresh Space press still jumps');
+  await page.getByRole('button', { name: 'Reiniciar partida', exact: true }).click(); await page.clock.runFor(34);
+  checks.push('V1.1: held Space across pause/resume ignores OS repeats and a fresh press still jumps');
+  await page.keyboard.down('ArrowLeft');
+  for (let n = 0; n < 50 && (await snapshot(page)).lives === 3; n++) await page.clock.runFor(40);
+  await page.keyboard.up('ArrowLeft');
+  assert.equal((await snapshot(page)).lives, 2);
+  assert.match(await page.locator('#announcer').innerText(), /Queda.*piso 01.*proteção/s);
+  assert.equal(await page.locator('#announcer').getAttribute('data-kind'), 'damage');
+  await save(page, '14-damage-feedback');
   await page.keyboard.down('ArrowLeft'); await page.clock.runFor(5000); await page.keyboard.up('ArrowLeft');
   assert.equal((await snapshot(page)).state, 'gameover'); await save(page, '06-game-over');
   await page.getByRole('button', { name: 'Tentar novamente', exact: true }).click({ force: true });
   assert.equal((await snapshot(page)).state, 'playing'); assert.equal((await snapshot(page)).lives, 3);
   checks.push('menu, instructions, keyboard walking/jumping, pause freezes clock, blur pause, three lives, game over, restart without navigation');
 
-  let last = { move: 0, climb: 0, jump: false }, ladderShot = false, barrelShot = false;
+  let last = { move: 0, climb: 0, jump: false }, ladderShot = false, barrelShot = false, checkpoint = 0;
   for (let n = 0; n < 1800; n++) {
     const s = await snapshot(page);
     if (s.state !== 'playing') break;
@@ -87,11 +129,18 @@ try {
     if (input.jump !== last.jump) await page.keyboard[input.jump ? 'down' : 'up']('Space');
     last = input;
     await page.clock.runFor(40);
+    const current = await snapshot(page);
+    if (current.checkpoint > checkpoint) {
+      assert.match(await page.locator('#announcer').innerText(), /Checkpoint ativado/);
+      if (checkpoint === 0) await save(page, '13-checkpoint-feedback');
+      checkpoint = current.checkpoint;
+    }
     if (!ladderShot && s.player.ladder !== null) { await save(page, '07-ladder'); ladderShot = true; }
     if (!barrelShot && s.player.lastFloor >= 2 && s.barrels.length > 3) { await save(page, '08-barrels'); barrelShot = true; }
   }
   const won = await snapshot(page);
   assert.equal(won.state, 'won', JSON.stringify(won)); assert.equal(won.cargo, 5); assert(won.score >= 1750);
+  assert.equal(checkpoint, 4); checks.push('V1.1: visible damage/respawn and all four checkpoint notifications during actual play');
   await save(page, '09-victory');
   await page.clock.runFor(1000); assert.deepEqual(await snapshot(page), won);
   await page.getByRole('button', { name: 'Como jogar', exact: true }).last().click({ force: true });
@@ -124,6 +173,12 @@ try {
     await m.clock.runFor(100); assert((await snapshot(m)).player.x > x + 10);
     await cdp.send('Input.dispatchTouchEvent', { type: 'touchCancel', touchPoints: [] });
     await m.clock.runFor(500); assert.equal((await snapshot(m)).player.vx, 0);
+    await m.locator('canvas').focus(); await m.keyboard.down('ArrowRight');
+    await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [r] });
+    await m.keyboard.up('ArrowRight'); await m.clock.runFor(100);
+    assert((await snapshot(m)).player.vx > 0, 'Touch keeps moving after keyboard source is released');
+    await cdp.send('Input.dispatchTouchEvent', { type: 'touchCancel', touchPoints: [] });
+    await m.clock.runFor(500); assert.equal((await snapshot(m)).player.vx, 0);
     checks.push('Chrome mobile emulation: simultaneous direction+jump touch, pointer cancellation releases input');
   }
   await m.getByRole('button', { name: 'Pausar', exact: true }).click({ force: true });
@@ -136,7 +191,7 @@ try {
   checks.push('reduced motion default, compact camera, 320/390/768/1440px without overflow, project subpath, no external requests');
   assert.equal(errors.length, 0, errors.join('\n'));
   assert(requests.every(url => new URL(url).origin === base), 'No external fonts, scripts, data or authenticated requests');
-  const result = { engine, browser: await browser.version(), testedAt: new Date().toISOString(), tests: checks, mission: won, errors,
+  const result = { engine, browser: await browser.version(), testedAt: new Date().toISOString(), tests: checks, panelBounds, mission: won, errors,
     requestCount: requests.length, testClock: 'Playwright RAF clock; inputs go through DOM keyboard/pointer events',
     limitations: 'Mobile is emulation, not physical hardware. Safari and real screen readers not executed.' };
   await writeFile(resolve(output, 'results.json'), JSON.stringify(result, null, 2) + '\n');

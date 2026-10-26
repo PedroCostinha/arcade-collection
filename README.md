@@ -1,5 +1,10 @@
 # ARCADE COLLECTION / Barrel Quest
 
+**V1.1 candidata (`1.1.0-rc.1`), em revisão no Draft PR #1.** Corrige salto
+por repetição de Espaço após pausa, painéis em telas intermediárias e feedback
+de objetivo, dano e checkpoint. A física e a arte do protótipo foram preservadas.
+Veja [a análise, os testes e as comparações antes/depois](docs/REVIEW_V1_1.md).
+
 Primeira versão jogável de Barrel Quest, executável **localmente**. Ember-7 sobe cinco pisos,
 recolhe cargas e evita barris. Código em TypeScript, Canvas 2D e arte própria.
 Repositório público: [PedroCostinha/arcade-collection](https://github.com/PedroCostinha/arcade-collection).
@@ -54,6 +59,12 @@ Menus de instruções, pausa, vitória e Game Over são HTML acessível; é poss
 reiniciar sem recarregar. Sair da janela ou ocultar a aba pausa automaticamente.
 O foco volta ao Canvas ao iniciar/continuar. As teclas de jogo não interceptam
 campos de formulário e os botões preservam ativação nativa por teclado.
+
+Uma faixa abaixo do cenário informa dano, checkpoint, retorno e pontos. Após
+três segundos de partida, ela volta a indicar a próxima carga pendente ou a
+bandeira final. As mensagens também usam `role=status`; não há flashes ou
+animação adicional. Nas instruções, aproxime-se da escada e segure W/S ou ↑/↓;
+solte para parar, ou pressione Espaço para sair saltando.
 
 Em telas estreitas, uma câmera acompanha Ember-7: o mundo e a física são os
 mesmos, com maior tamanho aparente do personagem. `prefers-reduced-motion`

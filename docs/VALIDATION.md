@@ -1,5 +1,9 @@
 # Validação local / 26 de outubro de 2026
 
+Para a candidata **V1.1**, consulte [REVIEW_V1_1.md](REVIEW_V1_1.md), que
+separa os problemas reproduzidos, correções, capturas antes/depois e pendências.
+Os dados abaixo permanecem como registro da validação inicial do protótipo.
+
 ## Resultado
 
 A primeira versão jogável passou pelos testes automatizados e por missões

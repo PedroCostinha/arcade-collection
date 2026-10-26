@@ -1,0 +1,81 @@
+[
+  {
+    "width": 320,
+    "card": {
+      "top": 247,
+      "bottom": 437.5,
+      "height": 190.5
+    },
+    "viewport": {
+      "top": 235,
+      "bottom": 449.5,
+      "height": 214.5
+    },
+    "overflow": false
+  },
+  {
+    "width": 390,
+    "card": {
+      "top": 247,
+      "bottom": 490,
+      "height": 243
+    },
+    "viewport": {
+      "top": 235,
+      "bottom": 502,
+      "height": 267
+    },
+    "overflow": false
+  },
+  {
+    "width": 720,
+    "card": {
+      "top": 271,
+      "bottom": 658.46875,
+      "height": 387.46875
+    },
+    "viewport": {
+      "top": 251,
+      "bottom": 669.75,
+      "height": 418.75
+    },
+    "overflow": false
+  },
+  {
+    "width": 900,
+    "card": {
+      "top": 298,
+      "bottom": 685.46875,
+      "height": 387.46875
+    },
+    "viewport": {
+      "top": 278,
+      "bottom": 663,
+      "height": 385
+    },
+    "overflow": true
+  },
+  {
+    "width": 1440,
+    "card": {
+      "top": 415.984375,
+      "bottom": 818.75,
+      "height": 402.765625
+    },
+    "viewport": {
+      "top": 298,
+      "bottom": 936.75,
+      "height": 638.75
+    },
+    "overflow": false
+  },
+  {
+    "announcement": "MISSÃO EM PAUSA.",
+    "style": "sr-only"
+  },
+  {
+    "checkpoint": 1,
+    "event": null,
+    "eventId": 0
+  }
+]
