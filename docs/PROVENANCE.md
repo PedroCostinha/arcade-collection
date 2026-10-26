@@ -16,10 +16,11 @@ código/sprites** desta implementação. Seus problemas de autorização não s�
 contornados ao mudar de SVG para Canvas.
 
 O repositório do perfil não declara uma licença pública geral. Este projeto
-local reaproveita recursos próprios sob instrução de seu titular; isso não
-estabelece uma licença de redistribuição para terceiros. Antes da publicação
-do novo repositório, PedroCostinha deverá escolher a licença do novo código
-e dos recursos próprios. Nenhuma licença foi escolhida em seu nome.
+reaproveita recursos próprios sob instrução de seu titular, que autorizou
+publicar o novo repositório. Isso não estabelece uma licença geral de
+redistribuição para terceiros. A escolha de licença para código e recursos
+próprios continua pendente; nenhuma licença foi aplicada em seu nome.
+Consulte a [recomendação separada por recurso](LICENSING.md).
 
 Ferramentas de desenvolvimento instaladas via npm têm suas próprias licenças;
 o lockfile registra versões e integridades. Elas não são enviadas em `dist/`.

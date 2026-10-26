@@ -1,15 +1,19 @@
 # ARCADE COLLECTION / Barrel Quest
 
-Primeira versão jogável, **local**, de Barrel Quest. Ember-7 sobe cinco pisos,
+Primeira versão jogável de Barrel Quest, executável **localmente**. Ember-7 sobe cinco pisos,
 recolhe cargas e evita barris. Código em TypeScript, Canvas 2D e arte própria.
-Nenhum repositório remoto ou GitHub Pages foi criado para este projeto.
+Repositório público: [PedroCostinha/arcade-collection](https://github.com/PedroCostinha/arcade-collection).
+**GitHub Pages desativado.** O código está disponível para revisão; não há URL
+de jogo hospedado nesta etapa.
 
 ## Executar
 
 Requer **Node.js 22 ou posterior** e npm. Na pasta do projeto:
 
 ```powershell
-cd C:\Projetos\arcade-collection
+git clone https://github.com/PedroCostinha/arcade-collection.git
+cd arcade-collection
+git switch feat/barrel-quest-playable
 npm ci
 npm run dev
 ```
@@ -78,6 +82,12 @@ do Playwright. O observador `?qa=1` existe apenas em localhost e fornece cópias
 somente para leitura; não permite mudar vidas, posições ou placar. Os testes
 unitários também incluem uma missão inteira com barris ativos e entradas normais.
 
+O CI compila e executa os 25 testes em Node 22 e 24, além da missão completa
+em Firefox no Linux. As Actions estão fixadas por SHA, com `contents: read`,
+sem credenciais persistidas, secrets ou permissões de deploy. Evidências de CI
+ficam em `test-results/`, sem alterar as capturas de referência versionadas.
+Para usar esse destino localmente, defina `ARCADE_EVIDENCE_DIR` antes da QA.
+
 ## Arquitetura
 
 ```mermaid
@@ -113,14 +123,16 @@ TypeScript e Playwright são dependências de desenvolvimento com versões fixas
 - [Auditoria do perfil e plano de implementação](docs/AUDIT.md)
 - [Origem e autoria da arte](docs/PROVENANCE.md)
 - [Validação e capturas observadas](docs/VALIDATION.md)
+- [Preparação do repositório e CI](docs/REPOSITORY_SETUP.md)
+- [Recomendação de licença por recurso](docs/LICENSING.md)
 
 `npm run build` produz `dist/` com URLs relativas, sem roteamento de SPA e
 com `.nojekyll`. O mesmo conteúdo funciona em um subcaminho como
 `/arcade-collection/`. Está preparado para hospedagem estática futura, mas
-**não existe workflow de deploy nem remoto configurado**.
+**não existe workflow de deploy e o Pages permanece desativado**.
 
-Antes de publicar: aprovar o projeto local, autorizar a criação de
-`PedroCostinha/arcade-collection`, escolher a licença do código próprio e
-aprovar separadamente a configuração do Pages. A mudança do README do perfil
+O titular autorizou a publicação do repositório e o CI. A escolha de licença
+para código e recursos visuais continua pendente, assim como a aprovação da
+jogabilidade e qualquer configuração futura do Pages. A mudança do README do perfil
 para apontar ao jogo só deve acontecer após existir uma URL aprovada e funcional.
 O CODE QUEST V2 e os SVGs do perfil não foram alterados nesta implementação.

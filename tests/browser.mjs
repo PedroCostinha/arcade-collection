@@ -7,7 +7,7 @@ import { pilot } from './pilot.mjs';
 
 const engine = process.env.ARCADE_BROWSER ?? 'chrome';
 assert(['chrome', 'firefox'].includes(engine));
-const output = resolve('docs/evidence', engine);
+const output = resolve(process.env.ARCADE_EVIDENCE_DIR ?? resolve('docs/evidence', engine));
 await mkdir(output, { recursive: true });
 await rm(resolve(output, 'results.json'), { force: true });
 const server = await serve({ port: 0 });
