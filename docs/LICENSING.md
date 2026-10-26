@@ -40,7 +40,8 @@ de franquias comerciais.
 TypeScript e Playwright 1.62.1 são ferramentas de desenvolvimento sob
 Apache-2.0 conforme os pacotes instalados; o pacote opcional fsevents declara
 MIT. O lockfile registra cada dependência e sua integridade. Navegadores
-baixados para QA têm licenças próprias e não são redistribuídos no jogo.
+usados para QA e a imagem oficial Playwright do CI têm licenças próprias e
+não são redistribuídos no jogo.
 Actions e ferramentas não são enviadas no `dist/`. Qualquer futuro asset ou
 dependência deve entrar no inventário com sua origem e licença específica.
 

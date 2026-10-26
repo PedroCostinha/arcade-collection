@@ -25,8 +25,9 @@ workflow de publicação ou commits automáticos.
 
 - Node 22 e 24: instalação pelo lockfile, sem lifecycle scripts de pacotes,
   build TypeScript strict e os 25 testes no runner nativo do Node.
-- Firefox / Linux / Node 24: instalação explícita do navegador de QA, build
-  e missão completa com entradas DOM, pausa, reinício e responsividade.
+- Firefox / Linux / Node 24: imagem oficial Playwright 1.62.1 Noble, fixada
+  por digest, com navegadores e dependências do sistema pré-instalados;
+  build e missão completa com entradas DOM, pausa, reinício e responsividade.
 - `contents: read` como única permissão; checkout sem persistir credenciais.
 - Checkout v7.0.1 e setup-node v7.1.0 fixados por SHA completo, conferidos
   nos repositórios oficiais. Sem PAT, secrets, OIDC ou permissão de Pages.
@@ -37,6 +38,16 @@ workflow de publicação ou commits automáticos.
 A configuração segue a orientação oficial de
 [fixar Actions por SHA e limitar credenciais](https://docs.github.com/en/actions/reference/security/secure-use).
 Os resultados observados ficam no PR e na aba Actions do novo repositório.
+
+A primeira execução do PR atingiu o limite de 15 minutos durante downloads
+do espelho `azure.archive.ubuntu.com`, antes do build e dos testes de navegador.
+Uma repetição também demorou nessa etapa. O job passou a usar a
+[imagem oficial do Playwright](https://playwright.dev/docs/docker), com a
+mesma versão do pacote e digest conferido no Microsoft Container Registry.
+Isso elimina a instalação APT durante a QA. A imagem é apenas uma ferramenta
+de CI: não serve o jogo publicamente nem faz parte de `dist/`. Os testes e
+as permissões de GitHub continuam os mesmos; não há modo privilegiado ou
+capacidades extras de container.
 
 ## Revisão antes de enviar
 
