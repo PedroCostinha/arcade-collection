@@ -46,8 +46,11 @@ Uma repetição também demorou nessa etapa. O job passou a usar a
 mesma versão do pacote e digest conferido no Microsoft Container Registry.
 Isso elimina a instalação APT durante a QA. A imagem é apenas uma ferramenta
 de CI: não serve o jogo publicamente nem faz parte de `dist/`. Os testes e
-as permissões de GitHub continuam os mesmos; não há modo privilegiado ou
-capacidades extras de container.
+as permissões de GitHub continuam os mesmos; o container executa como o
+usuário não privilegiado `pwuser`, sem modo privilegiado ou capacidades extras.
+Esse usuário também evita a recusa do Firefox quando o Actions monta seu
+diretório pessoal com proprietário diferente de root. Não é necessário
+alterar a variável de ambiente HOME.
 
 ## Revisão antes de enviar
 
