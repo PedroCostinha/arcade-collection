@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 PedroCostinha
+import { IDENTITY } from './art/identity.js';
 import { Game } from './core/game.js';
 import { FixedClock } from './core/clock.js';
 import { InputBuffer } from './core/input.js';
@@ -25,6 +28,12 @@ function boot(): void {
   const reduced = element<HTMLInputElement>('reduced');
   const motionQuery = matchMedia('(prefers-reduced-motion: reduce)'), sizeQuery = matchMedia('(max-width: 640px)');
   const setText = (node: HTMLElement, value: string): void => { if (node.textContent !== value) node.textContent = value; };
+  let previousCheckpoint = 0, feedbackUntil = 0, feedbackText = '', feedbackKind = 'hint';
+  function missionHint(): string {
+    const next = game.deliveries.find(delivery => !delivery.collected);
+    return next ? `Próxima carga: piso 0${next.floor + 1}. Recolha as cinco e alcance a bandeira.`
+      : 'Cinco cargas entregues. Alcance a bandeira no piso 05 para concluir a missão.';
+  }
   for (let floor = 1; floor <= 5; floor++) {
     const item = document.createElement('li'), text = document.createElement('span'), mark = document.createElement('span');
     text.textContent = `PISO 0${floor}`; mark.className = 'cargo-mark'; mark.setAttribute('aria-hidden', 'true');
@@ -57,18 +66,18 @@ function boot(): void {
     }
     if (changed || force) {
       controls?.clear(); overlay.hidden = playing; copy.replaceChildren(); actions.replaceChildren();
-      label.textContent = 'MISSÃO 01 / EMBER-7';
+      label.textContent = `MISSÃO 01 / ${IDENTITY.CHARACTER_NAME_UPPER}`;
       if (game.state === 'menu') {
         title.textContent = 'ENTREGA\nEM NÍVEL MÁXIMO.';
-        paragraph('Barris em movimento. Cinco cargas esperando. Você no controle de Ember-7.');
+        paragraph('Colete as cinco cargas e alcance a bandeira. Setas/WASD: mover e subir. Espaço: pular.');
         addButton('Jogar agora', () => game.start(), true); addButton('Como jogar', () => game.instructions());
       } else if (game.state === 'instructions') {
         title.textContent = 'COMO JOGAR'; label.textContent = 'CONTROLES / OBJETIVO';
         const list = document.createElement('ul');
-        for (const text of ['Setas ou A/D: andar. W/S ou setas verticais: subir/descer junto à escada.',
+        for (const text of ['Setas ou A/D: andar. Junto à escada, segure W/S ou ↑/↓; solte para parar. Espaço também permite sair saltando.',
           'Espaço: pular. P ou Esc: pausar e continuar.', 'No celular: segure as setas e toque em PULAR. É possível mover e pular ao mesmo tempo.',
           'Recolha as cinco cargas douradas. Chegue à bandeira do último andar para vencer.',
-          'Barris e quedas custam uma vida. Você tem três; o retorno usa o último piso alcançado.']) {
+          'Barris e quedas custam uma vida. Você tem três; o retorno usa o piso mais alto alcançado. Ao renascer há 1,8 s de proteção contra barris, não contra quedas.']) {
           const item = document.createElement('li'); item.textContent = text; list.append(item);
         }
         copy.append(list); addButton('Voltar', () => game.closeInstructions(), true);
@@ -88,13 +97,34 @@ function boot(): void {
         if (playing) canvas.focus({ preventScroll: true });
         else { title.tabIndex = -1; title.focus({ preventScroll: true }); }
       }
+      feedbackText = playing ? (previousState === 'paused' ? 'Missão retomada. ' : 'Missão iniciada. ') + missionHint()
+        : ({ menu: 'Cinco cargas, três vidas. Escolha Jogar agora para iniciar.',
+          instructions: 'O jogo não avança nas instruções. Use Voltar para sair desta tela.',
+          paused: 'Partida pausada. Vidas, pontos e checkpoint estão preservados.',
+          won: 'Missão concluída. Jogue novamente para tentar outro placar.',
+          gameover: 'Fim de jogo. Escolha Tentar novamente para uma nova missão.' } as Partial<Record<State, string>>)[game.state]!;
+      feedbackKind = game.state === 'won' ? 'victory' : 'hint'; feedbackUntil = game.elapsed + 3;
       previousState = game.state;
-      live.textContent = playing ? 'Missão iniciada ou retomada.' : title.textContent;
+    }
+    if (playing && game.checkpoint > previousCheckpoint) {
+      feedbackText = `Checkpoint ativado: piso 0${game.checkpoint + 1}. Você retorna aqui se perder uma vida.`;
+      feedbackKind = 'checkpoint'; feedbackUntil = game.elapsed + 3;
     }
     if (game.eventId !== previousEvent && game.lastEvent) {
-      live.textContent = `${game.lastEvent.text}${game.lastEvent.points ? ` Mais ${game.lastEvent.points} pontos.` : ''}`;
+      feedbackText = `${game.lastEvent.text}${game.lastEvent.points ? ` Mais ${game.lastEvent.points} pontos.` : ''}`;
+      if (game.lastEvent.kind === 'damage' && game.lives > 0) {
+        feedbackText += ` Retorno ao piso 0${game.checkpoint + 1}; proteção contra barris ao renascer.`;
+      }
+      if (game.lastEvent.kind === 'delivery' && game.cargo === 5) {
+        feedbackText += ' Agora alcance a bandeira no piso 05.';
+      }
+      feedbackKind = game.lastEvent.kind; feedbackUntil = game.elapsed + 3;
       previousEvent = game.eventId;
     }
+    previousCheckpoint = game.checkpoint;
+    setText(live, playing && game.elapsed >= feedbackUntil ? missionHint() : feedbackText);
+    const kind = playing && game.elapsed >= feedbackUntil ? 'hint' : feedbackKind;
+    if (live.dataset.kind !== kind) live.dataset.kind = kind;
     return changed || force;
   }
   function shortcut(): void {
@@ -109,7 +139,7 @@ function boot(): void {
   element('help').addEventListener('click', () => act(() => game.instructions()));
   const resize = (): void => {
     renderer.resize(sizeQuery.matches); dirty = true;
-    setText(fields.camera, sizeQuery.matches ? 'CÂMERA ACOMPANHA EMBER-7' : 'CENÁRIO COMPLETO');
+    setText(fields.camera, sizeQuery.matches ? `CÂMERA ACOMPANHA ${IDENTITY.CHARACTER_NAME_UPPER}` : 'CENÁRIO COMPLETO');
   };
   const motion = (): void => { reduced.checked = motionQuery.matches; renderer.reducedMotion = reduced.checked; dirty = true; };
   reduced.addEventListener('change', () => { renderer.reducedMotion = reduced.checked; dirty = true; });

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 PedroCostinha
 import { spawnSync } from 'node:child_process';
 import { serve } from './serve.mjs';
 const build = spawnSync(process.execPath, ['scripts/build.mjs'], { stdio: 'inherit' });

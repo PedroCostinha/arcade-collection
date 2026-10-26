@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 PedroCostinha
 import { FIXED_DT } from './level.js';
 /** Bounded accumulator: at most twelve physics steps per display frame. */
 export class FixedClock {

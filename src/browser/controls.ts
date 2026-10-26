@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 PedroCostinha
 import { InputBuffer, type Action } from '../core/input.js';
 
 const KEYS: Readonly<Record<string, Action>> = Object.freeze({ ArrowLeft: 'left', KeyA: 'left', ArrowRight: 'right',
@@ -18,6 +20,8 @@ export class BrowserControls {
       if (!action || !canPlay()) return;
       // Space on an HTML button keeps its native activation semantics.
       if (event.code === 'Space' && event.target instanceof HTMLButtonElement) return;
+      // Clearing inputs on pause must not turn an OS repeat into a fresh jump.
+      if (action === 'jump' && event.repeat) { event.preventDefault(); return; }
       event.preventDefault(); buffer.set(`key:${event.code}`, action, true);
     }, { signal });
     window.addEventListener('keyup', event => { buffer.release(`key:${event.code}`); }, { signal });

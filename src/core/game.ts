@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 PedroCostinha
 import { clamp, approach, sweptBarrelHit } from './collision.js';
 import { DELIVERY_X, FIXED_DT, LADDERS, PHYSICS as P, WORLD, floorY, spawnPoint } from './level.js';
 import type { Barrel, Delivery, FrameInput, GameEvent, Player, State } from './types.js';

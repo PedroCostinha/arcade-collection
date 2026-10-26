@@ -1,0 +1,30 @@
+Copyright (c) 2026 PedroCostinha. All rights reserved.
+SPDX-License-Identifier: LicenseRef-Arcade-Art-Reserved
+
+Todos os direitos autorais sobre Ember-7, seus sprites e paleta, a arte,
+as imagens, a composição visual original, os elementos visuais exclusivos
+e a identidade deste projeto são reservados a PedroCostinha.
+
+A licença MIT do código não concede licença para redistribuir, modificar,
+sublicenciar ou explorar separadamente esses recursos artísticos. Usos
+adicionais exigem autorização do titular, ressalvados os direitos previstos
+em lei. O uso dos nomes e da identidade não implica endosso ou autorização
+para apresentar outro produto como oficial. Não se afirma registro de marca.
+
+Escopo artístico neste repositório:
+- src/art/ember7.ts: dados completos da paleta e dos onze sprites Ember-7.
+- src/art/scene.ts: cores, composição e definições visuais do cenário.
+- src/art/identity.ts: nomes e elementos da identidade do projeto.
+- public/theme.css: tema visual, paleta, tipografia e marca gráfica.
+- public/favicon.svg: desenho do favicon.
+- docs/evidence/**: imagens e registros de apresentação/validação do jogo.
+- Os mesmos recursos quando transpilados, incorporados ao HTML ou renderizados.
+
+São permitidos o carregamento e a execução normais no navegador para jogar
+na distribuição oficial que o titular venha a autorizar. Esse uso não concede
+licença geral para extrair ou reutilizar a arte em outros produtos.
+Esta declaração não autoriza deploy nem altera o estado do GitHub Pages.
+
+Algoritmos e código identificados como MIT permanecem sujeitos à MIT, sem
+restrições adicionais impostas por este aviso. Veja LICENSING.md no código
+fonte, ou LICENSING.txt na distribuição, e LICENSE-CODE.txt.

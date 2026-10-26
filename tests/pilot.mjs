@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 PedroCostinha
 // A deterministic test pilot uses only the same frame inputs as a human.
 // It does not teleport, alter health, remove barrels or award points.
 export function pilot(snapshot) {

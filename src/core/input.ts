@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 PedroCostinha
 import type { FrameInput, Axis } from './types.js';
 export type Action = 'left' | 'right' | 'up' | 'down' | 'jump';
 /** Keyboard, pointer and assistive clicks share actions, not DOM events. */

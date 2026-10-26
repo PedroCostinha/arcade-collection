@@ -1,40 +1,43 @@
 <!doctype html>
+<!-- SPDX-License-Identifier: MIT; Copyright (c) 2026 PedroCostinha. Identity placeholders resolve to reserved art. -->
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#101015">
-  <meta name="description" content="Barrel Quest: plataforma arcade original com Ember-7. Cinco andares, barris e três vidas. Jogue com teclado ou controles de toque.">
-  <title>Barrel Quest · Arcade Collection</title>
+  <meta name="theme-color" content="{{THEME_COLOR}}">
+  <meta name="description" content="{{GAME_NAME}}: plataforma arcade original com {{CHARACTER_NAME}}. Cinco andares, barris e três vidas. Jogue com teclado ou controles de toque.">
+  <title>{{GAME_NAME}} · {{COLLECTION_TITLE}}</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./theme.css">
+  <link rel="license" href="./LICENSING.txt">
   <script type="module" src="./app.js"></script>
 </head>
 <body>
   <a class="skip" href="#game-canvas">Ir para o jogo</a>
   <div class="page">
     <header class="masthead">
-      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>ARCADE COLLECTION<span class="brand-divider">/</span><span class="muted">01</span></div>
-      <span class="build-label">ORIGINAL GAMES <span aria-hidden="true">●</span> LOCAL BUILD 0.1</span>
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>{{COLLECTION_NAME}}<span class="brand-divider">/</span><span class="muted">01</span></div>
+      <span class="build-label">ORIGINAL GAMES <span aria-hidden="true">●</span> V1.1.0</span>
     </header>
     <main>
       <section class="intro" aria-labelledby="page-title">
-        <div><p class="eyebrow">EMBER WORKS / INDUSTRIAL ASCENT</p><h1 id="page-title">BARREL QUEST<span aria-hidden="true">.</span></h1></div>
+        <div><p class="eyebrow">{{WORKSHOP_NAME}} / INDUSTRIAL ASCENT</p><h1 id="page-title">{{GAME_NAME_UPPER}}<span aria-hidden="true">.</span></h1></div>
         <p class="intro-copy">Cinco andares. Três vidas.<br>Leve cada carga ao seu destino.</p>
       </section>
       <div class="layout">
-        <section class="game-panel" id="play-area" aria-label="Jogo Barrel Quest">
+        <section class="game-panel" id="play-area" aria-label="Jogo {{GAME_NAME}}">
           <div class="hud">
             <dl><div><dt>Pontos da partida</dt><dd id="score">000000</dd></div><div><dt>Vidas</dt><dd id="lives">3 / 3</dd></div><div><dt>Cargas</dt><dd id="cargo">0 / 5</dd></div><div class="time-metric"><dt>Tempo</dt><dd id="time">00:00</dd></div></dl>
             <button id="pause" class="button small" disabled>Pausar</button>
           </div>
           <div class="viewport">
-            <canvas id="game-canvas" width="960" height="600" tabindex="0" aria-label="Barrel Quest, área do jogo de plataforma" aria-describedby="canvas-help">
+            <canvas id="game-canvas" width="960" height="600" tabindex="0" aria-label="{{GAME_NAME}}, área do jogo de plataforma" aria-describedby="canvas-help">
               Seu navegador precisa suportar Canvas 2D. As instruções e os controles estão disponíveis em texto nesta página.
             </canvas>
             <div id="screen" class="overlay" hidden>
               <section class="screen-card" aria-labelledby="screen-title">
-                <p id="screen-label" class="eyebrow">MISSÃO 01 / EMBER-7</p>
+                <p id="screen-label" class="eyebrow">MISSÃO 01 / {{CHARACTER_NAME_UPPER}}</p>
                 <h2 id="screen-title"></h2>
                 <div id="screen-copy"></div>
                 <div id="screen-actions" class="screen-actions"></div>
@@ -42,6 +45,7 @@
             </div>
           </div>
           <div class="stage-footer"><span id="floor-label">PISO 01 / 05</span><span id="camera-label">CENÁRIO COMPLETO</span><span class="live-dot" id="phase">PRONTO</span></div>
+          <p id="announcer" class="event-feedback" role="status" aria-live="polite" aria-atomic="true">Colete as cinco cargas e alcance a bandeira no piso 05.</p>
           <div class="touch-controls" aria-label="Controles do jogo">
             <div class="dpad">
               <button class="direction up" data-action="up" aria-label="Subir escada" title="Subir escada (W ou seta acima)">↑</button>
@@ -52,8 +56,7 @@
             <p class="control-caption"><kbd>W A S D</kbd> ou setas<br><span class="muted">Segure para mover ou subir.</span></p>
             <button class="jump-button" data-action="jump" aria-label="Pular" title="Pular (barra de espaço)"><span aria-hidden="true">↟</span>PULAR<small>ESPAÇO</small></button>
           </div>
-          <p id="canvas-help" class="sr-only">Use setas ou W A S D para movimentar Ember-7 e subir ou descer escadas. Espaço pula. P ou Escape pausa. Colete as cinco cargas douradas e alcance a bandeira no piso superior. Barris e quedas tiram uma vida. A partida começa somente ao escolher Jogar agora.</p>
-          <p id="announcer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+          <p id="canvas-help" class="sr-only">Use setas ou W A S D para movimentar {{CHARACTER_NAME}} e subir ou descer escadas. Espaço pula. P ou Escape pausa. Colete as cinco cargas douradas e alcance a bandeira no piso superior. Barris e quedas tiram uma vida. A partida começa somente ao escolher Jogar agora.</p>
         </section>
         <aside class="sidebar" aria-label="Missão e instruções">
           <section class="side-card mission"><p class="eyebrow">01 / SUA MISSÃO</p><h2>Entrega em<br>nível máximo.</h2><p>Recolha as cinco cargas, suba pelas escadas e chegue à bandeira. Desvie dos barris para manter suas vidas.</p><ol id="manifest" class="manifest" aria-label="Cargas por andar"></ol></section>
@@ -64,7 +67,7 @@
       <noscript><p class="notice">Este jogo precisa de JavaScript. Nenhum token ou consulta autenticada é necessário.</p></noscript>
       <p class="notice" id="fatal" hidden>Não foi possível iniciar o Canvas 2D. Use um navegador com suporte a Canvas para jogar.</p>
     </main>
-    <footer class="footer"><span>UM JOGO ORIGINAL DE PEDROCOSTINHA</span><span>Ember-7 / Canvas 2D · v0.1 local</span></footer>
+    <footer class="footer"><a href="./LICENSING.txt" title="Licença do código e direitos dos recursos visuais">{{AUTHOR_CREDIT}}</a><span>{{CHARACTER_NAME}} / Canvas 2D · V1.1.0</span></footer>
   </div>
 </body>
 </html>

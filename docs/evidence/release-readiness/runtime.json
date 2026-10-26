@@ -1,0 +1,110 @@
+{
+  "testedAt": "2026-10-26T17:11:46.825Z",
+  "browser": "155.0.8059.85",
+  "basePath": "/arcade-collection/",
+  "qaObserverAbsentWithoutQuery": true,
+  "errors": [],
+  "badResponses": [],
+  "requests": [
+    "http://127.0.0.1:64827/arcade-collection/",
+    "http://127.0.0.1:64827/arcade-collection/styles.css",
+    "http://127.0.0.1:64827/arcade-collection/app.js",
+    "http://127.0.0.1:64827/arcade-collection/core/game.js",
+    "http://127.0.0.1:64827/arcade-collection/core/clock.js",
+    "http://127.0.0.1:64827/arcade-collection/core/input.js",
+    "http://127.0.0.1:64827/arcade-collection/render/canvas.js",
+    "http://127.0.0.1:64827/arcade-collection/browser/controls.js",
+    "http://127.0.0.1:64827/arcade-collection/core/level.js",
+    "http://127.0.0.1:64827/arcade-collection/core/collision.js",
+    "http://127.0.0.1:64827/arcade-collection/render/sprites.js",
+    "http://127.0.0.1:64827/arcade-collection/favicon.svg"
+  ],
+  "canvas": {
+    "width": 960,
+    "height": 600
+  },
+  "performance": {
+    "samples": 300,
+    "medianFrameMs": 16.699999999999818,
+    "p95FrameMs": 16.799999999999955,
+    "maxFrameMs": 17,
+    "over50ms": 0,
+    "note": "Real RAF in headless desktop Chrome, early gameplay; smoke only, not a device performance certification."
+  },
+  "artifact": {
+    "files": 14,
+    "bytes": 58710,
+    "manifest": [
+      {
+        "path": ".nojekyll",
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      {
+        "path": "app.js",
+        "bytes": 12283,
+        "sha256": "2cfc7e2c8977bd716bd24f366bc46d92993cee08409dfdb0e02442a7ed4d9ec7"
+      },
+      {
+        "path": "browser/controls.js",
+        "bytes": 3431,
+        "sha256": "dfdf64a604402e29ab21f5e68982fded8768ea79959c6b08036e230256ac1c55"
+      },
+      {
+        "path": "core/clock.js",
+        "bytes": 629,
+        "sha256": "cb5569a9d67e4ddb3155a72b1c77161575a7979e24719fb637732ad39146ba5c"
+      },
+      {
+        "path": "core/collision.js",
+        "bytes": 1115,
+        "sha256": "80e15df299d4b76df579132cdc6e4a7a845ecf4182496d3c906333b7a79b0935"
+      },
+      {
+        "path": "core/game.js",
+        "bytes": 9762,
+        "sha256": "ac60f910ed12faf3253b8198c3d643ecba9fae7c758cf8fc84616d1ce5a5a64a"
+      },
+      {
+        "path": "core/input.js",
+        "bytes": 1076,
+        "sha256": "776e3c08124c380dca975dac5943d3ca93799282895f189f50d2ec8a04aa53d8"
+      },
+      {
+        "path": "core/level.js",
+        "bytes": 997,
+        "sha256": "0103cd7eb3488da411fab7cd771de19103ed304a3225a099e36492c1f0331d21"
+      },
+      {
+        "path": "core/types.js",
+        "bytes": 78,
+        "sha256": "01d8d23b2415d28012421e69bddf6cfed2b831145db06cef2787a20386cf3cb6"
+      },
+      {
+        "path": "favicon.svg",
+        "bytes": 178,
+        "sha256": "7fb1714857da8aa1f59ffb2e42993efb8536f50415c00940af1ee4d3f5808221"
+      },
+      {
+        "path": "index.html",
+        "bytes": 5914,
+        "sha256": "75417268a2ad0d02fdb695d213d44469c57f6b5743c3598f295887513c400cd4"
+      },
+      {
+        "path": "render/canvas.js",
+        "bytes": 6654,
+        "sha256": "6b89411a85ebfe22054bf7973b8c659e8cc9c56478ad59eff283c88728cc95b2"
+      },
+      {
+        "path": "render/sprites.js",
+        "bytes": 6665,
+        "sha256": "0a52331d8ccec0bec411ac0709ab422b18100cdf55e18e37e3b52d75f20cbc1e"
+      },
+      {
+        "path": "styles.css",
+        "bytes": 9927,
+        "sha256": "2a4c2297791593dc94993e3fb989956f66110ad37fe3b009934356a62802d2c0"
+      }
+    ]
+  }
+}

@@ -1,0 +1,226 @@
+[
+  {
+    "compact": false,
+    "reduced": false,
+    "pose": "idle",
+    "commands": 971,
+    "sha256": "9302519342bd5eeee781651556590764b2f6b8e4a88750fc9cfaf90090bb7c7d"
+  },
+  {
+    "compact": false,
+    "reduced": false,
+    "pose": "walk",
+    "commands": 971,
+    "sha256": "9302519342bd5eeee781651556590764b2f6b8e4a88750fc9cfaf90090bb7c7d"
+  },
+  {
+    "compact": false,
+    "reduced": false,
+    "pose": "run",
+    "commands": 973,
+    "sha256": "53b4ed1138f262b7d10316d09c7f13b381f1a042295c0e03090a28b9d4721d4e"
+  },
+  {
+    "compact": false,
+    "reduced": false,
+    "pose": "jump",
+    "commands": 959,
+    "sha256": "a8d34a94120ffa5b30ebaab68d66937eba22caaf256b5a4123aa76ea6a4a3795"
+  },
+  {
+    "compact": false,
+    "reduced": false,
+    "pose": "climb",
+    "commands": 961,
+    "sha256": "8ca5a7165913ff20da34f92b8aa09c15121308956d915f8ba8062ca9014209cf"
+  },
+  {
+    "compact": false,
+    "reduced": false,
+    "pose": "protected",
+    "commands": 974,
+    "sha256": "85570c38cd7fce1fd2226e6477ab5343d30d0a9922b521a1e172ad54a9c7bd8b"
+  },
+  {
+    "compact": false,
+    "reduced": false,
+    "pose": "victory",
+    "commands": 973,
+    "sha256": "ec4190c4af47323ee584a8d4f49f855306e759a10c6fc5640dba61445e44892f"
+  },
+  {
+    "compact": false,
+    "reduced": false,
+    "pose": "gameover",
+    "commands": 971,
+    "sha256": "9302519342bd5eeee781651556590764b2f6b8e4a88750fc9cfaf90090bb7c7d"
+  },
+  {
+    "compact": false,
+    "reduced": true,
+    "pose": "idle",
+    "commands": 970,
+    "sha256": "5bd0c7aede1cdd24b3adecc0162d3ba3ae85a909f1dcf97af1cef4b227dbc35f"
+  },
+  {
+    "compact": false,
+    "reduced": true,
+    "pose": "walk",
+    "commands": 970,
+    "sha256": "5bd0c7aede1cdd24b3adecc0162d3ba3ae85a909f1dcf97af1cef4b227dbc35f"
+  },
+  {
+    "compact": false,
+    "reduced": true,
+    "pose": "run",
+    "commands": 970,
+    "sha256": "00847927112853451cb3e7d22ad51db2b243929026927d3a3086e8301c204361"
+  },
+  {
+    "compact": false,
+    "reduced": true,
+    "pose": "jump",
+    "commands": 958,
+    "sha256": "535641c27916b4dc832e700a021ef89430ca6a678f41e02e3179094ee814c6bf"
+  },
+  {
+    "compact": false,
+    "reduced": true,
+    "pose": "climb",
+    "commands": 960,
+    "sha256": "c7a7f6cf6371afce650bac2af616907a6e05981c4cf511098abbaf675cbf3849"
+  },
+  {
+    "compact": false,
+    "reduced": true,
+    "pose": "protected",
+    "commands": 973,
+    "sha256": "f27a37cd6429795332ee5b23ce14dee27240c86b9ae76e7f9ac5f915b666ea29"
+  },
+  {
+    "compact": false,
+    "reduced": true,
+    "pose": "victory",
+    "commands": 972,
+    "sha256": "d059a780bc3703ccae02b8a872ab531628c6faab9845f95ebb840efb725bdbf7"
+  },
+  {
+    "compact": false,
+    "reduced": true,
+    "pose": "gameover",
+    "commands": 970,
+    "sha256": "5bd0c7aede1cdd24b3adecc0162d3ba3ae85a909f1dcf97af1cef4b227dbc35f"
+  },
+  {
+    "compact": true,
+    "reduced": false,
+    "pose": "idle",
+    "commands": 971,
+    "sha256": "2dcdd3022c9317aa4ddb3d9dc9fd00d78133d0ab92dc3d544a94bb354642ec36"
+  },
+  {
+    "compact": true,
+    "reduced": false,
+    "pose": "walk",
+    "commands": 971,
+    "sha256": "2dcdd3022c9317aa4ddb3d9dc9fd00d78133d0ab92dc3d544a94bb354642ec36"
+  },
+  {
+    "compact": true,
+    "reduced": false,
+    "pose": "run",
+    "commands": 973,
+    "sha256": "399e9e155aa359e19ea3cc15a2eebc4b865cd002615b8ed9aba922f25b5a53ac"
+  },
+  {
+    "compact": true,
+    "reduced": false,
+    "pose": "jump",
+    "commands": 959,
+    "sha256": "c9f2ef74a67fdb0c8d0eb5440633a8e950d4f4f8a4eee2ad08cd8a44edac73c3"
+  },
+  {
+    "compact": true,
+    "reduced": false,
+    "pose": "climb",
+    "commands": 961,
+    "sha256": "ccbdc19f3d62ec5fcd53a8581cb50428f5d31b1a0f9be2b5ef711391b112c6ab"
+  },
+  {
+    "compact": true,
+    "reduced": false,
+    "pose": "protected",
+    "commands": 974,
+    "sha256": "b023caf73f33666cbcc41403c653d851ec4fd0f3a84eb9467bbd18c33a08c019"
+  },
+  {
+    "compact": true,
+    "reduced": false,
+    "pose": "victory",
+    "commands": 973,
+    "sha256": "0af0ad604bf41c3ae2a00738f7ac81ddff82f18caf8f33eefc33fc605007705a"
+  },
+  {
+    "compact": true,
+    "reduced": false,
+    "pose": "gameover",
+    "commands": 971,
+    "sha256": "2dcdd3022c9317aa4ddb3d9dc9fd00d78133d0ab92dc3d544a94bb354642ec36"
+  },
+  {
+    "compact": true,
+    "reduced": true,
+    "pose": "idle",
+    "commands": 970,
+    "sha256": "aa7ea2d396f9a405a5e8f523c1c255a56f0f55dd718ae932321c73e9107d6491"
+  },
+  {
+    "compact": true,
+    "reduced": true,
+    "pose": "walk",
+    "commands": 970,
+    "sha256": "aa7ea2d396f9a405a5e8f523c1c255a56f0f55dd718ae932321c73e9107d6491"
+  },
+  {
+    "compact": true,
+    "reduced": true,
+    "pose": "run",
+    "commands": 970,
+    "sha256": "e295acd7560fd402de2742dc42d8093b20a0e1a2cc844948f7a8ee1570dd3d51"
+  },
+  {
+    "compact": true,
+    "reduced": true,
+    "pose": "jump",
+    "commands": 958,
+    "sha256": "3552125e0a5a65b2eddaab693d5b367519451af87dbd03c590324ff9dc248f72"
+  },
+  {
+    "compact": true,
+    "reduced": true,
+    "pose": "climb",
+    "commands": 960,
+    "sha256": "7bfd1e912dfc673cd77bff74f44840303ef508f94d17b880d3ca02fd3adcdfb0"
+  },
+  {
+    "compact": true,
+    "reduced": true,
+    "pose": "protected",
+    "commands": 973,
+    "sha256": "42adacc8f3012cfedac8912be19f9a7576f9767faabf78417a8e5ee1c4b42402"
+  },
+  {
+    "compact": true,
+    "reduced": true,
+    "pose": "victory",
+    "commands": 972,
+    "sha256": "1eeb5179b8f6509e4a4b28752e5799ff9728ffbef825711e0c766c12a7016523"
+  },
+  {
+    "compact": true,
+    "reduced": true,
+    "pose": "gameover",
+    "commands": 970,
+    "sha256": "aa7ea2d396f9a405a5e8f523c1c255a56f0f55dd718ae932321c73e9107d6491"
+  }
+]

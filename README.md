@@ -1,15 +1,24 @@
 # ARCADE COLLECTION / Barrel Quest
 
-Primeira versão jogável, **local**, de Barrel Quest. Ember-7 sobe cinco pisos,
+**Barrel Quest `1.1.0` preparado; merge e publicação pendentes no Draft PR #1.** Corrige salto
+por repetição de Espaço após pausa, painéis em telas intermediárias e feedback
+de objetivo, dano e checkpoint. A física e a arte do protótipo foram preservadas.
+Veja [a análise, os testes e as comparações antes/depois](docs/REVIEW_V1_1.md).
+
+Primeira versão jogável de Barrel Quest, executável **localmente**. Ember-7 sobe cinco pisos,
 recolhe cargas e evita barris. Código em TypeScript, Canvas 2D e arte própria.
-Nenhum repositório remoto ou GitHub Pages foi criado para este projeto.
+Repositório público: [PedroCostinha/arcade-collection](https://github.com/PedroCostinha/arcade-collection).
+**GitHub Pages desativado.** O código está disponível para revisão; não há URL
+de jogo hospedado nesta etapa.
 
 ## Executar
 
 Requer **Node.js 22 ou posterior** e npm. Na pasta do projeto:
 
 ```powershell
-cd C:\Projetos\arcade-collection
+git clone https://github.com/PedroCostinha/arcade-collection.git
+cd arcade-collection
+git switch feat/barrel-quest-playable
 npm ci
 npm run dev
 ```
@@ -51,6 +60,12 @@ reiniciar sem recarregar. Sair da janela ou ocultar a aba pausa automaticamente.
 O foco volta ao Canvas ao iniciar/continuar. As teclas de jogo não interceptam
 campos de formulário e os botões preservam ativação nativa por teclado.
 
+Uma faixa abaixo do cenário informa dano, checkpoint, retorno e pontos. Após
+três segundos de partida, ela volta a indicar a próxima carga pendente ou a
+bandeira final. As mensagens também usam `role=status`; não há flashes ou
+animação adicional. Nas instruções, aproxime-se da escada e segure W/S ou ↑/↓;
+solte para parar, ou pressione Espaço para sair saltando.
+
 Em telas estreitas, uma câmera acompanha Ember-7: o mundo e a física são os
 mesmos, com maior tamanho aparente do personagem. `prefers-reduced-motion`
 ativa **Reduzir efeitos visuais**, congelando ciclos cosméticos e rotação de
@@ -78,6 +93,17 @@ do Playwright. O observador `?qa=1` existe apenas em localhost e fornece cópias
 somente para leitura; não permite mudar vidas, posições ou placar. Os testes
 unitários também incluem uma missão inteira com barris ativos e entradas normais.
 
+O CI compila e executa a suíte de testes em Node 22 e 24, além da missão completa
+em Firefox no Linux. As Actions estão fixadas por SHA, com `contents: read`,
+sem credenciais persistidas, secrets ou permissões de deploy. Evidências de CI
+ficam em `test-results/`, sem alterar as capturas de referência versionadas.
+Para usar esse destino localmente, defina `ARCADE_EVIDENCE_DIR` antes da QA.
+
+A preparação de publicação inclui testes de artefato/subcaminho e comparação
+com 32 sequências de desenho da RC e os escopos de licença (29 testes no total). Os checks de
+`629322d` cobrem os 25 anteriores; os checks da preparação precisam passar
+no próprio SHA enviado ao PR. Veja o [relatório atual](docs/PREPARATION_1_1_0.md).
+
 ## Arquitetura
 
 ```mermaid
@@ -99,6 +125,7 @@ flowchart LR
 | `src/core/input.ts` | Ações independentes da origem e borda de salto preservada |
 | `src/browser/controls.ts` | Teclado, multitoque, cancelamento, blur e eventos DOM |
 | `src/render/` | Ember-7, cenário, barris e câmera; não altera o estado |
+| `src/art/` | Dados artísticos reservados: sprites, paleta, composição e identidade |
 | `src/app.ts` | Orquestração, RAF, foco, menus HTML e preferências |
 | `public/` | Interface, CSS e favicon próprios |
 | `scripts/` | Build e servidor local com biblioteca padrão do Node |
@@ -113,14 +140,29 @@ TypeScript e Playwright são dependências de desenvolvimento com versões fixas
 - [Auditoria do perfil e plano de implementação](docs/AUDIT.md)
 - [Origem e autoria da arte](docs/PROVENANCE.md)
 - [Validação e capturas observadas](docs/VALIDATION.md)
+- [Preparação do repositório e CI](docs/REPOSITORY_SETUP.md)
+- [Licenças e inventário por recurso](LICENSING.md)
+- [Origem da decisão de licenciamento](docs/LICENSING.md)
+- [Changelog](CHANGELOG.md)
+- [Plano de publicação, aprovação e checklist hospedado](docs/RELEASE_PLAN_1_1_0.md)
 
 `npm run build` produz `dist/` com URLs relativas, sem roteamento de SPA e
 com `.nojekyll`. O mesmo conteúdo funciona em um subcaminho como
-`/arcade-collection/`. Está preparado para hospedagem estática futura, mas
-**não existe workflow de deploy nem remoto configurado**.
+`/arcade-collection/`. O workflow preparado em `.github/workflows/pages.yml`
+aceita apenas disparo
+manual da `main`, confirmação expressa, SHA completo correspondente e versão
+`1.1.0`. Não há publicação em push, PR, tag ou release. A branch de
+preparação não passa no gate de ref. **Pages permanece desativado e este
+workflow não foi executado.** Só `dist/` será enviado após aprovação.
 
-Antes de publicar: aprovar o projeto local, autorizar a criação de
-`PedroCostinha/arcade-collection`, escolher a licença do código próprio e
-aprovar separadamente a configuração do Pages. A mudança do README do perfil
-para apontar ao jogo só deve acontecer após existir uma URL aprovada e funcional.
-O CODE QUEST V2 e os SVGs do perfil não foram alterados nesta implementação.
+O titular aprovou MIT **somente para o código original**, com direitos
+reservados para Ember-7, sprites, arte e identidade. Leia os escopos em
+[LICENSING.md](LICENSING.md), a [MIT](LICENSE-CODE.txt) e os
+[direitos da arte](ART-RIGHTS.txt). O pacote misto não é integralmente MIT.
+O build distribui os três avisos, acessíveis pelo crédito no rodapé, e usa
+apenas módulos/assets locais. `private: true` continua impedindo publicação npm.
+
+Estão autorizados o commit de preparação e o push normal nesta branch;
+integração, configuração/publicação Pages e tag/release continuam sem
+autorização. O PR permanece Draft para aprovação final, inclusive após CI.
+O CODE QUEST V2, os SVGs e o repositório do perfil não foram alterados.

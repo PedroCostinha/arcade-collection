@@ -1,5 +1,15 @@
 # Validação local / 26 de outubro de 2026
 
+Estado atual da preparação definitiva e licenças aplicadas: [PREPARATION_1_1_0.md](PREPARATION_1_1_0.md).
+
+Registro histórico do protótipo. O estado atual de preparação, os 29 testes
+e o workflow manual ainda não executado estão em
+[RELEASE_PLAN_1_1_0.md](RELEASE_PLAN_1_1_0.md).
+
+Para a candidata **V1.1**, consulte [REVIEW_V1_1.md](REVIEW_V1_1.md), que
+separa os problemas reproduzidos, correções, capturas antes/depois e pendências.
+Os dados abaixo permanecem como registro da validação inicial do protótipo.
+
 ## Resultado
 
 A primeira versão jogável passou pelos testes automatizados e por missões
@@ -9,8 +19,9 @@ ou teste de um site já hospedado no GitHub Pages.
 
 O [PR #3 do perfil foi integrado e seus SVGs publicados pelo Actions](AUDIT.md).
 Nenhum arquivo do perfil, CODE QUEST V2 ou Barrel Quest SVG foi modificado.
-O novo projeto está na branch local `feat/barrel-quest-playable`, sem remoto,
-workflow de deploy ou GitHub Pages configurado.
+Este relatório registra a QA local do protótipo `fd48a7e`. A autorização
+posterior para publicar o código e CI está documentada em
+[REPOSITORY_SETUP.md](REPOSITORY_SETUP.md). Não há workflow de deploy ou Pages.
 
 ## Ambiente e execução
 
@@ -125,8 +136,9 @@ não modifica o estado do jogo. As capturas finais mostram a cena corretamente.
   física de corpos rígidos nem colisão por pixel.
 - URLs relativas e subcaminho foram testados localmente; HTTPS, cache de CDN,
   CI remoto e hospedagem Pages não foram executados.
-- Escolher a licença do código e arte próprios antes de publicar; consultar
-  [proveniência](PROVENANCE.md). Não foi escolhida uma licença pelo autor.
-- Após aprovação local, obter autorização para criar o remoto
-  `PedroCostinha/arcade-collection`. CI e Pages exigem etapa posterior de
-  revisão e aprovação de publicação. Só então propor o link no README do perfil.
+- Escolher a licença do código e arte próprios; consultar
+  [proveniência](PROVENANCE.md) e [recomendação](LICENSING.md). Nenhuma licença
+  foi aplicada em nome do autor.
+- A publicação do repositório e CI foi autorizada em uma etapa posterior à
+  QA local. Aprovação de jogabilidade, merge e Pages continuam pendentes.
+  Só após existir uma versão hospedada aprovada propor o link no perfil.

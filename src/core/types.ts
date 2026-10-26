@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 PedroCostinha
 export type State = 'menu' | 'instructions' | 'playing' | 'paused' | 'won' | 'gameover';
 export type Axis = -1 | 0 | 1;
 export interface FrameInput { move: Axis; climb: Axis; jump: boolean }
