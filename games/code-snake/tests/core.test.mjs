@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile, readdir } from 'node:fs/promises';
-import { SnakeGame, WIDTH, HEIGHT } from '../../../prototype-dist/code-snake/modules/core.js';
+import { readFile } from 'node:fs/promises';
+import { SnakeGame, WIDTH, HEIGHT } from '../../../dist/code-snake/modules/core.js';
 import { serve } from '../../../scripts/serve.mjs';
 
 test('start, exact collection, growth, score and deterministic spawn on free cells',()=>{
@@ -30,17 +30,18 @@ test('full board wins; RNG endpoints and invalid samples never create occupied i
   for(const random of [()=>0,()=>0.999999]) {const g=new SnakeGame(random);g.body=Array.from({length:WIDTH*HEIGHT-1},(_,i)=>({x:i%WIDTH,y:Math.floor(i/WIDTH)}));g.spawn();assert.deepEqual(g.item,{x:WIDTH-1,y:HEIGHT-1});g.body.push(g.item);g.spawn();assert.equal(g.status,'won');assert.equal(g.item,null);}
   for(const n of [-1,1,NaN,Infinity]) {const g=new SnakeGame(()=>n);assert.throws(()=>g.spawn());}
 });
-test('review routes resolve under project subpath; default artifact excludes prototypes',async()=>{
-  const server=await serve({port:0,root:'prototype-dist'});
+test('production games and legal notices resolve under project subpath; home study is excluded',async()=>{
+  const server=await serve({port:0});
   const base=`http://127.0.0.1:${server.address().port}/arcade-collection/`;
   try {
-    for(const path of ['', 'code-snake/', 'collection/'])assert.equal((await fetch(base+path)).status,200);
+    for(const path of ['', 'code-snake/'])assert.equal((await fetch(base+path)).status,200);
+    assert.equal((await fetch(base+'collection/')).status,404);
     const html=await(await fetch(base+'code-snake/')).text();
     for(const match of html.matchAll(/(?:href|src)="([^"]+)"/g)){const url=new URL(match[1],base+'code-snake/');assert.equal((await fetch(url)).status,200,url.href);}
     assert.match(html,/Não representam commits/);
-    assert.equal(await readFile('dist/index.html','utf8'),await readFile('prototype-dist/index.html','utf8'));
-    assert(!(await readdir('dist')).includes('code-snake'));
-    for(const path of ['core','app','render'])assert.match(await readFile(`prototype-dist/code-snake/modules/${path}.js`,'utf8'),/SPDX-License-Identifier: MIT/);
-    assert.match(await readFile('prototype-dist/code-snake/modules/art.js','utf8'),/LicenseRef-Arcade-Art-Reserved/);
+    assert(!/protótipo|noindex|collection\//i.test(html));
+    for(const path of ['core','app','render'])assert.match(await readFile(`dist/code-snake/modules/${path}.js`,'utf8'),/SPDX-License-Identifier: MIT/);
+    assert.match(await readFile('dist/code-snake/modules/art.js','utf8'),/LicenseRef-Arcade-Art-Reserved/);
+    assert.equal(await readFile('dist/code-snake/LICENSING.txt','utf8'),await readFile('games/code-snake/LICENSING.md','utf8'));
   } finally {server.closeAllConnections();await new Promise(ok=>server.close(ok));}
 });
