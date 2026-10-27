@@ -65,6 +65,7 @@ try {
   const touchPage=await touch.newPage();await touchPage.goto(base+'code-snake/');
   const touchStart=await touchPage.locator('#play').boundingBox();
   assert(touchStart.y>=0&&touchStart.y+touchStart.height<=844);
+  await touchPage.screenshot({path:resolve(output,'00-mobile-first-screen.png')});
   await touchPage.getByRole('button',{name:'Iniciar partida'}).tap();
   assert(await touchPage.locator('canvas').evaluate(c=>c===document.activeElement));
   await touchPage.getByRole('button',{name:'Cima',exact:true}).tap();
