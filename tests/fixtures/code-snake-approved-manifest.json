@@ -1,0 +1,11 @@
+{
+  "commit": "42349ce5e112fff3d2fcedd69e29a7d7b6bfc164",
+  "normalization": "CRLF to LF only",
+  "files": {
+    "src/app.ts": "9066ec85db0714ccc5358c948c9c5b91715415dfc70474bfd014414773384569",
+    "src/art.ts": "796009cc5817ef834ba3389028d8a02b6f2e5a557eecc75fdf79587534aa9e8b",
+    "src/core.ts": "0c4cbe6ca581df230a32c2a81a3ad20ae00bd601fedced7136a577988c58766a",
+    "src/render.ts": "991fd810bf3490c9b6386770ccfc822c9677ae5f710fa0e5765d78438cfe38e8",
+    "public/style.css": "7fbd7255dc810c91296d5d6385c1e2248974158dc434da297104a9b40377af42"
+  }
+}

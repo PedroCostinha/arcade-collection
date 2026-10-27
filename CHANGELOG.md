@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.2.0 — candidata em preparação, 27/10/2026
+
+Sem merge, publicação, tag ou Release. O site e a Release estáveis continuam
+em Barrel Quest 1.1.0.
+
+- Coleção com duas rotas de produção: Barrel Quest 1.1.0 na raiz e Code Snake
+  em /code-snake/, com módulos relativos e avisos legais próprios de Nib.
+- Modelo, controles, ritmo, pontuação, renderer e arte dos dois jogos preservados.
+- Build original do Barrel isolado sem mudança de algoritmo; comparação de
+  conteúdo dos 21 arquivos anteriores, mais sete arquivos exclusivos do Snake.
+- Protótipo promovido para games/code-snake; estudo da home permanece somente
+  em prototype-dist/collection e não acompanha o artefato publicável.
+- QA e CI orientados a dist/, com Node 22/24 e Chrome/Firefox, allowlist de
+  28 arquivos, verificação de licenças e builds reproduzíveis.
+- Workflow manual preparado para futura aprovação da coleção 1.2.0, mantendo
+  main, confirmação do titular, SHA completo e upload exclusivo de dist/.
+
 ## 1.1.0 — preparação em 26/10/2026
 
 Versão de pacote preparada para a primeira publicação. Ainda sem merge,

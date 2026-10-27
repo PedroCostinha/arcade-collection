@@ -19,7 +19,7 @@ async function files(directory) {
 }
 
 test('static artifact contains only current modules and public assets', async () => {
-  const built = (await files(root)).sort();
+  const built = (await files(root)).filter(file => !file.startsWith('code-snake/')).sort();
   const modules = [];
   async function source(directory) {
     for (const entry of await readdir(directory, { withFileTypes: true })) {
@@ -78,7 +78,7 @@ test('project subpath serves the entire relative ES module graph and assets', as
 test('distributed license scopes distinguish reserved art from MIT code', async () => {
   const pkg = JSON.parse(await readFile('package.json', 'utf8'));
   const lock = JSON.parse(await readFile('package-lock.json', 'utf8'));
-  assert.equal(pkg.version, '1.1.0');
+  assert.equal(pkg.version, '1.2.0', 'Collection version; Barrel UI remains 1.1.0');
   assert.equal(lock.version, pkg.version);
   assert.equal(lock.packages[''].version, pkg.version);
   assert.equal(pkg.license, 'SEE LICENSE IN LICENSING.md');
