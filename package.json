@@ -7,6 +7,10 @@
   "description": "Barrel Quest: original local-first Canvas 2D platform game.",
   "engines": { "node": ">=22" },
   "scripts": {
+    "build:prototypes": "node scripts/build-prototypes.mjs",
+    "start:prototypes": "node scripts/serve-prototypes.mjs",
+    "test:snake": "npm run build:prototypes && node --test prototypes/code-snake/tests/*.test.mjs",
+    "test:snake:browser": "node prototypes/code-snake/tests/browser.mjs",
     "build": "node scripts/build.mjs",
     "dev": "node scripts/dev.mjs",
     "start": "node scripts/serve.mjs",

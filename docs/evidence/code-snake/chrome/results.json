@@ -1,0 +1,37 @@
+{
+  "engine": "chrome",
+  "version": "155.0.8059.85",
+  "checks": [
+    "Native keyboard start/focus, first collection +10, quick turns, pause freeze, blur pause, wall Game Over, restart",
+    "320/390/768/1280 widths contained, 44px+ directional targets, reduced-motion preference",
+    "Emulated touch start, direction and pause",
+    "Home returns to preserved Barrel root; no external runtime requests or page errors"
+  ],
+  "errors": [],
+  "requests": [
+    "http://127.0.0.1:63493/arcade-collection/code-snake/",
+    "http://127.0.0.1:63493/arcade-collection/code-snake/style.css",
+    "http://127.0.0.1:63493/arcade-collection/code-snake/modules/app.js",
+    "http://127.0.0.1:63493/arcade-collection/code-snake/modules/core.js",
+    "http://127.0.0.1:63493/arcade-collection/code-snake/modules/render.js",
+    "http://127.0.0.1:63493/arcade-collection/code-snake/modules/art.js",
+    "http://127.0.0.1:63493/arcade-collection/collection/",
+    "http://127.0.0.1:63493/arcade-collection/code-snake/style.css",
+    "http://127.0.0.1:63493/arcade-collection/",
+    "http://127.0.0.1:63493/arcade-collection/styles.css",
+    "http://127.0.0.1:63493/arcade-collection/theme.css",
+    "http://127.0.0.1:63493/arcade-collection/app.js",
+    "http://127.0.0.1:63493/arcade-collection/art/identity.js",
+    "http://127.0.0.1:63493/arcade-collection/core/game.js",
+    "http://127.0.0.1:63493/arcade-collection/core/clock.js",
+    "http://127.0.0.1:63493/arcade-collection/core/input.js",
+    "http://127.0.0.1:63493/arcade-collection/render/canvas.js",
+    "http://127.0.0.1:63493/arcade-collection/browser/controls.js",
+    "http://127.0.0.1:63493/arcade-collection/core/collision.js",
+    "http://127.0.0.1:63493/arcade-collection/core/level.js",
+    "http://127.0.0.1:63493/arcade-collection/render/sprites.js",
+    "http://127.0.0.1:63493/arcade-collection/art/scene.js",
+    "http://127.0.0.1:63493/arcade-collection/art/ember7.js",
+    "http://127.0.0.1:63493/arcade-collection/favicon.svg"
+  ]
+}
