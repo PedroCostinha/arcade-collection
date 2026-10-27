@@ -19,6 +19,11 @@ npm run dev
 - [Barrel Quest 1.1.0](http://127.0.0.1:4173/arcade-collection/)
 - [Code Snake](http://127.0.0.1:4173/arcade-collection/code-snake/)
 
+> **Observação:** os links locais acima funcionam somente
+> enquanto o servidor de desenvolvimento estiver em execução.
+> Para jogar a versão publicada, utilize o link do
+> Barrel Quest 1.1.0 no início deste README.
+
 `npm run build` gera `dist/`; `npm start` serve o artefato já gerado. O
 subcaminho `/arcade-collection/` é exercitado pelo servidor local e pelos
 testes. A raiz continua abrindo Barrel Quest, sem nova home ou mudança de
