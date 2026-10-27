@@ -34,6 +34,7 @@ jobs:
           package-manager-cache: false
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npm test
+      - run: npm run test:snake
 
   browser:
     name: Firefox playable mission
@@ -45,6 +46,7 @@ jobs:
     env:
       ARCADE_BROWSER: firefox
       ARCADE_EVIDENCE_DIR: test-results/firefox
+      SNAKE_EVIDENCE_DIR: test-results/code-snake/firefox
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -56,3 +58,5 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npm run build
       - run: npm run test:browser
+      - run: npm run build:prototypes
+      - run: npm run test:snake:browser
