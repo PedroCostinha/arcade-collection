@@ -1,58 +1,107 @@
 # ARCADE COLLECTION
 
-**[Jogar Barrel Quest 1.1.0](https://pedrocostinha.github.io/arcade-collection/)** · [Release estável](https://github.com/PedroCostinha/arcade-collection/releases/tag/v1.1.0)
+**[Jogar Barrel Quest 1.1.0](https://pedrocostinha.github.io/arcade-collection/)** · [Release estável v1.1.0](https://github.com/PedroCostinha/arcade-collection/releases/tag/v1.1.0)
 
-Coleção de jogos originais em TypeScript e Canvas 2D. Barrel Quest 1.1.0 já está publicado, no commit ffc56b1b312bf91889999902398ebe2fa9b74bee. O endereço atual continua abrindo Barrel Quest.
+Coleção de jogos originais em TypeScript e Canvas 2D. Esta branch prepara a
+**coleção 1.2.0 candidata à revisão**, com Barrel Quest 1.1.0 e Code Snake em
+rotas independentes. Code Snake ainda não está publicado. O site público
+continua abrindo somente o Barrel Quest estável; não houve novo deploy.
 
-Esta branch prepara **Code Snake** para revisão local, com arte original e rota independente. Code Snake ainda não está publicado. Não há novo deploy, versão ou alteração do Barrel Quest nesta etapa.
-
-## Executar Barrel Quest localmente
+## Executar o artefato de produção localmente
 
 Requer Node.js 22 ou posterior e npm:
 
 ```sh
-npm ci
+npm ci --ignore-scripts --no-audit --no-fund
 npm run dev
 ```
 
-Abra [localhost:4173](http://127.0.0.1:4173/). O build padrão gera somente Barrel Quest em `dist/`, com URLs relativas e suporte ao subcaminho `/arcade-collection/`.
+- [Barrel Quest 1.1.0](http://127.0.0.1:4173/arcade-collection/)
+- [Code Snake](http://127.0.0.1:4173/arcade-collection/code-snake/)
 
-Ember-7 precisa recolher cinco cargas douradas e alcançar a bandeira no quinto piso. Três vidas, checkpoints e reinício sem recarregar. Setas/A-D para mover, cima/baixo ou W-S junto às escadas, Espaço para pular, P/Escape para pausar. Há controles multitoque. Sair da janela pausa a partida.
+`npm run build` gera `dist/`; `npm start` serve o artefato já gerado. O
+subcaminho `/arcade-collection/` é exercitado pelo servidor local e pelos
+testes. A raiz continua abrindo Barrel Quest, sem nova home ou mudança de
+navegação. O pacote/coleção tem versão 1.2.0; a versão individual exibida
+pelo Barrel permanece 1.1.0.
 
-Pontuação da partida: 250 por carga, 100 por saltar um barril e pousar em segurança e 500 pela vitória. Não representa commits ou contribuições do GitHub. Reduzir efeitos congela animações cosméticas; o movimento necessário continua ativo.
+Barrel: recolha cinco cargas e alcance a bandeira. Setas/A-D para mover,
+cima/baixo ou W-S nas escadas, Espaço para pular, P/Escape para pausar.
+Três vidas, checkpoints e multitoque. Code Snake: Nib coleta núcleos,
+cresce um segmento e ganha 10 pontos por núcleo; evite bordas e corpo.
+Setas/WASD ou botões na tela, P/Escape para pausar, reinício em HTML.
+Os pontos são da partida e não representam contribuições do GitHub.
 
-## Revisar Code Snake e estudo da home
+## Build e preservação
+
+O build original foi preservado em `scripts/build-barrel.mjs`. O novo
+`scripts/build.mjs` executa esse build limpo e acrescenta exclusivamente
+`code-snake/`: HTML, CSS, quatro módulos e o aviso próprio de licenciamento.
+Não são publicados fontes TS, testes, evidências ou ferramentas.
+
+Os 21 arquivos estáveis do Barrel são comparados ao fixture da versão
+1.1.0, sem exceções de conteúdo. Normaliza-se exclusivamente CRLF/LF para
+comparar Windows e Linux. Física, colisões, controles, sprites, pontuação e
+HTML raiz permanecem preservados. O código e a arte do Snake também têm
+hashes fixados contra o protótipo aprovado.
+
+[Preparação e estratégia](docs/PREPARATION_1_2_0.md) ·
+[Inventário exato de produção](docs/DIST_1_2_0.md) ·
+[Validação da candidata](docs/VALIDATION_1_2_0.md).
+
+## Testes
+
+```sh
+npm test
+npm run test:snake
+npm run test:artifact
+npm run test:browser
+npm run test:snake:browser
+```
+
+As duas QAs de navegador servem **dist/**. Chrome é o padrão;
+`ARCADE_BROWSER=firefox` seleciona Firefox instalado. Use
+`ARCADE_EVIDENCE_DIR=test-results/barrel/chrome` para evitar sobrescrever as
+capturas históricas do Barrel. `SNAKE_EVIDENCE_DIR` configura as capturas do
+Snake. Os testes de artefato verificam inventário fechado, licenças, módulos,
+rotas, dois builds reproduzíveis e remoção de arquivos obsoletos.
+
+O CI executa as três suítes em Node 22/24 e as duas experiências em Chrome
+e Firefox. Nenhuma dessas verificações depende de `prototype-dist/` para
+validar o jogo de produção.
+
+## Estudo da home, somente desenvolvimento
 
 ```sh
 npm run build:prototypes
 npm run start:prototypes
 ```
 
-- [Code Snake local](http://127.0.0.1:4175/arcade-collection/code-snake/)
-- [Estudo local da coleção](http://127.0.0.1:4175/arcade-collection/collection/)
-- [Barrel Quest preservado na raiz local](http://127.0.0.1:4175/arcade-collection/)
+[Estudo local da coleção](http://127.0.0.1:4175/arcade-collection/collection/).
+Esse comando copia o artefato de produção e acrescenta o mockup exclusivamente
+em `prototype-dist/`. O estudo permanece inalterado e fora de `dist/`.
 
-O build de revisão usa prototype-dist/, separado do artefato enviado pelo workflow Pages. Nib coleta núcleos, cresce e ganha 10 pontos por núcleo; evite bordas e corpo. Setas/WASD ou botões na tela. Pausa e reinício em HTML. Nenhum dado de contribuições é consultado ou usado na partida.
+## Publicação futura
 
-## Arquitetura e testes
+Pages mantém `workflow_dispatch` como único gatilho. A preparação exige a
+main, identidade do titular, confirmação explícita e SHA completo exato do
+commit aprovado. O workflow verifica a coleção 1.2.0 e conserva Barrel
+1.1.0, executa as suítes e envia exclusivamente `dist/` com permissões mínimas.
+Ele não foi executado nesta etapa. Merge, publicação, tag e Release dependem
+de autorização posterior. A tag e a Release v1.1.0 permanecem inalteradas.
 
-Barrel Quest: src/core simula física e estados, src/browser trata entrada, src/render desenha Canvas, src/art contém dados reservados e src/app.ts integra a interface. Esses arquivos permanecem iguais à versão 1.1.0.
+## Licenças
 
-Code Snake: prototypes/code-snake/src contém modelo de grade, renderer interpolado, arte e adaptador DOM próprios. A home é um estudo estático em prototypes/collection. Consulte a [auditoria e os três planos de evolução](docs/CODE_SNAKE_ARCHITECTURE.md) e os [resultados efetivamente executados](docs/CODE_SNAKE_VALIDATION.md).
+Código original MIT; personagens, sprites, paleta, composição e identidade
+reservados. O conjunto não é integralmente MIT. [MIT integral](LICENSE-CODE.txt)
+· [Mapa Barrel preservado](LICENSING.md) · [Arte Barrel](ART-RIGHTS.txt)
+· [Escopos de Nib e Code Snake](games/code-snake/LICENSING.md).
 
-```sh
-npm test
-npm run test:snake
-npm run test:snake:browser
-npm run test:browser
-```
+O Snake distribui seu aviso em `code-snake/LICENSING.txt` e mantém links para
+esse aviso e para a MIT integral no rodapé. Os três avisos do Barrel continuam
+iguais aos da versão 1.1.0.
 
-npm test compila o build estável e cobre física, missão completa, referências artísticas, licenças e subcaminho. A suíte nova é separada. QA usa Playwright e Chrome; ARCADE_BROWSER=firefox seleciona Firefox instalado. Configure ARCADE_EVIDENCE_DIR para não sobrescrever evidências históricas do Barrel.
-
-O CI existente testa Node 22/24 e Firefox. Pages só publica por disparo manual da main, com confirmação e SHA explícitos. Nenhum workflow foi modificado e nenhum deploy foi executado nesta etapa. O protótipo fica fora de dist/ mesmo após seu build local. Integração, publicação e nova release dependem de aprovação.
-
-## Licenças e referências
-
-Código original MIT; personagens, sprites, paleta, composição e identidade têm direitos reservados. O conjunto não é integralmente MIT. [Mapa existente](LICENSING.md) · [MIT](LICENSE-CODE.txt) · [Arte Barrel](ART-RIGHTS.txt) · [Escopos Code Snake](prototypes/code-snake/LICENSING.md).
-
-[Revisão Barrel 1.1.0](docs/REVIEW_V1_1.md) · [Proveniência](docs/PROVENANCE.md) · [Validação histórica](docs/VALIDATION.md) · [Preparação histórica](docs/PREPARATION_1_1_0.md). Esses documentos registram etapas anteriores e não substituem o estado público atual.
+Os documentos históricos de protótipo e de Barrel registram suas próprias
+etapas; os caminhos antigos `prototypes/code-snake/` foram promovidos para
+`games/code-snake/` nesta candidata. [Revisão Barrel 1.1.0](docs/REVIEW_V1_1.md)
+· [Revisão do protótipo aprovado](docs/CODE_SNAKE_FINAL_REVIEW.md).
