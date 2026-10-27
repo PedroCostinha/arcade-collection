@@ -11,15 +11,19 @@ await mkdir(output,{recursive:true});
 const server=await serve({port:0,root:'prototype-dist'});
 const base=`http://127.0.0.1:${server.address().port}/arcade-collection/`;
 const browser=engine==='firefox'?await firefox.launch({headless:true}):await chromium.launch({channel:'chrome',headless:true});
-const errors=[],requests=[],checks=[];
+const errors=[],requests=[],checks=[],layouts=[];
 try {
-  const context=await browser.newContext({viewport:{width:1280,height:1100}});
+  const context=await browser.newContext({viewport:{width:1440,height:844}});
   const page=await context.newPage();
   page.on('pageerror',e=>errors.push(String(e)));page.on('request',r=>requests.push(r.url()));
   await page.clock.install({time:new Date('2026-10-27T15:00:00Z')});
   await page.goto(base+'code-snake/');
   await page.clock.pauseAt(new Date(await page.evaluate(()=>Date.now()+10000)));
   assert.match(await page.locator('#status').innerText(),/Pronto/);
+  const start=await page.locator('#play').boundingBox();
+  assert(start.y>=0&&start.y+start.height<=844,'Start is fully visible before any scroll');
+  assert.equal(await page.evaluate(()=>scrollY),0);
+  await page.screenshot({path:resolve(output,'00-desktop-first-screen.png')});
   await page.screenshot({path:resolve(output,'01-desktop-menu.png'),fullPage:true});
   await page.getByRole('button',{name:'Iniciar partida'}).focus();await page.keyboard.press('Space');
   assert(await page.locator('canvas').evaluate(c=>c===document.activeElement));
@@ -38,20 +42,31 @@ try {
   await page.clock.runFor(670);await page.keyboard.press('p');await page.clock.runFor(20);
   await page.screenshot({path:resolve(output,'03-desktop-playing.png'),fullPage:true});
   checks.push('Native keyboard start/focus, first collection +10, quick turns, pause freeze, blur pause, wall Game Over, restart');
-  for(const width of [320,390,768,1280]){
-    await page.setViewportSize({width,height:1000});
+  for(const width of [320,390,768,1440]){
+    await page.setViewportSize({width,height:844});
+    await page.evaluate(()=>scrollTo(0,0));
     assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`No horizontal overflow at ${width}`);
     const box=await page.getByRole('button',{name:'Cima',exact:true}).boundingBox();assert(box.width>=44&&box.height>=44);
+    const play=await page.locator('#play').boundingBox(),pause=await page.locator('#pause').boundingBox();
+    const canvas=await page.locator('canvas').boundingBox();
+    assert(play.y>=0&&play.y+play.height<=844,`Initial action visible at ${width}x844`);
+    assert(play.y+play.height<canvas.y,'Actions precede the board');
+    assert([play,pause].every(b=>b.width>=44&&b.height>=44));
+    layouts.push({width,height:844,play,pause,canvas,dpad:box});
+    await page.screenshot({path:resolve(output,`first-screen-${width}.png`)});
   }
   await page.emulateMedia({reducedMotion:'reduce'});
   for(let i=0;i<20 && !(await page.locator('#reduced').isChecked());i++) await new Promise(ok=>setTimeout(ok,50));
   assert(await page.locator('#reduced').isChecked());
   await page.setViewportSize({width:390,height:1000});
   await page.screenshot({path:resolve(output,'04-mobile-reduced.png'),fullPage:true});
-  checks.push('320/390/768/1280 widths contained, 44px+ directional targets, reduced-motion preference');
-  const touch=await browser.newContext({viewport:{width:390,height:1000},hasTouch:true,isMobile:engine==='chrome'});
+  checks.push('320/390/768/1440x844 contained; start visible without scrolling, actions before Canvas, 44px+ action/directional targets; reduced motion');
+  const touch=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:engine==='chrome'});
   const touchPage=await touch.newPage();await touchPage.goto(base+'code-snake/');
+  const touchStart=await touchPage.locator('#play').boundingBox();
+  assert(touchStart.y>=0&&touchStart.y+touchStart.height<=844);
   await touchPage.getByRole('button',{name:'Iniciar partida'}).tap();
+  assert(await touchPage.locator('canvas').evaluate(c=>c===document.activeElement));
   await touchPage.getByRole('button',{name:'Cima',exact:true}).tap();
   await touchPage.waitForTimeout(180);
   await touchPage.getByRole('button',{name:'Pausar',exact:true}).tap();assert.match(await touchPage.locator('#status').innerText(),/pausada/);
@@ -60,7 +75,7 @@ try {
   await page.getByRole('link',{name:'Jogar Barrel Quest'}).click();assert.match(await page.title(),/Barrel Quest/);await page.getByRole('button',{name:'Jogar agora',exact:true}).waitFor({state:'visible'});
   assert.equal(errors.length,0);assert(requests.every(url=>url.startsWith(base)));
   checks.push('Home returns to preserved Barrel root; no external runtime requests or page errors');
-  await writeFile(resolve(output,'results.json'),JSON.stringify({engine,version:browser.version(),checks,errors,requests},null,2));
+  await writeFile(resolve(output,'results.json'),JSON.stringify({engine,version:browser.version(),checks,layouts,errors,requests},null,2));
   console.log(JSON.stringify({engine,checks},null,2));
   await context.close();
 }finally{await browser.close();server.closeAllConnections();await new Promise(ok=>server.close(ok));}
