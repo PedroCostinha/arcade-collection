@@ -33,9 +33,30 @@ Nenhum workflow de publicação Pages foi alterado ou disparado.
 
 O teste de navegador agora exige essas condições de layout, além das
 regressões funcionais anteriores. Evidências desta etapa ficam separadas
-das capturas históricas em `C:/Projetos/code-snake-final-review/` no ambiente
-de revisão. Resultados remotos e parecer visual final serão registrados
-após a atualização da branch e observação dos checks.
+das capturas históricas: [Chrome](evidence/code-snake-final/chrome/results.json),
+[Firefox](evidence/code-snake-final/firefox/results.json),
+[primeira tela desktop](evidence/code-snake-final/chrome/00-desktop-first-screen.png)
+e [primeira tela móvel](evidence/code-snake-final/chrome/00-mobile-first-screen.png).
+
+A regressão completa de navegador Barrel também passou em Chrome e Firefox:
+cinco entregas, quatro checkpoints, vitória, danos/vidas, pausa/reinício e
+layout sem overflow. Placar Chrome: 2550/duas vidas; Firefox: 2650/uma vida.
+Todos os arquivos `src/`, `public/`, testes Barrel, scripts estáveis, lockfile,
+licenças e workflow Pages foram comparados contra a base sem diferenças.
+Os arquivos estáveis de `dist/` coincidem byte a byte com a raiz copiada
+para `prototype-dist/`; as rotas Snake/coleção não entram no build estável.
+
+O [CI remoto do commit funcional 9065f60](https://github.com/PedroCostinha/arcade-collection/actions/runs/40517205046)
+executou TypeScript e as duas suítes em Node 22/24, a missão completa Barrel
+e a QA Snake em Firefox. Esta atualização de evidências mantém o mesmo
+código de produto; acrescenta somente captura da primeira tela móvel ao
+teste existente. Os checks do head final devem ser conferidos no PR.
+
+Parecer visual: o botão inicial tem destaque e fica acima do tabuleiro,
+sem alterar a identidade ou o tamanho da grade. A primeira tela desktop
+não contém o tabuleiro inteiro, mas permite iniciar imediatamente. Em
+390 px, ações e tabuleiro ficam visíveis e os direcionais vêm em seguida.
+Capturas/evidências da arte continuam reservadas a PedroCostinha.
 
 Safari, hardware móvel e leitor de tela real permanecem pendentes. Toque e
 viewport móveis são emulados. Essa revisão não publica Code Snake e não
