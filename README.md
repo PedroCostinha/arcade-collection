@@ -1,11 +1,13 @@
 # ARCADE COLLECTION
 
-**[Jogar Barrel Quest 1.1.0](https://pedrocostinha.github.io/arcade-collection/)** · [Release estável v1.1.0](https://github.com/PedroCostinha/arcade-collection/releases/tag/v1.1.0)
+**[Jogar Barrel Quest 1.1.0](https://pedrocostinha.github.io/arcade-collection/)** ·
+**[Jogar Code Snake](https://pedrocostinha.github.io/arcade-collection/code-snake/)** ·
+[Release oficial v1.2.0](https://github.com/PedroCostinha/arcade-collection/releases/tag/v1.2.0)
 
-Coleção de jogos originais em TypeScript e Canvas 2D. Esta branch prepara a
-**coleção 1.2.0 candidata à revisão**, com Barrel Quest 1.1.0 e Code Snake em
-rotas independentes. Code Snake ainda não está publicado. O site público
-continua abrindo somente o Barrel Quest estável; não houve novo deploy.
+Coleção de jogos originais em TypeScript e Canvas 2D. A **coleção 1.2.0 foi
+publicada oficialmente em 28/10/2026**, com Barrel Quest 1.1.0 e Code Snake em
+rotas independentes no GitHub Pages. A raiz do site abre Barrel Quest;
+Code Snake está disponível em `/arcade-collection/code-snake/`.
 
 ## Executar o artefato de produção localmente
 
@@ -21,8 +23,8 @@ npm run dev
 
 > **Observação:** os links locais acima funcionam somente
 > enquanto o servidor de desenvolvimento estiver em execução.
-> Para jogar a versão publicada, utilize o link do
-> Barrel Quest 1.1.0 no início deste README.
+> Para jogar a versão publicada, utilize os links públicos dos dois jogos
+> no início deste README.
 
 `npm run build` gera `dist/`; `npm start` serve o artefato já gerado. O
 subcaminho `/arcade-collection/` é exercitado pelo servidor local e pelos
@@ -52,7 +54,7 @@ hashes fixados contra o protótipo aprovado.
 
 [Preparação e estratégia](docs/PREPARATION_1_2_0.md) ·
 [Inventário exato de produção](docs/DIST_1_2_0.md) ·
-[Validação da candidata](docs/VALIDATION_1_2_0.md).
+[Validação da preparação](docs/VALIDATION_1_2_0.md).
 
 ## Testes
 
@@ -86,14 +88,18 @@ npm run start:prototypes
 Esse comando copia o artefato de produção e acrescenta o mockup exclusivamente
 em `prototype-dist/`. O estudo permanece inalterado e fora de `dist/`.
 
-## Publicação futura
+## Publicação oficial
 
-Pages mantém `workflow_dispatch` como único gatilho. A preparação exige a
+A publicação da coleção 1.2.0 foi concluída em **28/10/2026**. A tag e a
+Release oficial v1.2.0 identificam o SHA publicado
+`e370011593572ead3252397089af816759c08eb5`.
+
+Pages mantém `workflow_dispatch` como único gatilho. A publicação exige a
 main, identidade do titular, confirmação explícita e SHA completo exato do
 commit aprovado. O workflow verifica a coleção 1.2.0 e conserva Barrel
 1.1.0, executa as suítes e envia exclusivamente `dist/` com permissões mínimas.
-Ele não foi executado nesta etapa. Merge, publicação, tag e Release dependem
-de autorização posterior. A tag e a Release v1.1.0 permanecem inalteradas.
+Esse workflow foi executado na publicação oficial. A tag e a Release v1.1.0
+permanecem inalteradas.
 
 ## Licenças
 
@@ -108,5 +114,5 @@ iguais aos da versão 1.1.0.
 
 Os documentos históricos de protótipo e de Barrel registram suas próprias
 etapas; os caminhos antigos `prototypes/code-snake/` foram promovidos para
-`games/code-snake/` nesta candidata. [Revisão Barrel 1.1.0](docs/REVIEW_V1_1.md)
+`games/code-snake/` na versão 1.2.0. [Revisão Barrel 1.1.0](docs/REVIEW_V1_1.md)
 · [Revisão do protótipo aprovado](docs/CODE_SNAKE_FINAL_REVIEW.md).
