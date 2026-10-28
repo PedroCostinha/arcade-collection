@@ -77,7 +77,7 @@ O CI executa as três suítes em Node 22/24 e as duas experiências em Chrome
 e Firefox. Nenhuma dessas verificações depende de `prototype-dist/` para
 validar o jogo de produção.
 
-## Estudo da home, somente desenvolvimento
+## Menu 1.3.0, somente revisão local
 
 ```sh
 npm run build:prototypes
@@ -85,8 +85,27 @@ npm run start:prototypes
 ```
 
 [Estudo local da coleção](http://127.0.0.1:4175/arcade-collection/collection/).
-Esse comando copia o artefato de produção e acrescenta o mockup exclusivamente
-em `prototype-dist/`. O estudo permanece inalterado e fora de `dist/`.
+Esse comando preserva os 28 arquivos de produção e acrescenta o menu, seu CSS
+independente e os retratos de Ember-7/Nib exclusivamente em `prototype-dist/`.
+O menu funciona sem JavaScript e permanece fora de `dist/`. Os retratos são
+gerados dos pixels originais durante o build, sem alterar as artes dos jogos.
+
+Cada build verifica os 28 arquivos contra o [manifesto fixo da referência
+aprovada](tests/fixtures/collection-1.2.0-manifest.json), obtido de um checkout
+separado de `3599c4141f908f26ca5602fadd1e1a4c27a5f551`. Não regenerar esse
+manifesto para aceitar mudanças na candidata.
+
+Após `build:prototypes`, execute os testes adicionais em sequência:
+
+```sh
+node --test tests/collection/*.test.mjs
+node tests/collection/browser.mjs
+```
+
+`ARCADE_BROWSER=firefox` seleciona Firefox. A QA do menu cobre 320, 390, 768,
+1024 e 1440 px, teclado, mouse, toque emulado, ausência de JavaScript e
+movimento reduzido. [Resultados e limitações](docs/VALIDATION_1_3_0_REVIEW.md).
+Essa etapa não publica a versão 1.3.0; o pacote continua na versão 1.2.0.
 
 ## Publicação oficial
 

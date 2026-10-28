@@ -1,0 +1,59 @@
+{
+  "reference": "3599c4141f908f26ca5602fadd1e1a4c27a5f551",
+  "testedAt": "2026-10-28T19:43:11.778Z",
+  "node": "v24.19.0",
+  "typescript": "7.0.2",
+  "manifestSha256": "e26ee6fc0aa7d7e38c4ed08b56d75f4251f60834d3e8e5b6d464face38df11f0",
+  "approvedFiles": 28,
+  "productionFiles": 28,
+  "reviewFiles": 33,
+  "approvedHashMatches": 28,
+  "productionAndReviewByteMatches": 28,
+  "referenceWindowsRawMatches": 27,
+  "approvedLFRepresentations": [
+    ".nojekyll"
+  ],
+  "negativeChecks": {
+    "contentChanges": 56,
+    "deletions": 56,
+    "extraFiles": 6
+  },
+  "reproducibility": "Two clean builds: identical production and review file hashes; stale files removed (tests/collection/integrity.test.mjs).",
+  "production": {
+    ".nojekyll": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "app.js": "ab5e635d441deb3bd156b76c45f9ce8a124539f7e5d7bff2450066d92e4f309f",
+    "art/ember7.js": "a6570ffbf4772120fb072da9832c16b4f2b0baaf1b62e1c4d1d02b651d47360f",
+    "art/identity.js": "0da9f9e0cac91dcc04e0fd9cd6e9cafc8ffa50152e73cdbdb545fa701bb210b8",
+    "art/scene.js": "a0a6c6fcb81acbc3a7b7ab2bf822add35327222bc94232ad03bba056221c3566",
+    "ART-RIGHTS.txt": "25ed17a66e546ba01002ae029d94ff77202a97a01b67e6ffce7e24e419c906a0",
+    "browser/controls.js": "aeab237f8cb6e289aec221e2fa7a9e4f663ef0634a0f8d9b9fdb02e4d3517599",
+    "code-snake/index.html": "2cc810aca4cd22b92bf27077a047bfb6a6e635dee6fe246d316724c1e7a54523",
+    "code-snake/LICENSING.txt": "44c7331ece74dfba4bf89efe01f55a63a0def731f85d10c702662edb7db77af1",
+    "code-snake/modules/app.js": "8e30d80976e5743240e0ab7f452a7ab52eb57f15e16751510fd0b4b0c176ff2b",
+    "code-snake/modules/art.js": "c6b063466551f243e49c25eeff9694a845d3faf012ad281cfa6c3bef1739e5a1",
+    "code-snake/modules/core.js": "d322a6ddeb68fd53f1a6ce91224e52a2837a7ed1a35538f82429047f9d22fbe8",
+    "code-snake/modules/render.js": "fc706f2893823871d399573fb285b54277ce82609274fc64df42104693b32381",
+    "code-snake/style.css": "2171717f320a214d8438f2498af8b1e4c82d96ece9ebf5075955f53d709f868f",
+    "core/clock.js": "ec27054104fc84279cf846e7f3b2862d6fbdaa8bb2b285c88f26a9716d734029",
+    "core/collision.js": "0c115668b9480b25bddae986a2943d75e16eea38c3f2333c5de50fa13e1fdcee",
+    "core/game.js": "10ac7568c0886d50c04d229740891cfcf964791fbfbb55cd1375720ffe98bfe1",
+    "core/input.js": "f0e436d04f462978bd1e0e1d0d9fff5e1442d4882b7c9bf7b38267dfe3f6f980",
+    "core/level.js": "9738cd9ac9c55dd8176f0157ba91524b53548305c06536293fc5272d25d996f0",
+    "core/types.js": "639e6acf03b0de8f5a8e0fceff32e1273ae33b2ec5d04a4eb31c3092e7b24612",
+    "favicon.svg": "a6806a5ec994fabd981308e969357d195cbaae6b4393c225a3b59831affed3af",
+    "index.html": "a725d9042ee2626a482b02b0632f64d1e0d5778f2e4d39020aa34bd03bea8cfe",
+    "LICENSE-CODE.txt": "95424931faf9c20d421f479b7a19d90a8ae7e9f87f94e1a635b8b3da11f2f3ae",
+    "LICENSING.txt": "36ff1b5da70f4e9e4ba6c985e131cb2194ee9beeb5baba32a11fe0d306f4c300",
+    "render/canvas.js": "d86cb0cb8d7b8d418e51b1ecbc5d489b2b6f25dac34727f76efc56718f92357f",
+    "render/sprites.js": "5000f1d08ee74dc8f94a3ad596300b825d1aa0b12c6d1949acd4075330d5c470",
+    "styles.css": "0b3d31fa8c746bd4fea812ded17452fc26b1901adadc65bfd02c2a9c5a40c4c5",
+    "theme.css": "88ee01ed7d6866f4a5432508259337e4ee50da7c51066043746ade1cf9351677"
+  },
+  "reviewOnly": {
+    "collection/collection.css": "fefd61e43d15dc08beb1719d76c6595a6f66e86ad2c16f1665f1e4ce40efbe25",
+    "collection/index.html": "e6288880fde3baf6b8d28364be738c141c9a27fe79fd895f519e13f218549616",
+    "collection/portraits/ember7.png": "bc75675dba8d94650b6eeefb68e07ba956c2ea1d7e6b0ec15fa8e06b4663f19c",
+    "collection/portraits/nib.png": "9939145167a93f819144f91a29c674b273269b85db87328c828274b852574bfb",
+    "REVIEW-ONLY.txt": "cffdc1d9d8db7025624c3bac9e608a8a0e6e2524dd2bce2f51d9c25cb9538f0e"
+  }
+}

@@ -1,0 +1,264 @@
+{
+  "repository": "https://github.com/PedroCostinha/arcade-collection",
+  "commit": "3599c4141f908f26ca5602fadd1e1a4c27a5f551",
+  "provenance": "Built once from a separate detached checkout of the approved commit, before feature changes; never generated from the candidate dist/. Git blob IDs below identify all production build inputs.",
+  "toolchain": {
+    "node": "v24.19.0",
+    "typescript": "7.0.2",
+    "platform": "win32",
+    "checkout": "core.autocrlf=true"
+  },
+  "verification": "sha256 is the exact Windows reference bytes; lfSha256 normalizes CRLF to LF only for cross-platform content checks. Both dist/ and prototype-dist/ must also match byte-for-byte in the same run.",
+  "inputs": [
+    {
+      "path": "ART-RIGHTS.txt",
+      "gitBlob": "fe56d281a93b770547a58e8320ae6b18e0f64ffe"
+    },
+    {
+      "path": "LICENSE-CODE.txt",
+      "gitBlob": "d6f28369a6cadfbd2f536f0ea42f7089d183a5f4"
+    },
+    {
+      "path": "LICENSING.md",
+      "gitBlob": "e9b5d34a9bb49d7104b850d97306172d8c4067aa"
+    },
+    {
+      "path": "games/code-snake/LICENSING.md",
+      "gitBlob": "126ccd40027a75ad4d65e36fdf7860f2dda42b57"
+    },
+    {
+      "path": "games/code-snake/public/index.html",
+      "gitBlob": "9b3580bb000e447f1b167ba396e8b48140f30ff6"
+    },
+    {
+      "path": "games/code-snake/public/style.css",
+      "gitBlob": "604f5e0a72f0095e7ddc489d33db6a203d14d97e"
+    },
+    {
+      "path": "games/code-snake/src/app.ts",
+      "gitBlob": "94149c16d461cc41fb8741ba3aabacd976ab26a7"
+    },
+    {
+      "path": "games/code-snake/src/art.ts",
+      "gitBlob": "4956d6e24a950181a6445d28fad5c8fe4ac1f586"
+    },
+    {
+      "path": "games/code-snake/src/core.ts",
+      "gitBlob": "29cb5e8a797cbb617d8c24e01cdc89a9e158e5ef"
+    },
+    {
+      "path": "games/code-snake/src/render.ts",
+      "gitBlob": "876c5e2fba0a9802b27a613900b69e9a434f07ee"
+    },
+    {
+      "path": "games/code-snake/tsconfig.json",
+      "gitBlob": "f4ddfb4c966b8b35038bd10338f32f5ce80fe9d7"
+    },
+    {
+      "path": "package-lock.json",
+      "gitBlob": "6b33aab8b8b1fc5aafaf5789e65912548893e229"
+    },
+    {
+      "path": "public/.nojekyll",
+      "gitBlob": "8b137891791fe96927ad78e64b0aad7bded08bdc"
+    },
+    {
+      "path": "public/favicon.svg",
+      "gitBlob": "0271ea90c8d8af428204fe2d532f81cad3d61718"
+    },
+    {
+      "path": "public/index.html",
+      "gitBlob": "9e8e67e4afdb76da31ce3728de649b5a6b515707"
+    },
+    {
+      "path": "public/styles.css",
+      "gitBlob": "d88e9f9b39325d271eb173c3bb9ade634267e253"
+    },
+    {
+      "path": "public/theme.css",
+      "gitBlob": "6cdc5ed26dd523d5c09f871c4b4d0347b55277f6"
+    },
+    {
+      "path": "scripts/build-barrel.mjs",
+      "gitBlob": "c56f706ee2f714eda387639f5f5853f1d39785a0"
+    },
+    {
+      "path": "scripts/build.mjs",
+      "gitBlob": "8bdd0fabaf5e3872c1bca9963524bf670e646d75"
+    },
+    {
+      "path": "src/app.ts",
+      "gitBlob": "84faf937e1493bd3eeb22f8d4d138ab0f7f7d1ea"
+    },
+    {
+      "path": "src/art/ember7.ts",
+      "gitBlob": "412283cf97fb336cfefe0a09ff4409ef7fe36c6e"
+    },
+    {
+      "path": "src/art/identity.ts",
+      "gitBlob": "1d2c5d73ff27f14cf4dd5eb98649fa3699f757fe"
+    },
+    {
+      "path": "src/art/scene.ts",
+      "gitBlob": "dad1fc6b95fd1da207687f819b3f073ed56ddb28"
+    },
+    {
+      "path": "src/browser/controls.ts",
+      "gitBlob": "45ae3aa8f58c5bc901e6c4c2a5f46ce03d5c87f8"
+    },
+    {
+      "path": "src/core/clock.ts",
+      "gitBlob": "f8c3cadc0bd5307838a0019f7629794e8380b804"
+    },
+    {
+      "path": "src/core/collision.ts",
+      "gitBlob": "e513a748ff8fe671ebeb3de558e2e09c77e380db"
+    },
+    {
+      "path": "src/core/game.ts",
+      "gitBlob": "a867987c067eb314987bc57ad58fadd76b0f08b0"
+    },
+    {
+      "path": "src/core/input.ts",
+      "gitBlob": "e093d1879333115761ab65932a28384858b9a985"
+    },
+    {
+      "path": "src/core/level.ts",
+      "gitBlob": "4b69de34672e2a539ee301c94d1b299b6d51c267"
+    },
+    {
+      "path": "src/core/types.ts",
+      "gitBlob": "06f0a00a6e2b87dcd3038e2f9bd3ccad1d1e3952"
+    },
+    {
+      "path": "src/render/art-types.d.ts",
+      "gitBlob": "6ec2a2d65c4cc6cd6563112bb7ccc77866c42d59"
+    },
+    {
+      "path": "src/render/canvas.ts",
+      "gitBlob": "e801339d6f8db73b865bc0cd88af64fc5505f609"
+    },
+    {
+      "path": "src/render/sprites.ts",
+      "gitBlob": "b2623e8870f40f079ca372c373541100e725f5c8"
+    },
+    {
+      "path": "tsconfig.json",
+      "gitBlob": "c7cf90a14647840fa5a00d1161defee347515c4c"
+    }
+  ],
+  "files": {
+    ".nojekyll": {
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "lfSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    "app.js": {
+      "sha256": "ab5e635d441deb3bd156b76c45f9ce8a124539f7e5d7bff2450066d92e4f309f",
+      "lfSha256": "ab5e635d441deb3bd156b76c45f9ce8a124539f7e5d7bff2450066d92e4f309f"
+    },
+    "art/ember7.js": {
+      "sha256": "a6570ffbf4772120fb072da9832c16b4f2b0baaf1b62e1c4d1d02b651d47360f",
+      "lfSha256": "a6570ffbf4772120fb072da9832c16b4f2b0baaf1b62e1c4d1d02b651d47360f"
+    },
+    "art/identity.js": {
+      "sha256": "0da9f9e0cac91dcc04e0fd9cd6e9cafc8ffa50152e73cdbdb545fa701bb210b8",
+      "lfSha256": "0da9f9e0cac91dcc04e0fd9cd6e9cafc8ffa50152e73cdbdb545fa701bb210b8"
+    },
+    "art/scene.js": {
+      "sha256": "a0a6c6fcb81acbc3a7b7ab2bf822add35327222bc94232ad03bba056221c3566",
+      "lfSha256": "a0a6c6fcb81acbc3a7b7ab2bf822add35327222bc94232ad03bba056221c3566"
+    },
+    "ART-RIGHTS.txt": {
+      "sha256": "25ed17a66e546ba01002ae029d94ff77202a97a01b67e6ffce7e24e419c906a0",
+      "lfSha256": "0bf23dd3fa2d90c10bd93c3fc67ab80e59f44e612d8d5dcb569eff9675f60ae0"
+    },
+    "browser/controls.js": {
+      "sha256": "aeab237f8cb6e289aec221e2fa7a9e4f663ef0634a0f8d9b9fdb02e4d3517599",
+      "lfSha256": "aeab237f8cb6e289aec221e2fa7a9e4f663ef0634a0f8d9b9fdb02e4d3517599"
+    },
+    "code-snake/index.html": {
+      "sha256": "2cc810aca4cd22b92bf27077a047bfb6a6e635dee6fe246d316724c1e7a54523",
+      "lfSha256": "37cfc51b9ec7f600462e415b9b616fbd13fb9683eca4610aaaffe59bd4096de9"
+    },
+    "code-snake/LICENSING.txt": {
+      "sha256": "44c7331ece74dfba4bf89efe01f55a63a0def731f85d10c702662edb7db77af1",
+      "lfSha256": "af5ac3d87338a20c185e2ad3d8480b221afa08e0c6764c87cd7101b7a66ae0e2"
+    },
+    "code-snake/modules/app.js": {
+      "sha256": "8e30d80976e5743240e0ab7f452a7ab52eb57f15e16751510fd0b4b0c176ff2b",
+      "lfSha256": "8e30d80976e5743240e0ab7f452a7ab52eb57f15e16751510fd0b4b0c176ff2b"
+    },
+    "code-snake/modules/art.js": {
+      "sha256": "c6b063466551f243e49c25eeff9694a845d3faf012ad281cfa6c3bef1739e5a1",
+      "lfSha256": "c6b063466551f243e49c25eeff9694a845d3faf012ad281cfa6c3bef1739e5a1"
+    },
+    "code-snake/modules/core.js": {
+      "sha256": "d322a6ddeb68fd53f1a6ce91224e52a2837a7ed1a35538f82429047f9d22fbe8",
+      "lfSha256": "d322a6ddeb68fd53f1a6ce91224e52a2837a7ed1a35538f82429047f9d22fbe8"
+    },
+    "code-snake/modules/render.js": {
+      "sha256": "fc706f2893823871d399573fb285b54277ce82609274fc64df42104693b32381",
+      "lfSha256": "fc706f2893823871d399573fb285b54277ce82609274fc64df42104693b32381"
+    },
+    "code-snake/style.css": {
+      "sha256": "2171717f320a214d8438f2498af8b1e4c82d96ece9ebf5075955f53d709f868f",
+      "lfSha256": "7fbd7255dc810c91296d5d6385c1e2248974158dc434da297104a9b40377af42"
+    },
+    "core/clock.js": {
+      "sha256": "ec27054104fc84279cf846e7f3b2862d6fbdaa8bb2b285c88f26a9716d734029",
+      "lfSha256": "ec27054104fc84279cf846e7f3b2862d6fbdaa8bb2b285c88f26a9716d734029"
+    },
+    "core/collision.js": {
+      "sha256": "0c115668b9480b25bddae986a2943d75e16eea38c3f2333c5de50fa13e1fdcee",
+      "lfSha256": "0c115668b9480b25bddae986a2943d75e16eea38c3f2333c5de50fa13e1fdcee"
+    },
+    "core/game.js": {
+      "sha256": "10ac7568c0886d50c04d229740891cfcf964791fbfbb55cd1375720ffe98bfe1",
+      "lfSha256": "10ac7568c0886d50c04d229740891cfcf964791fbfbb55cd1375720ffe98bfe1"
+    },
+    "core/input.js": {
+      "sha256": "f0e436d04f462978bd1e0e1d0d9fff5e1442d4882b7c9bf7b38267dfe3f6f980",
+      "lfSha256": "f0e436d04f462978bd1e0e1d0d9fff5e1442d4882b7c9bf7b38267dfe3f6f980"
+    },
+    "core/level.js": {
+      "sha256": "9738cd9ac9c55dd8176f0157ba91524b53548305c06536293fc5272d25d996f0",
+      "lfSha256": "9738cd9ac9c55dd8176f0157ba91524b53548305c06536293fc5272d25d996f0"
+    },
+    "core/types.js": {
+      "sha256": "639e6acf03b0de8f5a8e0fceff32e1273ae33b2ec5d04a4eb31c3092e7b24612",
+      "lfSha256": "639e6acf03b0de8f5a8e0fceff32e1273ae33b2ec5d04a4eb31c3092e7b24612"
+    },
+    "favicon.svg": {
+      "sha256": "a6806a5ec994fabd981308e969357d195cbaae6b4393c225a3b59831affed3af",
+      "lfSha256": "71050c8f0ccdbb4890bf8f55a751c22a1617a9681aadd2e826b4658aa038540a"
+    },
+    "index.html": {
+      "sha256": "a725d9042ee2626a482b02b0632f64d1e0d5778f2e4d39020aa34bd03bea8cfe",
+      "lfSha256": "954925d73dc9e02090ead724bb474851d48c6eb270a459e6474e77927569606e"
+    },
+    "LICENSE-CODE.txt": {
+      "sha256": "95424931faf9c20d421f479b7a19d90a8ae7e9f87f94e1a635b8b3da11f2f3ae",
+      "lfSha256": "b42772928e2cc0a7e7ef60fcc094ae06711e63f6cc4759cec2894f26e594794e"
+    },
+    "LICENSING.txt": {
+      "sha256": "36ff1b5da70f4e9e4ba6c985e131cb2194ee9beeb5baba32a11fe0d306f4c300",
+      "lfSha256": "6b9e0b530e697c0033f40465ae52220f121b0e887490405c84533dc347b6677e"
+    },
+    "render/canvas.js": {
+      "sha256": "d86cb0cb8d7b8d418e51b1ecbc5d489b2b6f25dac34727f76efc56718f92357f",
+      "lfSha256": "d86cb0cb8d7b8d418e51b1ecbc5d489b2b6f25dac34727f76efc56718f92357f"
+    },
+    "render/sprites.js": {
+      "sha256": "5000f1d08ee74dc8f94a3ad596300b825d1aa0b12c6d1949acd4075330d5c470",
+      "lfSha256": "5000f1d08ee74dc8f94a3ad596300b825d1aa0b12c6d1949acd4075330d5c470"
+    },
+    "styles.css": {
+      "sha256": "0b3d31fa8c746bd4fea812ded17452fc26b1901adadc65bfd02c2a9c5a40c4c5",
+      "lfSha256": "9b07b9505256849bf8fe3e624c2cd286687928c298c9b04fecbba3e0a71f8c1f"
+    },
+    "theme.css": {
+      "sha256": "88ee01ed7d6866f4a5432508259337e4ee50da7c51066043746ade1cf9351677",
+      "lfSha256": "3482825aa8732d17497d9b2f42a830a4d0a778ff06e112de44fbe4924ad1728a"
+    }
+  }
+}

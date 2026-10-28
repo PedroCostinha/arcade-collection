@@ -1,0 +1,999 @@
+{
+  "engine": "chrome",
+  "browser": "156.0.8078.48",
+  "testedAt": "2026-10-28T19:43:30.972Z",
+  "artifact": "prototype-dist",
+  "layouts": [
+    {
+      "prefix": "/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "no-preference",
+      "width": 320,
+      "viewport": 320,
+      "scrollWidth": 320,
+      "cards": [
+        {
+          "x": 16,
+          "y": 368.25,
+          "width": 288,
+          "height": 515.5625
+        },
+        {
+          "x": 16,
+          "y": 903.8125,
+          "width": 288,
+          "height": 515.5625
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "no-preference",
+      "width": 390,
+      "viewport": 390,
+      "scrollWidth": 390,
+      "cards": [
+        {
+          "x": 16,
+          "y": -96.734375,
+          "width": 358,
+          "height": 493.171875
+        },
+        {
+          "x": 16,
+          "y": 416.4375,
+          "width": 358,
+          "height": 493.171875
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "no-preference",
+      "width": 768,
+      "viewport": 768,
+      "scrollWidth": 768,
+      "cards": [
+        {
+          "x": 24,
+          "y": 365,
+          "width": 348,
+          "height": 550.09375
+        },
+        {
+          "x": 396,
+          "y": 365,
+          "width": 348,
+          "height": 550.09375
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "no-preference",
+      "width": 1024,
+      "viewport": 1024,
+      "scrollWidth": 1024,
+      "cards": [
+        {
+          "x": 24,
+          "y": 398.1875,
+          "width": 476,
+          "height": 550.09375
+        },
+        {
+          "x": 524,
+          "y": 398.1875,
+          "width": 476,
+          "height": 550.09375
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "no-preference",
+      "width": 1440,
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "cards": [
+        {
+          "x": 128,
+          "y": 435.0625,
+          "width": 580,
+          "height": 528.875
+        },
+        {
+          "x": 732,
+          "y": 435.0625,
+          "width": 580,
+          "height": 528.875
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "no-preference",
+      "width": 320,
+      "viewport": 320,
+      "scrollWidth": 320,
+      "cards": [
+        {
+          "x": 16,
+          "y": 368.25,
+          "width": 288,
+          "height": 515.5625
+        },
+        {
+          "x": 16,
+          "y": 903.8125,
+          "width": 288,
+          "height": 515.5625
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "no-preference",
+      "width": 390,
+      "viewport": 390,
+      "scrollWidth": 390,
+      "cards": [
+        {
+          "x": 16,
+          "y": -96.734375,
+          "width": 358,
+          "height": 493.171875
+        },
+        {
+          "x": 16,
+          "y": 416.4375,
+          "width": 358,
+          "height": 493.171875
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "no-preference",
+      "width": 768,
+      "viewport": 768,
+      "scrollWidth": 768,
+      "cards": [
+        {
+          "x": 24,
+          "y": 365,
+          "width": 348,
+          "height": 550.09375
+        },
+        {
+          "x": 396,
+          "y": 365,
+          "width": 348,
+          "height": 550.09375
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "no-preference",
+      "width": 1024,
+      "viewport": 1024,
+      "scrollWidth": 1024,
+      "cards": [
+        {
+          "x": 24,
+          "y": 398.1875,
+          "width": 476,
+          "height": 550.09375
+        },
+        {
+          "x": 524,
+          "y": 398.1875,
+          "width": 476,
+          "height": 550.09375
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "no-preference",
+      "width": 1440,
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "cards": [
+        {
+          "x": 128,
+          "y": 435.0625,
+          "width": 580,
+          "height": 528.875
+        },
+        {
+          "x": 732,
+          "y": 435.0625,
+          "width": 580,
+          "height": 528.875
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "reduce",
+      "width": 320,
+      "viewport": 320,
+      "scrollWidth": 320,
+      "cards": [
+        {
+          "x": 16,
+          "y": 368.25,
+          "width": 288,
+          "height": 515.5625
+        },
+        {
+          "x": 16,
+          "y": 903.8125,
+          "width": 288,
+          "height": 515.5625
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "reduce",
+      "width": 390,
+      "viewport": 390,
+      "scrollWidth": 390,
+      "cards": [
+        {
+          "x": 16,
+          "y": -96.734375,
+          "width": 358,
+          "height": 493.171875
+        },
+        {
+          "x": 16,
+          "y": 416.4375,
+          "width": 358,
+          "height": 493.171875
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "reduce",
+      "width": 768,
+      "viewport": 768,
+      "scrollWidth": 768,
+      "cards": [
+        {
+          "x": 24,
+          "y": 365,
+          "width": 348,
+          "height": 550.09375
+        },
+        {
+          "x": 396,
+          "y": 365,
+          "width": 348,
+          "height": 550.09375
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "reduce",
+      "width": 1024,
+      "viewport": 1024,
+      "scrollWidth": 1024,
+      "cards": [
+        {
+          "x": 24,
+          "y": 398.1875,
+          "width": 476,
+          "height": 550.09375
+        },
+        {
+          "x": 524,
+          "y": 398.1875,
+          "width": 476,
+          "height": 550.09375
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "reduce",
+      "width": 1440,
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "cards": [
+        {
+          "x": 128,
+          "y": 435.0625,
+          "width": 580,
+          "height": 528.875
+        },
+        {
+          "x": 732,
+          "y": 435.0625,
+          "width": 580,
+          "height": 528.875
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "reduce",
+      "width": 320,
+      "viewport": 320,
+      "scrollWidth": 320,
+      "cards": [
+        {
+          "x": 16,
+          "y": 368.25,
+          "width": 288,
+          "height": 515.5625
+        },
+        {
+          "x": 16,
+          "y": 903.8125,
+          "width": 288,
+          "height": 515.5625
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "reduce",
+      "width": 390,
+      "viewport": 390,
+      "scrollWidth": 390,
+      "cards": [
+        {
+          "x": 16,
+          "y": -96.734375,
+          "width": 358,
+          "height": 493.171875
+        },
+        {
+          "x": 16,
+          "y": 416.4375,
+          "width": 358,
+          "height": 493.171875
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "reduce",
+      "width": 768,
+      "viewport": 768,
+      "scrollWidth": 768,
+      "cards": [
+        {
+          "x": 24,
+          "y": 365,
+          "width": 348,
+          "height": 550.09375
+        },
+        {
+          "x": 396,
+          "y": 365,
+          "width": 348,
+          "height": 550.09375
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "reduce",
+      "width": 1024,
+      "viewport": 1024,
+      "scrollWidth": 1024,
+      "cards": [
+        {
+          "x": 24,
+          "y": 398.1875,
+          "width": 476,
+          "height": 550.09375
+        },
+        {
+          "x": 524,
+          "y": 398.1875,
+          "width": 476,
+          "height": 550.09375
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": true,
+      "reducedMotion": "reduce",
+      "width": 1440,
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "cards": [
+        {
+          "x": 128,
+          "y": 435.0625,
+          "width": 580,
+          "height": 528.875
+        },
+        {
+          "x": 732,
+          "y": 435.0625,
+          "width": 580,
+          "height": 528.875
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "no-preference",
+      "width": 320,
+      "viewport": 320,
+      "scrollWidth": 320,
+      "cards": [
+        {
+          "x": 16,
+          "y": 368.25,
+          "width": 288,
+          "height": 515.5625
+        },
+        {
+          "x": 16,
+          "y": 903.8125,
+          "width": 288,
+          "height": 515.5625
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "no-preference",
+      "width": 390,
+      "viewport": 390,
+      "scrollWidth": 390,
+      "cards": [
+        {
+          "x": 16,
+          "y": -96.734375,
+          "width": 358,
+          "height": 493.171875
+        },
+        {
+          "x": 16,
+          "y": 416.4375,
+          "width": 358,
+          "height": 493.171875
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "no-preference",
+      "width": 768,
+      "viewport": 768,
+      "scrollWidth": 768,
+      "cards": [
+        {
+          "x": 24,
+          "y": 365,
+          "width": 348,
+          "height": 550.09375
+        },
+        {
+          "x": 396,
+          "y": 365,
+          "width": 348,
+          "height": 550.09375
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "no-preference",
+      "width": 1024,
+      "viewport": 1024,
+      "scrollWidth": 1024,
+      "cards": [
+        {
+          "x": 24,
+          "y": 398.1875,
+          "width": 476,
+          "height": 550.09375
+        },
+        {
+          "x": 524,
+          "y": 398.1875,
+          "width": 476,
+          "height": 550.09375
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "no-preference",
+      "width": 1440,
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "cards": [
+        {
+          "x": 128,
+          "y": 435.0625,
+          "width": 580,
+          "height": 528.875
+        },
+        {
+          "x": 732,
+          "y": 435.0625,
+          "width": 580,
+          "height": 528.875
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "no-preference",
+      "width": 320,
+      "viewport": 320,
+      "scrollWidth": 320,
+      "cards": [
+        {
+          "x": 16,
+          "y": 368.25,
+          "width": 288,
+          "height": 515.5625
+        },
+        {
+          "x": 16,
+          "y": 903.8125,
+          "width": 288,
+          "height": 515.5625
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "no-preference",
+      "width": 390,
+      "viewport": 390,
+      "scrollWidth": 390,
+      "cards": [
+        {
+          "x": 16,
+          "y": -96.734375,
+          "width": 358,
+          "height": 493.171875
+        },
+        {
+          "x": 16,
+          "y": 416.4375,
+          "width": 358,
+          "height": 493.171875
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "no-preference",
+      "width": 768,
+      "viewport": 768,
+      "scrollWidth": 768,
+      "cards": [
+        {
+          "x": 24,
+          "y": 365,
+          "width": 348,
+          "height": 550.09375
+        },
+        {
+          "x": 396,
+          "y": 365,
+          "width": 348,
+          "height": 550.09375
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "no-preference",
+      "width": 1024,
+      "viewport": 1024,
+      "scrollWidth": 1024,
+      "cards": [
+        {
+          "x": 24,
+          "y": 398.1875,
+          "width": 476,
+          "height": 550.09375
+        },
+        {
+          "x": 524,
+          "y": 398.1875,
+          "width": 476,
+          "height": 550.09375
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "no-preference",
+      "width": 1440,
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "cards": [
+        {
+          "x": 128,
+          "y": 435.0625,
+          "width": 580,
+          "height": 528.875
+        },
+        {
+          "x": 732,
+          "y": 435.0625,
+          "width": 580,
+          "height": 528.875
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "reduce",
+      "width": 320,
+      "viewport": 320,
+      "scrollWidth": 320,
+      "cards": [
+        {
+          "x": 16,
+          "y": 368.25,
+          "width": 288,
+          "height": 515.5625
+        },
+        {
+          "x": 16,
+          "y": 903.8125,
+          "width": 288,
+          "height": 515.5625
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "reduce",
+      "width": 390,
+      "viewport": 390,
+      "scrollWidth": 390,
+      "cards": [
+        {
+          "x": 16,
+          "y": -96.734375,
+          "width": 358,
+          "height": 493.171875
+        },
+        {
+          "x": 16,
+          "y": 416.4375,
+          "width": 358,
+          "height": 493.171875
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "reduce",
+      "width": 768,
+      "viewport": 768,
+      "scrollWidth": 768,
+      "cards": [
+        {
+          "x": 24,
+          "y": 365,
+          "width": 348,
+          "height": 550.09375
+        },
+        {
+          "x": 396,
+          "y": 365,
+          "width": 348,
+          "height": 550.09375
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "reduce",
+      "width": 1024,
+      "viewport": 1024,
+      "scrollWidth": 1024,
+      "cards": [
+        {
+          "x": 24,
+          "y": 398.1875,
+          "width": 476,
+          "height": 550.09375
+        },
+        {
+          "x": 524,
+          "y": 398.1875,
+          "width": 476,
+          "height": 550.09375
+        }
+      ]
+    },
+    {
+      "prefix": "/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "reduce",
+      "width": 1440,
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "cards": [
+        {
+          "x": 128,
+          "y": 435.0625,
+          "width": 580,
+          "height": 528.875
+        },
+        {
+          "x": 732,
+          "y": 435.0625,
+          "width": 580,
+          "height": 528.875
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "reduce",
+      "width": 320,
+      "viewport": 320,
+      "scrollWidth": 320,
+      "cards": [
+        {
+          "x": 16,
+          "y": 368.25,
+          "width": 288,
+          "height": 515.5625
+        },
+        {
+          "x": 16,
+          "y": 903.8125,
+          "width": 288,
+          "height": 515.5625
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "reduce",
+      "width": 390,
+      "viewport": 390,
+      "scrollWidth": 390,
+      "cards": [
+        {
+          "x": 16,
+          "y": -96.734375,
+          "width": 358,
+          "height": 493.171875
+        },
+        {
+          "x": 16,
+          "y": 416.4375,
+          "width": 358,
+          "height": 493.171875
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "reduce",
+      "width": 768,
+      "viewport": 768,
+      "scrollWidth": 768,
+      "cards": [
+        {
+          "x": 24,
+          "y": 365,
+          "width": 348,
+          "height": 550.09375
+        },
+        {
+          "x": 396,
+          "y": 365,
+          "width": 348,
+          "height": 550.09375
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "reduce",
+      "width": 1024,
+      "viewport": 1024,
+      "scrollWidth": 1024,
+      "cards": [
+        {
+          "x": 24,
+          "y": 398.1875,
+          "width": 476,
+          "height": 550.09375
+        },
+        {
+          "x": 524,
+          "y": 398.1875,
+          "width": 476,
+          "height": 550.09375
+        }
+      ]
+    },
+    {
+      "prefix": "/arcade-collection/",
+      "javaScriptEnabled": false,
+      "reducedMotion": "reduce",
+      "width": 1440,
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "cards": [
+        {
+          "x": 128,
+          "y": 435.0625,
+          "width": 580,
+          "height": 528.875
+        },
+        {
+          "x": 732,
+          "y": 435.0625,
+          "width": 580,
+          "height": 528.875
+        }
+      ]
+    }
+  ],
+  "checks": [
+    "Review routes/assets return 200, production returns 404, preserved Barrel root at / and /arcade-collection/.",
+    {
+      "contrast": [
+        {
+          "selector": "review-badge",
+          "foreground": "rgb(179, 177, 183)",
+          "background": "rgb(18, 18, 20)",
+          "ratio": 8.811363620956268
+        },
+        {
+          "selector": "eyebrow",
+          "foreground": "rgb(179, 177, 183)",
+          "background": "rgb(18, 18, 20)",
+          "ratio": 8.811363620956268
+        },
+        {
+          "selector": "intro-copy",
+          "foreground": "rgb(246, 243, 237)",
+          "background": "rgb(18, 18, 20)",
+          "ratio": 16.89472744105173
+        },
+        {
+          "selector": "section-heading",
+          "foreground": "rgb(246, 243, 237)",
+          "background": "rgb(18, 18, 20)",
+          "ratio": 16.89472744105173
+        },
+        {
+          "selector": "character-label",
+          "foreground": "rgb(246, 243, 237)",
+          "background": "rgb(48, 33, 38)",
+          "ratio": 13.82847112772817
+        },
+        {
+          "selector": "game-type",
+          "foreground": "rgb(239, 82, 97)",
+          "background": "rgb(27, 27, 30)",
+          "ratio": 4.950136178004141
+        },
+        {
+          "selector": "description",
+          "foreground": "rgb(179, 177, 183)",
+          "background": "rgb(27, 27, 30)",
+          "ratio": 8.09196522666749
+        },
+        {
+          "selector": "game-meta",
+          "foreground": "rgb(205, 203, 208)",
+          "background": "rgb(27, 27, 30)",
+          "ratio": 10.677333476056523
+        },
+        {
+          "selector": "play-link",
+          "foreground": "rgb(20, 20, 22)",
+          "background": "rgb(239, 82, 97)",
+          "ratio": 5.30025931871372
+        },
+        {
+          "selector": "character-label",
+          "foreground": "rgb(246, 243, 237)",
+          "background": "rgb(35, 35, 42)",
+          "ratio": 14.0946487947835
+        },
+        {
+          "selector": "game-type",
+          "foreground": "rgb(239, 82, 97)",
+          "background": "rgb(27, 27, 30)",
+          "ratio": 4.950136178004141
+        },
+        {
+          "selector": "description",
+          "foreground": "rgb(179, 177, 183)",
+          "background": "rgb(27, 27, 30)",
+          "ratio": 8.09196522666749
+        },
+        {
+          "selector": "game-meta",
+          "foreground": "rgb(205, 203, 208)",
+          "background": "rgb(27, 27, 30)",
+          "ratio": 10.677333476056523
+        },
+        {
+          "selector": "play-link",
+          "foreground": "rgb(20, 20, 22)",
+          "background": "rgb(239, 82, 97)",
+          "ratio": 5.30025931871372
+        },
+        {
+          "selector": "P",
+          "foreground": "rgb(179, 177, 183)",
+          "background": "rgb(18, 18, 20)",
+          "ratio": 8.811363620956268
+        },
+        {
+          "selector": "P",
+          "foreground": "rgb(179, 177, 183)",
+          "background": "rgb(18, 18, 20)",
+          "ratio": 8.811363620956268
+        }
+      ]
+    },
+    "40 layouts per browser: 5 widths × 2 base paths × JavaScript on/off × reduced motion on/off; portraits, CSS, no overflow, 44px targets, semantic headings, keyboard skip/focus/activation, both mouse destinations and text contrast >=4.5:1.",
+    "Emulated touch opens both games with JavaScript enabled and disabled."
+  ],
+  "errors": [],
+  "limitations": [
+    "Headless browsers and emulated touch; no physical mobile hardware.",
+    "No real screen reader, Safari or exhaustive WCAG audit.",
+    "Without JavaScript the menu works; the games retain their existing JavaScript requirement."
+  ]
+}
