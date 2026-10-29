@@ -1,8 +1,71 @@
 <!doctype html>
-<!-- SPDX-License-Identifier: MIT; Copyright (c) 2026 PedroCostinha. Original visual composition reserved. -->
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Arcade Collection · Estudo local</title><link rel="stylesheet" href="../code-snake/style.css"></head><body><main>
-<nav><span>PEDROCOSTINHA / LAB</span><span>ESTUDO LOCAL DE NAVEGAÇÃO</span></nav><header><div><p class="eyebrow">PIXELS ORIGINAIS. PEQUENAS AVENTURAS.</p><h1>ARCADE<br>COLLECTION<span>.</span></h1><p>Do README ao navegador. Escolha seu próximo percurso.</p></div></header>
-<section class="machine"><div class="dashboard"><span>01 / PLATAFORMA</span><span>PUBLICADO · V1.1.0</span></div><div class="statusbar"><h2>Barrel Quest</h2><p>Ember-7, cinco pisos e uma missão de entrega.</p><a href="../">Jogar Barrel Quest →</a></div></section><br>
-<section class="machine"><div class="dashboard"><span>02 / GRADE</span><span>EM DESENVOLVIMENTO</span></div><div class="statusbar"><h2>Code Snake</h2><p>Encontre espaço. Colete núcleos. Faça Nib crescer.</p><a href="../code-snake/">Abrir protótipo local →</a></div></section>
-<footer><span>Mockup para revisão. A raiz continua abrindo Barrel Quest.</span><span>Arte original · PedroCostinha</span></footer>
-</main></body></html>
+<!-- SPDX-License-Identifier: MIT; Copyright (c) 2026 PedroCostinha. Original visual composition and character art reserved. -->
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#121214">
+  <meta name="description" content="Escolha sua próxima partida: Barrel Quest com Ember-7 ou Code Snake com Nib. Coleção de jogos originais de PedroCostinha.">
+  <title>Arcade Collection · Estudo local</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="collection.css">
+</head>
+<body>
+  <a class="skip-link" href="#games">Pular para os jogos</a>
+  <div class="shell">
+    <header class="masthead">
+      <span class="brand"><span class="brand-mark" aria-hidden="true">A<span>C</span></span> PEDROCOSTINHA<span class="brand-divider" aria-hidden="true">/</span>ARCADE</span>
+      <span class="review-badge"><span aria-hidden="true"></span> PRÉVIA LOCAL</span>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="collection-title">
+        <p class="eyebrow"><span aria-hidden="true">+</span> DOIS JOGOS. SEU PRÓXIMO RECORDE.</p>
+        <div class="intro-line">
+          <h1 id="collection-title">ARCADE<br><span>COLLECTION</span><span class="title-dot">.</span></h1>
+          <div class="intro-copy"><p>Pequenos mundos. <br>Grandes tentativas.</p><p>Escolha um jogo e entre na partida.</p></div>
+        </div>
+      </section>
+      <section class="selection" aria-labelledby="games">
+        <div class="section-heading"><h2 id="games" tabindex="-1">SELECIONE SEU JOGO</h2><span>02 JOGOS DISPONÍVEIS</span></div>
+        <div class="game-grid">
+          <article class="game-card barrel" aria-labelledby="barrel-title">
+            <div class="card-art">
+              <div class="art-label"><span>01 / PLATAFORMA</span><span aria-hidden="true">↗</span></div>
+              <div class="platforms" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="portrait-stage"><img class="portrait ember" src="portraits/ember7.png" width="16" height="20" alt="Ember-7, o robô vermelho de Barrel Quest."></div>
+              <div class="character-label"><span>PLAYER 01</span><strong>EMBER-7</strong></div>
+              <span class="art-index" aria-hidden="true">BQ</span>
+            </div>
+            <div class="card-copy">
+              <p class="game-type">SUBA. DESVIE. ENTREGUE.</p>
+              <h3 id="barrel-title">Barrel Quest</h3>
+              <p class="description">Cinco pisos, barris pelo caminho e uma missão de entrega. Leve Ember-7 até o topo.</p>
+              <div class="game-meta"><span>Plataforma</span><span>1 jogador</span></div>
+              <a class="play-link" href="../"><span>Jogar Barrel Quest</span><span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="game-card snake" aria-labelledby="snake-title">
+            <div class="card-art">
+              <div class="art-label"><span>02 / ESTRATÉGIA</span><span aria-hidden="true">↗</span></div>
+              <div class="snake-trail" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="portrait-stage"><img class="portrait nib" src="portraits/nib.png" width="12" height="12" alt="Nib, o personagem pixelado de Code Snake."></div>
+              <div class="character-label"><span>PLAYER 02</span><strong>NIB</strong></div>
+              <span class="art-index" aria-hidden="true">CS</span>
+            </div>
+            <div class="card-copy">
+              <p class="game-type">COLETE. CRESÇA. ENCONTRE ESPAÇO.</p>
+              <h3 id="snake-title">Code Snake</h3>
+              <p class="description">Cada núcleo muda seu próximo movimento. Faça Nib crescer e cuide para não fechar o caminho.</p>
+              <div class="game-meta"><span>Snake em grade</span><span>1 jogador</span></div>
+              <a class="play-link" href="../code-snake/"><span>Jogar Code Snake</span><span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        </div>
+      </section>
+      <p class="input-note"><span aria-hidden="true">⌨</span> Teclado, mouse ou toque. Escolha como entrar.</p>
+    </main>
+    <footer><p>JOGOS E PERSONAGENS ORIGINAIS <span>© 2026 PedroCostinha</span></p><p>Estudo local <span>· Menu 1.3.0 em revisão</span></p></footer>
+  </div>
+</body>
+</html>

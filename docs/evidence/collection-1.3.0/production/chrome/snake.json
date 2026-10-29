@@ -1,0 +1,160 @@
+{
+  "artifact": "dist",
+  "route": "/arcade-collection/code-snake/",
+  "engine": "chrome",
+  "version": "156.0.8078.48",
+  "checks": [
+    "Native keyboard start/focus, first collection +10, quick turns, pause freeze, blur pause, wall Game Over, restart",
+    "320/390/768/1440x844 contained; start visible without scrolling, actions before Canvas, 44px+ action/directional targets; reduced motion",
+    "Grown-body collision through DOM turns; terminal score retained, restart and WASD/Escape",
+    "Emulated touch start, collection +10, direction, pause/resume focus, restart and reduced motion",
+    "Production dist/ under /arcade-collection/: visible legal links with HTTP 200 full terms and preserved Barrel root; no failed/external game requests or page errors in desktop/touch contexts"
+  ],
+  "layouts": [
+    {
+      "width": 320,
+      "height": 844,
+      "play": {
+        "x": 14,
+        "y": 205.375,
+        "width": 94.328125,
+        "height": 46
+      },
+      "pause": {
+        "x": 116.328125,
+        "y": 205.375,
+        "width": 94.328125,
+        "height": 46
+      },
+      "canvas": {
+        "x": 21,
+        "y": 384.375,
+        "width": 278,
+        "height": 185.328125
+      },
+      "dpad": {
+        "x": 131,
+        "y": 684.703125,
+        "width": 58,
+        "height": 52
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "play": {
+        "x": 14,
+        "y": 205.375,
+        "width": 94.328125,
+        "height": 46
+      },
+      "pause": {
+        "x": 116.328125,
+        "y": 205.375,
+        "width": 94.328125,
+        "height": 46
+      },
+      "canvas": {
+        "x": 21,
+        "y": 384.375,
+        "width": 348,
+        "height": 232
+      },
+      "dpad": {
+        "x": 166,
+        "y": 731.375,
+        "width": 58,
+        "height": 52
+      }
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "play": {
+        "x": 32,
+        "y": 215.671875,
+        "width": 110.328125,
+        "height": 46
+      },
+      "pause": {
+        "x": 154.328125,
+        "y": 215.671875,
+        "width": 110.328125,
+        "height": 46
+      },
+      "canvas": {
+        "x": 47,
+        "y": 345.671875,
+        "width": 674,
+        "height": 449.328125
+      },
+      "dpad": {
+        "x": 631,
+        "y": 941.53125,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "width": 1440,
+      "height": 844,
+      "play": {
+        "x": 252,
+        "y": 229.890625,
+        "width": 110.328125,
+        "height": 46
+      },
+      "pause": {
+        "x": 374.328125,
+        "y": 229.890625,
+        "width": 110.328125,
+        "height": 46
+      },
+      "canvas": {
+        "x": 267,
+        "y": 359.890625,
+        "width": 906,
+        "height": 604
+      },
+      "dpad": {
+        "x": 1083,
+        "y": 1110.421875,
+        "width": 48,
+        "height": 48
+      }
+    }
+  ],
+  "errors": [],
+  "requests": [
+    "http://127.0.0.1:61366/arcade-collection/code-snake/",
+    "http://127.0.0.1:61366/arcade-collection/code-snake/style.css",
+    "http://127.0.0.1:61366/arcade-collection/code-snake/modules/app.js",
+    "http://127.0.0.1:61366/arcade-collection/code-snake/modules/core.js",
+    "http://127.0.0.1:61366/arcade-collection/code-snake/modules/render.js",
+    "http://127.0.0.1:61366/arcade-collection/code-snake/modules/art.js",
+    "http://127.0.0.1:61366/arcade-collection/favicon.svg",
+    "http://127.0.0.1:61366/arcade-collection/code-snake/",
+    "http://127.0.0.1:61366/arcade-collection/code-snake/style.css",
+    "http://127.0.0.1:61366/arcade-collection/code-snake/modules/app.js",
+    "http://127.0.0.1:61366/arcade-collection/code-snake/modules/core.js",
+    "http://127.0.0.1:61366/arcade-collection/code-snake/modules/render.js",
+    "http://127.0.0.1:61366/arcade-collection/code-snake/modules/art.js",
+    "http://127.0.0.1:61366/arcade-collection/favicon.svg",
+    "http://127.0.0.1:61366/arcade-collection/",
+    "http://127.0.0.1:61366/arcade-collection/styles.css",
+    "http://127.0.0.1:61366/arcade-collection/theme.css",
+    "http://127.0.0.1:61366/arcade-collection/app.js",
+    "http://127.0.0.1:61366/arcade-collection/art/identity.js",
+    "http://127.0.0.1:61366/arcade-collection/core/game.js",
+    "http://127.0.0.1:61366/arcade-collection/core/clock.js",
+    "http://127.0.0.1:61366/arcade-collection/core/input.js",
+    "http://127.0.0.1:61366/arcade-collection/render/canvas.js",
+    "http://127.0.0.1:61366/arcade-collection/browser/controls.js",
+    "http://127.0.0.1:61366/arcade-collection/core/collision.js",
+    "http://127.0.0.1:61366/arcade-collection/core/level.js",
+    "http://127.0.0.1:61366/arcade-collection/render/sprites.js",
+    "http://127.0.0.1:61366/arcade-collection/art/scene.js",
+    "http://127.0.0.1:61366/arcade-collection/art/ember7.js",
+    "http://127.0.0.1:61366/arcade-collection/favicon.svg"
+  ]
+}
