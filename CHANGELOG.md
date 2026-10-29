@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.3.0 — candidata técnica, sem publicação (29/10/2026)
+
+- Menu aprovado promovido para dist/collection/: HTML, CSS e retratos originais.
+- Inventário fechado de 32 arquivos, mantendo os 28 da coleção 1.2.0 e seu
+  manifesto histórico intactos; quatro hashes novos fixados separadamente.
+- Removidos somente indicadores locais da saída pública; identidade e links preservados.
+- Pacote/lockfile 1.3.0; Barrel individual 1.1.0 e conteúdo/rótulo histórico do Snake preservados.
+- Testes do menu integrados ao CI Node 22/24, Chrome/Firefox; publicação manual
+  continua exigindo main, titular, confirmação e SHA completo, com upload só de dist/.
+- Sem merge, deploy, tag ou Release; publicação será uma etapa independente.
+
 ## 1.2.0 — publicação oficial em 28/10/2026
 
 [Release oficial v1.2.0](https://github.com/PedroCostinha/arcade-collection/releases/tag/v1.2.0)

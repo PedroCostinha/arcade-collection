@@ -4,121 +4,101 @@
 **[Jogar Code Snake](https://pedrocostinha.github.io/arcade-collection/code-snake/)** ·
 [Release oficial v1.2.0](https://github.com/PedroCostinha/arcade-collection/releases/tag/v1.2.0)
 
-Coleção de jogos originais em TypeScript e Canvas 2D. A **coleção 1.2.0 foi
-publicada oficialmente em 28/10/2026**, com Barrel Quest 1.1.0 e Code Snake em
-rotas independentes no GitHub Pages. A raiz do site abre Barrel Quest;
-Code Snake está disponível em `/arcade-collection/code-snake/`.
+A coleção pública continua na versão **1.2.0**, publicada em 28/10/2026.
+Esta branch prepara a **candidata 1.3.0** para revisão e publicação futura.
+O menu aprovado passa a integrar o build em `collection/`; Barrel Quest
+continua na raiz e Code Snake em `code-snake/`.
 
-## Executar o artefato de produção localmente
+## Executar a candidata localmente
 
 Requer Node.js 22 ou posterior e npm:
 
-```sh
+~~~sh
 npm ci --ignore-scripts --no-audit --no-fund
 npm run dev
-```
+~~~
 
+- [Menu 1.3.0](http://127.0.0.1:4173/arcade-collection/collection/)
 - [Barrel Quest 1.1.0](http://127.0.0.1:4173/arcade-collection/)
 - [Code Snake](http://127.0.0.1:4173/arcade-collection/code-snake/)
 
-> **Observação:** os links locais acima funcionam somente
-> enquanto o servidor de desenvolvimento estiver em execução.
-> Para jogar a versão publicada, utilize os links públicos dos dois jogos
-> no início deste README.
+Os links locais exigem o servidor em execução. `npm run build` gera
+`dist/`; `npm start` serve o artefato já gerado, com e sem subcaminho.
 
-`npm run build` gera `dist/`; `npm start` serve o artefato já gerado. O
-subcaminho `/arcade-collection/` é exercitado pelo servidor local e pelos
-testes. A raiz continua abrindo Barrel Quest, sem nova home ou mudança de
-navegação. O pacote/coleção tem versão 1.2.0; a versão individual exibida
-pelo Barrel permanece 1.1.0.
+## Versões e preservação
 
-Barrel: recolha cinco cargas e alcance a bandeira. Setas/A-D para mover,
-cima/baixo ou W-S nas escadas, Espaço para pular, P/Escape para pausar.
-Três vidas, checkpoints e multitoque. Code Snake: Nib coleta núcleos,
-cresce um segmento e ganha 10 pontos por núcleo; evite bordas e corpo.
-Setas/WASD ou botões na tela, P/Escape para pausar, reinício em HTML.
-Os pontos são da partida e não representam contribuições do GitHub.
+O pacote e seu lockfile identificam a **coleção 1.3.0**. Barrel Quest
+permanece individualmente em **1.1.0**. O HTML aprovado do Code Snake
+continua exibindo **COLEÇÃO 1.2.0**, o contexto de sua publicação original;
+esse rótulo não acompanha a versão atual do pacote nem define uma versão
+individual nova do jogo. Seu conteúdo não foi alterado para atualizar rótulos.
 
-## Build e preservação
+Cada build valida os 28 arquivos publicados da coleção 1.2.0 contra o
+[manifesto histórico imutável](tests/fixtures/collection-1.2.0-manifest.json).
+Ele registra a referência independente `3599c4141f908f26ca5602fadd1e1a4c27a5f551`
+e duas representações previamente aprovadas de bytes (CRLF/LF), sem aceitar
+novos hashes. Os 21 arquivos do Barrel e sete do Snake permanecem intactos.
+Física, controles, pontuação, sprites, HTML dos jogos e raiz são preservados.
 
-O build original foi preservado em `scripts/build-barrel.mjs`. O novo
-`scripts/build.mjs` executa esse build limpo e acrescenta exclusivamente
-`code-snake/`: HTML, CSS, quatro módulos e o aviso próprio de licenciamento.
-Não são publicados fontes TS, testes, evidências ou ferramentas.
+O inventário público é fechado em **32 arquivos**: os 28 históricos e apenas
+`collection/index.html`, `collection/collection.css`,
+`collection/portraits/ember7.png` e `collection/portraits/nib.png`.
+O [manifesto novo do menu](tests/fixtures/collection-1.3.0-menu-manifest.json)
+fixa as quatro adições; nenhum manifesto é regenerado pelo build/testes.
 
-Os 21 arquivos estáveis do Barrel são comparados ao fixture da versão
-1.1.0, sem exceções de conteúdo. Normaliza-se exclusivamente CRLF/LF para
-comparar Windows e Linux. Física, colisões, controles, sprites, pontuação e
-HTML raiz permanecem preservados. O código e a arte do Snake também têm
-hashes fixados contra o protótipo aprovado.
+O build usa o HTML/CSS aprovado de `prototypes/collection/`, retirando apenas
+indicadores de revisão. A classe do indicador é renomeada sem alterar suas
+regras visuais; os retratos usam os pixels originais de Ember-7 e Nib.
+O menu usa links relativos nativos e funciona sem JavaScript. Os jogos
+mantêm sua necessidade de JavaScript para iniciar partidas. Não há fontes
+remotas, framework ou novas dependências de runtime.
 
-[Preparação e estratégia](docs/PREPARATION_1_2_0.md) ·
-[Inventário exato de produção](docs/DIST_1_2_0.md) ·
-[Validação da preparação](docs/VALIDATION_1_2_0.md).
+## Testes e evidências
 
-## Testes
+Executar em sequência:
 
-```sh
+~~~sh
 npm test
 npm run test:snake
 npm run test:artifact
+npm run test:collection
 npm run test:browser
 npm run test:snake:browser
-```
+npm run test:collection:browser
+~~~
 
-As duas QAs de navegador servem **dist/**. Chrome é o padrão;
-`ARCADE_BROWSER=firefox` seleciona Firefox instalado. Use
-`ARCADE_EVIDENCE_DIR=test-results/barrel/chrome` para evitar sobrescrever as
-capturas históricas do Barrel. `SNAKE_EVIDENCE_DIR` configura as capturas do
-Snake. Os testes de artefato verificam inventário fechado, licenças, módulos,
-rotas, dois builds reproduzíveis e remoção de arquivos obsoletos.
+Barrel 29/29, Snake 6/6, produção 8/8 e menu/integridade 6/6.
+Chrome é o padrão; `ARCADE_BROWSER=firefox` seleciona Firefox instalado.
+As variáveis `ARCADE_EVIDENCE_DIR`, `SNAKE_EVIDENCE_DIR` e
+`COLLECTION_EVIDENCE_DIR` configuram as saídas. Use `test-results/`
+para preservar as evidências históricas dos jogos.
 
-O CI executa as três suítes em Node 22/24 e as duas experiências em Chrome
-e Firefox. Nenhuma dessas verificações depende de `prototype-dist/` para
-validar o jogo de produção.
+O CI remoto inclui as quatro suítes em Node 22 e 24 e ambos os jogos e o
+menu em **Chrome e Firefox × Node 22 e 24**. A QA do menu serve `dist/` e
+cobre 40 combinações por job: cinco larguras, duas bases de URL,
+JavaScript ligado/desligado e movimento reduzido ligado/desligado.
+As capturas e relatórios dos navegadores são anexados ao CI por 14 dias.
 
-## Menu 1.3.0, somente revisão local
+[Preparação, hashes, inventário, capturas e limitações](docs/PREPARATION_1_3_0.md).
+[Revisão local anterior](docs/VALIDATION_1_3_0_REVIEW.md) ·
+[Validação histórica 1.2.0](docs/VALIDATION_1_2_0.md).
 
-```sh
-npm run build:prototypes
-npm run start:prototypes
-```
+## Ambiente de revisão histórico
 
-[Estudo local da coleção](http://127.0.0.1:4175/arcade-collection/collection/).
-Esse comando preserva os 28 arquivos de produção e acrescenta o menu, seu CSS
-independente e os retratos de Ember-7/Nib exclusivamente em `prototype-dist/`.
-O menu funciona sem JavaScript e permanece fora de `dist/`. Os retratos são
-gerados dos pixels originais durante o build, sem alterar as artes dos jogos.
+`npm run build:prototypes` e `npm run start:prototypes` mantêm a prévia
+histórica em `prototype-dist/`, com indicadores locais e `REVIEW-ONLY.txt`.
+Esse diretório não pode ser publicado. O build de produção não inclui o aviso
+nem os indicadores de revisão. Os 28 arquivos dos jogos coincidem byte a byte
+nos dois builds.
 
-Cada build verifica os 28 arquivos contra o [manifesto fixo da referência
-aprovada](tests/fixtures/collection-1.2.0-manifest.json), obtido de um checkout
-separado de `3599c4141f908f26ca5602fadd1e1a4c27a5f551`. Não regenerar esse
-manifesto para aceitar mudanças na candidata.
+## Publicação futura
 
-Após `build:prototypes`, execute os testes adicionais em sequência:
-
-```sh
-node --test tests/collection/*.test.mjs
-node tests/collection/browser.mjs
-```
-
-`ARCADE_BROWSER=firefox` seleciona Firefox. A QA do menu cobre 320, 390, 768,
-1024 e 1440 px, teclado, mouse, toque emulado, ausência de JavaScript e
-movimento reduzido. [Resultados e limitações](docs/VALIDATION_1_3_0_REVIEW.md).
-Essa etapa não publica a versão 1.3.0; o pacote continua na versão 1.2.0.
-
-## Publicação oficial
-
-A publicação da coleção 1.2.0 foi concluída em **28/10/2026**. A tag e a
-Release oficial v1.2.0 identificam o SHA publicado
-`e370011593572ead3252397089af816759c08eb5`.
-
-Pages mantém `workflow_dispatch` como único gatilho. A publicação exige a
-main, identidade do titular, confirmação explícita e SHA completo exato do
-commit aprovado. O workflow verifica a coleção 1.2.0 e conserva Barrel
-1.1.0, executa as suítes e envia exclusivamente `dist/` com permissões mínimas.
-Esse workflow foi executado na publicação oficial. A tag e a Release v1.1.0
-permanecem inalteradas.
+O workflow Pages permanece exclusivamente manual (`workflow_dispatch`),
+com titular PedroCostinha, branch main, confirmação explícita, SHA completo
+exato e upload somente de `dist/`. O guardião reconhece a candidata 1.3.0,
+valida as versões e os 32 arquivos. A preparação não dispara esse workflow.
+Merge, deploy, tag e Release exigem aprovação posterior em etapa independente.
+A Release pública 1.2.0 identifica `e370011593572ead3252397089af816759c08eb5`.
 
 ## Licenças
 
@@ -127,11 +107,5 @@ reservados. O conjunto não é integralmente MIT. [MIT integral](LICENSE-CODE.tx
 · [Mapa Barrel preservado](LICENSING.md) · [Arte Barrel](ART-RIGHTS.txt)
 · [Escopos de Nib e Code Snake](games/code-snake/LICENSING.md).
 
-O Snake distribui seu aviso em `code-snake/LICENSING.txt` e mantém links para
-esse aviso e para a MIT integral no rodapé. Os três avisos do Barrel continuam
-iguais aos da versão 1.1.0.
-
-Os documentos históricos de protótipo e de Barrel registram suas próprias
-etapas; os caminhos antigos `prototypes/code-snake/` foram promovidos para
-`games/code-snake/` na versão 1.2.0. [Revisão Barrel 1.1.0](docs/REVIEW_V1_1.md)
-· [Revisão do protótipo aprovado](docs/CODE_SNAKE_FINAL_REVIEW.md).
+Os avisos dos dois jogos continuam iguais. O CSS/composição e retratos do
+menu seguem os escopos de arte reservada; o codificador PNG é código MIT.

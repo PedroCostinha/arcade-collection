@@ -1,0 +1,203 @@
+{
+  "engine": "chrome",
+  "browser": "156.0.8078.48",
+  "testedAt": "2026-10-29T19:33:57.762Z",
+  "tests": [
+    "V1.1: onboarding states objective/controls; visible status; instruction panel and Back contained at 320/390/641/720/801/900/1100/1440px",
+    "V1.1: held Space across pause/resume ignores OS repeats and a fresh press still jumps",
+    "menu, instructions, keyboard walking/jumping, pause freezes clock, blur pause, three lives, game over, restart without navigation",
+    "V1.1: visible damage/respawn and all four checkpoint notifications during actual play",
+    "complete playable mission with real keyboard events, live barrels, five deliveries and victory; no state mutation",
+    "Chrome mobile emulation: simultaneous direction+jump touch, pointer cancellation releases input",
+    "reduced motion default, compact camera, 320/390/768/1440px without overflow, project subpath, no external requests"
+  ],
+  "panelBounds": [
+    {
+      "width": 320,
+      "cardTop": 247,
+      "cardBottom": 437.5,
+      "viewportTop": 235,
+      "viewportBottom": 449.5
+    },
+    {
+      "width": 390,
+      "cardTop": 247,
+      "cardBottom": 490,
+      "viewportTop": 235,
+      "viewportBottom": 502
+    },
+    {
+      "width": 641,
+      "cardTop": 271,
+      "cardBottom": 600.375,
+      "viewportTop": 251,
+      "viewportBottom": 620.375
+    },
+    {
+      "width": 720,
+      "cardTop": 271,
+      "cardBottom": 649.75,
+      "viewportTop": 251,
+      "viewportBottom": 669.75
+    },
+    {
+      "width": 801,
+      "cardTop": 298,
+      "cardBottom": 581.125,
+      "viewportTop": 278,
+      "viewportBottom": 601.125
+    },
+    {
+      "width": 900,
+      "cardTop": 298,
+      "cardBottom": 643,
+      "viewportTop": 278,
+      "viewportBottom": 663
+    },
+    {
+      "width": 1100,
+      "cardTop": 309.484375,
+      "cardBottom": 756.515625,
+      "viewportTop": 278,
+      "viewportBottom": 788
+    },
+    {
+      "width": 1440,
+      "cardTop": 389.265625,
+      "cardBottom": 845.46875,
+      "viewportTop": 298,
+      "viewportBottom": 936.75
+    }
+  ],
+  "mission": {
+    "state": "won",
+    "player": {
+      "x": 842.6111111111051,
+      "y": 120.7477777777779,
+      "vx": 158.33333333333334,
+      "vy": 0,
+      "floor": 4,
+      "lastFloor": 4,
+      "ladder": null,
+      "facing": 1,
+      "invulnerable": 0,
+      "coyote": 0.09,
+      "jumpBuffer": 0
+    },
+    "barrels": [
+      {
+        "id": 2,
+        "x": 526.4999999999789,
+        "y": 330.07000000000045,
+        "previousX": 527.1999999999789,
+        "previousY": 330.05600000000044,
+        "direction": -1,
+        "vy": 0,
+        "floor": 2,
+        "targetFloor": 2,
+        "angle": -36.16666666666683,
+        "credited": true
+      },
+      {
+        "id": 3,
+        "x": 786.8999999999958,
+        "y": 324.8620000000001,
+        "previousX": 787.5999999999958,
+        "previousY": 324.84800000000007,
+        "direction": -1,
+        "vy": 0,
+        "floor": 2,
+        "targetFloor": 2,
+        "angle": -7.233333333333325,
+        "credited": true
+      },
+      {
+        "id": 4,
+        "x": 730.8999999999921,
+        "y": 230.01799999999983,
+        "previousX": 730.1999999999921,
+        "previousY": 230.00399999999985,
+        "direction": 1,
+        "vy": 0,
+        "floor": 3,
+        "targetFloor": 3,
+        "angle": -13.455555555555526,
+        "credited": true
+      },
+      {
+        "id": 5,
+        "x": 470.4999999999786,
+        "y": 224.80999999999958,
+        "previousX": 469.79999999997864,
+        "previousY": 224.79599999999957,
+        "direction": 1,
+        "vy": 0,
+        "floor": 3,
+        "targetFloor": 3,
+        "angle": -42.388888888888886,
+        "credited": false
+      },
+      {
+        "id": 6,
+        "x": 210.09999999998286,
+        "y": 219.60199999999966,
+        "previousX": 209.39999999998287,
+        "previousY": 219.58799999999965,
+        "direction": 1,
+        "vy": 0,
+        "floor": 3,
+        "targetFloor": 3,
+        "angle": -71.32222222222212,
+        "credited": true
+      },
+      {
+        "id": 7,
+        "x": 191.89999999998315,
+        "y": 124.76200000000034,
+        "previousX": 192.59999999998314,
+        "previousY": 124.74800000000033,
+        "direction": -1,
+        "vy": 0,
+        "floor": 4,
+        "targetFloor": 3,
+        "angle": -73.34444444444448,
+        "credited": true
+      },
+      {
+        "id": 8,
+        "x": 452.2999999999789,
+        "y": 119.55400000000043,
+        "previousX": 452.9999999999789,
+        "previousY": 119.54000000000042,
+        "direction": -1,
+        "vy": 0,
+        "floor": 4,
+        "targetFloor": 3,
+        "angle": -44.411111111111055,
+        "credited": true
+      },
+      {
+        "id": 9,
+        "x": 712.699999999991,
+        "y": 114.34600000000017,
+        "previousX": 713.399999999991,
+        "previousY": 114.33200000000018,
+        "direction": -1,
+        "vy": 0,
+        "floor": 4,
+        "targetFloor": 3,
+        "angle": -15.47777777777774,
+        "credited": true
+      }
+    ],
+    "cargo": 5,
+    "score": 2550,
+    "lives": 2,
+    "elapsed": 28.658333333332347,
+    "checkpoint": 4
+  },
+  "errors": [],
+  "requestCount": 32,
+  "testClock": "Playwright RAF clock; inputs go through DOM keyboard/pointer events",
+  "limitations": "Mobile is emulation, not physical hardware. Safari and real screen readers not executed."
+}

@@ -30,12 +30,12 @@ test('full board wins; RNG endpoints and invalid samples never create occupied i
   for(const random of [()=>0,()=>0.999999]) {const g=new SnakeGame(random);g.body=Array.from({length:WIDTH*HEIGHT-1},(_,i)=>({x:i%WIDTH,y:Math.floor(i/WIDTH)}));g.spawn();assert.deepEqual(g.item,{x:WIDTH-1,y:HEIGHT-1});g.body.push(g.item);g.spawn();assert.equal(g.status,'won');assert.equal(g.item,null);}
   for(const n of [-1,1,NaN,Infinity]) {const g=new SnakeGame(()=>n);assert.throws(()=>g.spawn());}
 });
-test('production games and legal notices resolve under project subpath; home study is excluded',async()=>{
+test('production games, collection menu and legal notices resolve under project subpath',async()=>{
   const server=await serve({port:0});
   const base=`http://127.0.0.1:${server.address().port}/arcade-collection/`;
   try {
-    for(const path of ['', 'code-snake/'])assert.equal((await fetch(base+path)).status,200);
-    assert.equal((await fetch(base+'collection/')).status,404);
+    for(const path of ['', 'code-snake/', 'collection/'])assert.equal((await fetch(base+path)).status,200);
+    assert.equal((await fetch(base+'REVIEW-ONLY.txt')).status,404);
     const html=await(await fetch(base+'code-snake/')).text();
     for(const match of html.matchAll(/(?:href|src)="([^"]+)"/g)){const url=new URL(match[1],base+'code-snake/');assert.equal((await fetch(url)).status,200,url.href);}
     assert.match(html,/Não representam commits/);

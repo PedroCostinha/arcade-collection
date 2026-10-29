@@ -1,19 +1,18 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 PedroCostinha
 import assert from 'node:assert/strict';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile, rm } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { chromium, firefox } from 'playwright';
 import { serve } from '../../scripts/serve.mjs';
 
 const engine = process.env.ARCADE_BROWSER ?? 'chrome';
 assert(['chrome', 'firefox'].includes(engine));
-const output = resolve(`docs/evidence/collection-1.3.0/${engine}`);
+const output = resolve(process.env.COLLECTION_EVIDENCE_DIR ?? `test-results/collection/${engine}`);
 await mkdir(output, { recursive: true });
+await rm(resolve(output, 'results.json'), { force: true });
 const production = await serve({ port: 0 });
-const review = await serve({ port: 0, root: resolve('prototype-dist') });
-const origin = `http://127.0.0.1:${review.address().port}`;
-const productionOrigin = `http://127.0.0.1:${production.address().port}`;
+const origin = `http://127.0.0.1:${production.address().port}`;
 const browser = engine === 'chrome' ? await chromium.launch({ channel: 'chrome', headless: true }) : await firefox.launch({ headless: true });
 const errors = [], layouts = [], checks = [];
 function observe(context) {
@@ -28,7 +27,6 @@ function observe(context) {
 try {
   for (const prefix of ['/', '/arcade-collection/']) {
     for (const resource of ['collection/', 'collection/collection.css', 'collection/portraits/ember7.png', 'collection/portraits/nib.png']) {
-      assert.equal((await fetch(productionOrigin + prefix + resource)).status, 404);
       const response = await fetch(origin + prefix + resource);
       assert.equal(response.status, 200);
       if (resource.endsWith('.png')) assert.equal(response.headers.get('content-type'), 'image/png');
@@ -36,7 +34,7 @@ try {
     }
     assert.match(await (await fetch(origin + prefix)).text(), /Barrel Quest/);
   }
-  checks.push('Review routes/assets return 200, production returns 404, preserved Barrel root at / and /arcade-collection/.');
+  checks.push('Production menu routes/assets return 200; Barrel root preserved at / and /arcade-collection/.');
   for (const javaScriptEnabled of [true, false]) {
     for (const reducedMotion of ['no-preference', 'reduce']) {
       const context = await browser.newContext({ viewport: { width: 1440, height: 1100 }, javaScriptEnabled, reducedMotion });
@@ -44,11 +42,14 @@ try {
       const page = await context.newPage();
       for (const prefix of ['/', '/arcade-collection/']) {
         const url = origin + prefix + 'collection/';
-        await page.goto(url);
+        await page.goto(url, { waitUntil: 'networkidle' });
         assert.equal(await page.locator('h1').count(), 1);
         assert.equal(await page.locator('html').getAttribute('lang'), 'pt-BR');
         assert.match(await page.title(), /Arcade Collection/);
         assert.equal(await page.locator('script').count(), 0);
+        assert.equal(await page.locator('meta[name=robots]').count(), 0);
+        assert(!/noindex|nofollow|review-badge|prévia local|estudo local|em revisão/i.test(await page.content()));
+        assert.match(await page.locator('footer').innerText(), /1.3.0/);
         assert.deepEqual(await page.locator('link[rel="stylesheet"]').evaluateAll(links => links.map(l => l.getAttribute('href'))), ['collection.css']);
         assert.equal(await page.locator('.play-link').nth(0).getAttribute('href'), '../');
         assert.equal(await page.locator('.play-link').nth(1).getAttribute('href'), '../code-snake/');
@@ -80,7 +81,7 @@ try {
           }
         }
         await page.setViewportSize({ width: 1024, height: 844 });
-        await page.goto(url);
+        await page.goto(url, { waitUntil: 'networkidle' });
         await page.keyboard.press('Tab');
         assert(await page.locator('.skip-link').evaluate(e => document.activeElement === e));
         assert((await page.locator('.skip-link').boundingBox()).y >= 0);
@@ -93,21 +94,21 @@ try {
         await page.keyboard.press('Tab');
         assert(await page.locator('.play-link').last().evaluate(e => document.activeElement === e));
         await page.keyboard.press('Enter');
-        await page.waitForURL(origin + prefix + 'code-snake/'); assert.match(await page.title(), /Code Snake/);
-        await page.goBack();
+        await page.waitForURL(origin + prefix + 'code-snake/', { waitUntil: 'networkidle' }); assert.match(await page.title(), /Code Snake/);
+        await page.goBack({ waitUntil: 'networkidle' });
         await page.locator('.play-link').first().click();
-        await page.waitForURL(origin + prefix); assert.match(await page.title(), /Barrel Quest/);
-        await page.goBack();
+        await page.waitForURL(origin + prefix, { waitUntil: 'networkidle' }); assert.match(await page.title(), /Barrel Quest/);
+        await page.goBack({ waitUntil: 'networkidle' });
         await page.locator('.play-link').last().click();
-        await page.waitForURL(origin + prefix + 'code-snake/');
-        await page.goBack();
+        await page.waitForURL(origin + prefix + 'code-snake/', { waitUntil: 'networkidle' });
+        await page.goBack({ waitUntil: 'networkidle' });
         await page.locator('.play-link').first().focus();
-        await page.keyboard.press('Enter'); await page.waitForURL(origin + prefix);
-        await page.goto(url);
+        await page.keyboard.press('Enter'); await page.waitForURL(origin + prefix, { waitUntil: 'networkidle' });
+        await page.goto(url, { waitUntil: 'networkidle' });
         const contrasts = await page.evaluate(() => {
           const rgb = value => value.match(/[\d.]+/g).slice(0, 3).map(Number);
           const luminance = value => rgb(value).map(n => n / 255).map(n => n <= .04045 ? n / 12.92 : ((n + .055) / 1.055) ** 2.4).reduce((sum, n, i) => sum + n * [.2126, .7152, .0722][i], 0);
-          return [...document.querySelectorAll('.description,.game-type,.game-meta,.play-link,.intro-copy,.eyebrow,.section-heading,.review-badge,.character-label,footer p')].map(e => {
+          return [...document.querySelectorAll('.description,.game-type,.game-meta,.play-link,.intro-copy,.eyebrow,.section-heading,.collection-badge,.character-label,footer p')].map(e => {
             let parent = e;
             while (parent.parentElement && getComputedStyle(parent).backgroundColor === 'rgba(0, 0, 0, 0)') parent = parent.parentElement;
             const foreground = getComputedStyle(e).color, background = getComputedStyle(parent).backgroundColor;
@@ -127,17 +128,17 @@ try {
     observe(context);
     const page = await context.newPage(), base = origin + '/arcade-collection/';
     for (const [index, destination] of [[0, ''], [1, 'code-snake/']]) {
-      await page.goto(base + 'collection/');
+      await page.goto(base + 'collection/', { waitUntil: 'networkidle' });
       await page.locator('.play-link').nth(index).tap();
-      await page.waitForURL(base + destination);
+      await page.waitForURL(base + destination, { waitUntil: 'networkidle' });
     }
     await context.close();
   }
   checks.push('Emulated touch opens both games with JavaScript enabled and disabled.');
   assert.deepEqual(errors, []);
-  await writeFile(resolve(output, 'results.json'), JSON.stringify({ engine, browser: browser.version(), testedAt: new Date().toISOString(), artifact: 'prototype-dist', layouts, checks, errors, limitations: ['Headless browsers and emulated touch; no physical mobile hardware.', 'No real screen reader, Safari or exhaustive WCAG audit.', 'Without JavaScript the menu works; the games retain their existing JavaScript requirement.'] }, null, 2) + '\n');
-  console.log(`${engine} ${browser.version()}: ${layouts.length} layouts passed; keyboard, mouse, touch, JS off, contrast, reduced motion and isolation passed.`);
+  await writeFile(resolve(output, 'results.json'), JSON.stringify({ engine, browser: browser.version(), testedAt: new Date().toISOString(), artifact: 'dist', layouts, checks, errors, limitations: ['Headless browsers and emulated touch; no physical mobile hardware.', 'No real screen reader, Safari or exhaustive WCAG audit.', 'Without JavaScript the menu works; the games retain their existing JavaScript requirement.'] }, null, 2) + '\n');
+  console.log(`${engine} ${browser.version()}: ${layouts.length} layouts passed; keyboard, mouse, touch, JS off, contrast, reduced motion and public routes passed.`);
 } finally {
   await browser.close();
-  for (const server of [review, production]) { server.closeAllConnections(); await new Promise(ok => server.close(ok)); }
+  for (const server of [production]) { server.closeAllConnections(); await new Promise(ok => server.close(ok)); }
 }
