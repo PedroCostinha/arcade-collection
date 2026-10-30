@@ -5,6 +5,7 @@ import { copyFile, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { verifyCollection } from './verify-collection.mjs';
+import { buildCollection } from './build-collection.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 // The original clean build owns the root. Snake only adds its own directory.
@@ -32,5 +33,6 @@ for (const name of ['core', 'render', 'app', 'art']) {
   if (name === 'art') emitted = emitted.replace('See LICENSING.md.', 'See ../LICENSING.txt.');
   await writeFile(file, emitted);
 }
+await buildCollection(root);
 await verifyCollection(resolve(root, 'dist'));
-console.log('Collection 1.2.0: 28 approved files verified in dist/. No collection/ menu.');
+console.log('Collection 1.3.0: 32 files in dist/; all 28 approved 1.2.0 files preserved.');

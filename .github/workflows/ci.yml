@@ -28,6 +28,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          fetch-depth: 0 # Integrity tests resolve the immutable historical Git blobs.
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: ${{ matrix.node }}
@@ -36,11 +37,16 @@ jobs:
       - run: npm test
       - run: npm run test:snake
       - run: npm run test:artifact
+      - run: npm run test:collection
 
   browser:
-    name: Firefox playable mission
+    name: Firefox games and menu / Node ${{ matrix.node }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['22', '24']
     container:
       image: mcr.microsoft.com/playwright:v1.62.1-noble@sha256:dcc5531e97840b9b5e794f2814476b21571c5124a3fca2267d73041f56e7580e
       options: --user pwuser
@@ -48,37 +54,59 @@ jobs:
       ARCADE_BROWSER: firefox
       ARCADE_EVIDENCE_DIR: test-results/firefox
       SNAKE_EVIDENCE_DIR: test-results/code-snake/firefox
+      COLLECTION_EVIDENCE_DIR: test-results/collection/firefox
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: '24'
+          node-version: ${{ matrix.node }}
           package-manager-cache: false
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npm run build
       - run: npm run test:browser
       - run: npm run test:snake:browser
+      - run: npm run test:collection:browser
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: browser-evidence-firefox-node-${{ matrix.node }}
+          path: test-results/
+          retention-days: 14
+          if-no-files-found: error
 
   chrome:
-    name: Chrome production games
+    name: Chrome games and menu / Node ${{ matrix.node }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['22', '24']
     env:
       ARCADE_BROWSER: chrome
       ARCADE_EVIDENCE_DIR: test-results/chrome
       SNAKE_EVIDENCE_DIR: test-results/code-snake/chrome
+      COLLECTION_EVIDENCE_DIR: test-results/collection/chrome
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: '24'
+          node-version: ${{ matrix.node }}
           package-manager-cache: false
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npx playwright install --with-deps chrome
       - run: npm run build
       - run: npm run test:browser
       - run: npm run test:snake:browser
+      - run: npm run test:collection:browser
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: browser-evidence-chrome-node-${{ matrix.node }}
+          path: test-results/
+          retention-days: 14
+          if-no-files-found: error

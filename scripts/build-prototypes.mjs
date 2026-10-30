@@ -14,7 +14,7 @@ if (result.status !== 0) process.exit(result.status ?? 1);
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 await cp(resolve(root, 'dist'), output, { recursive: true });
-// Only this development command includes the unapproved home study.
+// Restore the historical review indicators only in the development artifact.
 await cp(resolve(root, 'prototypes/collection'), resolve(output, 'collection'), { recursive: true });
 await buildPortraits(root, resolve(output, 'collection/portraits'));
 await writeFile(resolve(output, 'REVIEW-ONLY.txt'), 'Development build: collection/ is an unapproved home study. Publish only dist/ after explicit approval.\n');

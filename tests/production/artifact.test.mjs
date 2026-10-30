@@ -6,11 +6,12 @@ import { readFile, readdir, mkdir, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { resolve } from 'node:path';
+import { menuFiles } from '../../scripts/verify-collection.mjs';
 import { serve } from '../../scripts/serve.mjs';
 
 const baseline = JSON.parse(await readFile(new URL('../fixtures/barrel-1.1.0-manifest.json', import.meta.url), 'utf8'));
 const snakeFiles = ['index.html', 'style.css', 'LICENSING.txt', 'modules/app.js', 'modules/art.js', 'modules/core.js', 'modules/render.js'];
-const allowlist = [...Object.keys(baseline.files), ...snakeFiles.map(file => 'code-snake/' + file)].sort();
+const allowlist = [...Object.keys(baseline.files), ...snakeFiles.map(file => 'code-snake/' + file), ...menuFiles].sort();
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const canonicalHash = bytes => hash(bytes.toString('utf8').replaceAll('\r\n', '\n'));
 async function manifest(dir = resolve('dist'), prefix = '') {
@@ -35,9 +36,9 @@ test('all 21 Barrel Quest 1.1.0 files retain their approved content', async () =
   }
 });
 
-test('production allowlist is exactly 28 files; no home study, sources or internal material', async () => {
+test('production allowlist is exactly 32 files; no review material, sources or internal material', async () => {
   assert.deepEqual(Object.keys(await manifest()).sort(), allowlist);
-  for (const file of allowlist) assert(!/collection\/|prototype|evidence|test|\.ts$|\.map$|node_modules|REVIEW-ONLY/i.test(file), file);
+  for (const file of allowlist) assert(!/prototype|evidence|test|\.ts$|\.map$|node_modules|REVIEW-ONLY/i.test(file), file);
 });
 
 test('Snake model, input, rendering, art and theme remain identical to the approved prototype', async () => {
@@ -47,13 +48,13 @@ test('Snake model, input, rendering, art and theme remain identical to the appro
   }
 });
 
-test('both production routes load their complete graph and legal notices at root and project subpath', async () => {
+test('all three production routes load their complete graph and legal notices at root and project subpath', async () => {
   const server = await serve({ port: 0 });
   const origin = `http://127.0.0.1:${server.address().port}`;
   try {
     for (const prefix of ['/', '/arcade-collection/']) {
       const base = origin + prefix;
-      const queue = [base, base + 'code-snake/', ...['LICENSE-CODE.txt', 'ART-RIGHTS.txt', 'LICENSING.txt'].map(file => base + file)];
+      const queue = [base, base + 'code-snake/', base + 'collection/', ...['LICENSE-CODE.txt', 'ART-RIGHTS.txt', 'LICENSING.txt'].map(file => base + file)];
       const seen = new Set();
       while (queue.length) {
         const url = queue.shift();
@@ -78,7 +79,7 @@ test('both production routes load their complete graph and legal notices at root
       }
       for (const file of snakeFiles) assert(seen.has(base + 'code-snake/' + (file === 'index.html' ? '' : file)), `Snake file not reachable: ${file}`);
       for (const file of ['LICENSE-CODE.txt', 'ART-RIGHTS.txt', 'LICENSING.txt']) assert(seen.has(base + file));
-      for (const forbidden of ['collection/', 'games/code-snake/src/core.ts', 'code-snake/src/core.ts', 'code-snake/tests/browser.mjs', 'docs/', 'REVIEW-ONLY.txt']) {
+      for (const forbidden of ['prototype-dist/', 'games/code-snake/src/core.ts', 'code-snake/src/core.ts', 'code-snake/tests/browser.mjs', 'docs/', 'REVIEW-ONLY.txt']) {
         assert.equal((await fetch(base + forbidden)).status, 404, forbidden);
       }
     }
@@ -108,7 +109,7 @@ test('future publication gate rejects wrong event, branch, owner, confirmation a
   const valid = run({}); assert.equal(valid.status, 0, valid.stdout + valid.stderr);
   for (const invalid of [
     { GITHUB_EVENT_NAME: 'push' }, { GITHUB_EVENT_NAME: 'pull_request' },
-    { GITHUB_REF: 'refs/heads/feat/arcade-collection-1.2.0' }, { GITHUB_REF: 'refs/tags/v1.2.0' },
+    { GITHUB_REF: 'refs/heads/prep/collection-1.3.0' }, { GITHUB_REF: 'refs/tags/v1.3.0' },
     { GITHUB_ACTOR: 'another-user' }, { GITHUB_REPOSITORY_OWNER: 'another-user' },
     { GITHUB_REPOSITORY: 'PedroCostinha/PedroCostinha' }, { PUBLISH_APPROVED: 'false' },
     { PUBLISH_APPROVED: '' }, { APPROVED_SHA: baseline.commit.slice(0, 7) },
@@ -135,10 +136,11 @@ test('two clean builds are byte-reproducible and remove stale/unapproved files',
   assert.deepEqual(Object.keys(first).sort(), allowlist);
 });
 
-test('development home study remains available only in prototype-dist without contaminating dist', async () => {
+test('historical review indicators remain only in prototype-dist without contaminating dist', async () => {
   const before = await manifest();
   build('scripts/build-prototypes.mjs');
   assert.match(await readFile('prototype-dist/collection/index.html', 'utf8'), /Estudo local/);
+  assert(!/Estudo local|noindex|nofollow|em revisão/.test(await readFile('dist/collection/index.html', 'utf8')));
   assert.equal(await readFile('prototype-dist/code-snake/index.html', 'utf8'), await readFile('dist/code-snake/index.html', 'utf8'));
   assert.deepEqual(await manifest(), before);
   assert.deepEqual(Object.keys(await manifest()).sort(), allowlist);

@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       publish:
-        description: 'I approve publishing Arcade Collection 1.2.0 (Barrel Quest 1.1.0 + Code Snake)'
+        description: 'I approve publishing Arcade Collection 1.3.0 (Barrel Quest 1.1.0 + Code Snake)'
         type: boolean
         required: true
         default: false
@@ -38,6 +38,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          fetch-depth: 0 # The menu suite verifies the approved historical Git inputs.
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: '24'
@@ -46,6 +47,7 @@ jobs:
       - run: npm test
       - run: npm run test:snake
       - run: npm run test:artifact
+      - run: npm run test:collection
       - name: Require owner approval, exact SHA and matching collection/game versions
         env:
           PUBLISH_APPROVED: ${{ inputs.publish }}

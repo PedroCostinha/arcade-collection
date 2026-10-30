@@ -1,0 +1,243 @@
+{
+  "collection": "1.3.0",
+  "base": "f22f2069b2394cad8ff08638eb30a9e78e36f4ac",
+  "historicalReference": "3599c4141f908f26ca5602fadd1e1a4c27a5f551",
+  "toolchain": {
+    "node": "v24.19.0",
+    "platform": "win32"
+  },
+  "historicalManifest": {
+    "path": "tests/fixtures/collection-1.2.0-manifest.json",
+    "gitBlob": "b1aacacb499319516b55adcc2f093630b0b888e6",
+    "sha256": "33f2a40583052816bf5137ae193fd3521ec253fd925a05e275d31a5812563e67"
+  },
+  "productionCount": 32,
+  "historicalCount": 28,
+  "reviewCount": 33,
+  "files": {
+    ".nojekyll": {
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "lfSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "historical": true,
+      "approvedHashMatch": "lfSha256"
+    },
+    "ART-RIGHTS.txt": {
+      "bytes": 1789,
+      "sha256": "25ed17a66e546ba01002ae029d94ff77202a97a01b67e6ffce7e24e419c906a0",
+      "lfSha256": "0bf23dd3fa2d90c10bd93c3fc67ab80e59f44e612d8d5dcb569eff9675f60ae0",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "LICENSE-CODE.txt": {
+      "bytes": 1091,
+      "sha256": "95424931faf9c20d421f479b7a19d90a8ae7e9f87f94e1a635b8b3da11f2f3ae",
+      "lfSha256": "b42772928e2cc0a7e7ef60fcc094ae06711e63f6cc4759cec2894f26e594794e",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "LICENSING.txt": {
+      "bytes": 4151,
+      "sha256": "36ff1b5da70f4e9e4ba6c985e131cb2194ee9beeb5baba32a11fe0d306f4c300",
+      "lfSha256": "6b9e0b530e697c0033f40465ae52220f121b0e887490405c84533dc347b6677e",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "app.js": {
+      "bytes": 12447,
+      "sha256": "ab5e635d441deb3bd156b76c45f9ce8a124539f7e5d7bff2450066d92e4f309f",
+      "lfSha256": "ab5e635d441deb3bd156b76c45f9ce8a124539f7e5d7bff2450066d92e4f309f",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "art/ember7.js": {
+      "bytes": 6720,
+      "sha256": "a6570ffbf4772120fb072da9832c16b4f2b0baaf1b62e1c4d1d02b651d47360f",
+      "lfSha256": "a6570ffbf4772120fb072da9832c16b4f2b0baaf1b62e1c4d1d02b651d47360f",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "art/identity.js": {
+      "bytes": 505,
+      "sha256": "0da9f9e0cac91dcc04e0fd9cd6e9cafc8ffa50152e73cdbdb545fa701bb210b8",
+      "lfSha256": "0da9f9e0cac91dcc04e0fd9cd6e9cafc8ffa50152e73cdbdb545fa701bb210b8",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "art/scene.js": {
+      "bytes": 2324,
+      "sha256": "a0a6c6fcb81acbc3a7b7ab2bf822add35327222bc94232ad03bba056221c3566",
+      "lfSha256": "a0a6c6fcb81acbc3a7b7ab2bf822add35327222bc94232ad03bba056221c3566",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "browser/controls.js": {
+      "bytes": 3499,
+      "sha256": "aeab237f8cb6e289aec221e2fa7a9e4f663ef0634a0f8d9b9fdb02e4d3517599",
+      "lfSha256": "aeab237f8cb6e289aec221e2fa7a9e4f663ef0634a0f8d9b9fdb02e4d3517599",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "code-snake/LICENSING.txt": {
+      "bytes": 2394,
+      "sha256": "44c7331ece74dfba4bf89efe01f55a63a0def731f85d10c702662edb7db77af1",
+      "lfSha256": "af5ac3d87338a20c185e2ad3d8480b221afa08e0c6764c87cd7101b7a66ae0e2",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "code-snake/index.html": {
+      "bytes": 2632,
+      "sha256": "2cc810aca4cd22b92bf27077a047bfb6a6e635dee6fe246d316724c1e7a54523",
+      "lfSha256": "37cfc51b9ec7f600462e415b9b616fbd13fb9683eca4610aaaffe59bd4096de9",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "code-snake/modules/app.js": {
+      "bytes": 3322,
+      "sha256": "8e30d80976e5743240e0ab7f452a7ab52eb57f15e16751510fd0b4b0c176ff2b",
+      "lfSha256": "8e30d80976e5743240e0ab7f452a7ab52eb57f15e16751510fd0b4b0c176ff2b",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "code-snake/modules/art.js": {
+      "bytes": 630,
+      "sha256": "c6b063466551f243e49c25eeff9694a845d3faf012ad281cfa6c3bef1739e5a1",
+      "lfSha256": "c6b063466551f243e49c25eeff9694a845d3faf012ad281cfa6c3bef1739e5a1",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "code-snake/modules/core.js": {
+      "bytes": 3144,
+      "sha256": "d322a6ddeb68fd53f1a6ce91224e52a2837a7ed1a35538f82429047f9d22fbe8",
+      "lfSha256": "d322a6ddeb68fd53f1a6ce91224e52a2837a7ed1a35538f82429047f9d22fbe8",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "code-snake/modules/render.js": {
+      "bytes": 2284,
+      "sha256": "fc706f2893823871d399573fb285b54277ce82609274fc64df42104693b32381",
+      "lfSha256": "fc706f2893823871d399573fb285b54277ce82609274fc64df42104693b32381",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "code-snake/style.css": {
+      "bytes": 3577,
+      "sha256": "2171717f320a214d8438f2498af8b1e4c82d96ece9ebf5075955f53d709f868f",
+      "lfSha256": "7fbd7255dc810c91296d5d6385c1e2248974158dc434da297104a9b40377af42",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "collection/collection.css": {
+      "bytes": 8403,
+      "sha256": "d0849178b80f62b31174c03d7b1f223ce9828d1ad80fa68722ed87cbe9603754",
+      "lfSha256": "00cd9492b282a3b6924b0e8a7b71870eb2f0dbe6764421ce4ec0afd50a17c0e0",
+      "historical": false,
+      "approvedHashMatch": "collection-1.3.0-menu-manifest.json"
+    },
+    "collection/index.html": {
+      "bytes": 4531,
+      "sha256": "59de3e8b8f981d151915aaa8dc4f86726c7fee0483f58ff6000d7dc5cc790c87",
+      "lfSha256": "df3b993ff8ea428e1cffdfff6f14920e9dd90c2db15e7b5468455a9b4b06fb0b",
+      "historical": false,
+      "approvedHashMatch": "collection-1.3.0-menu-manifest.json"
+    },
+    "collection/portraits/ember7.png": {
+      "bytes": 196,
+      "sha256": "bc75675dba8d94650b6eeefb68e07ba956c2ea1d7e6b0ec15fa8e06b4663f19c",
+      "lfSha256": "bc75675dba8d94650b6eeefb68e07ba956c2ea1d7e6b0ec15fa8e06b4663f19c",
+      "historical": false,
+      "approvedHashMatch": "collection-1.3.0-menu-manifest.json"
+    },
+    "collection/portraits/nib.png": {
+      "bytes": 134,
+      "sha256": "9939145167a93f819144f91a29c674b273269b85db87328c828274b852574bfb",
+      "lfSha256": "9939145167a93f819144f91a29c674b273269b85db87328c828274b852574bfb",
+      "historical": false,
+      "approvedHashMatch": "collection-1.3.0-menu-manifest.json"
+    },
+    "core/clock.js": {
+      "bytes": 697,
+      "sha256": "ec27054104fc84279cf846e7f3b2862d6fbdaa8bb2b285c88f26a9716d734029",
+      "lfSha256": "ec27054104fc84279cf846e7f3b2862d6fbdaa8bb2b285c88f26a9716d734029",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "core/collision.js": {
+      "bytes": 1183,
+      "sha256": "0c115668b9480b25bddae986a2943d75e16eea38c3f2333c5de50fa13e1fdcee",
+      "lfSha256": "0c115668b9480b25bddae986a2943d75e16eea38c3f2333c5de50fa13e1fdcee",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "core/game.js": {
+      "bytes": 9830,
+      "sha256": "10ac7568c0886d50c04d229740891cfcf964791fbfbb55cd1375720ffe98bfe1",
+      "lfSha256": "10ac7568c0886d50c04d229740891cfcf964791fbfbb55cd1375720ffe98bfe1",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "core/input.js": {
+      "bytes": 1144,
+      "sha256": "f0e436d04f462978bd1e0e1d0d9fff5e1442d4882b7c9bf7b38267dfe3f6f980",
+      "lfSha256": "f0e436d04f462978bd1e0e1d0d9fff5e1442d4882b7c9bf7b38267dfe3f6f980",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "core/level.js": {
+      "bytes": 1065,
+      "sha256": "9738cd9ac9c55dd8176f0157ba91524b53548305c06536293fc5272d25d996f0",
+      "lfSha256": "9738cd9ac9c55dd8176f0157ba91524b53548305c06536293fc5272d25d996f0",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "core/types.js": {
+      "bytes": 146,
+      "sha256": "639e6acf03b0de8f5a8e0fceff32e1273ae33b2ec5d04a4eb31c3092e7b24612",
+      "lfSha256": "639e6acf03b0de8f5a8e0fceff32e1273ae33b2ec5d04a4eb31c3092e7b24612",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "favicon.svg": {
+      "bytes": 301,
+      "sha256": "a6806a5ec994fabd981308e969357d195cbaae6b4393c225a3b59831affed3af",
+      "lfSha256": "71050c8f0ccdbb4890bf8f55a751c22a1617a9681aadd2e826b4658aa038540a",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "index.html": {
+      "bytes": 6255,
+      "sha256": "a725d9042ee2626a482b02b0632f64d1e0d5778f2e4d39020aa34bd03bea8cfe",
+      "lfSha256": "954925d73dc9e02090ead724bb474851d48c6eb270a459e6474e77927569606e",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "render/canvas.js": {
+      "bytes": 7267,
+      "sha256": "d86cb0cb8d7b8d418e51b1ecbc5d489b2b6f25dac34727f76efc56718f92357f",
+      "lfSha256": "d86cb0cb8d7b8d418e51b1ecbc5d489b2b6f25dac34727f76efc56718f92357f",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "render/sprites.js": {
+      "bytes": 203,
+      "sha256": "5000f1d08ee74dc8f94a3ad596300b825d1aa0b12c6d1949acd4075330d5c470",
+      "lfSha256": "5000f1d08ee74dc8f94a3ad596300b825d1aa0b12c6d1949acd4075330d5c470",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "styles.css": {
+      "bytes": 5746,
+      "sha256": "0b3d31fa8c746bd4fea812ded17452fc26b1901adadc65bfd02c2a9c5a40c4c5",
+      "lfSha256": "9b07b9505256849bf8fe3e624c2cd286687928c298c9b04fecbba3e0a71f8c1f",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    },
+    "theme.css": {
+      "bytes": 5537,
+      "sha256": "88ee01ed7d6866f4a5432508259337e4ee50da7c51066043746ade1cf9351677",
+      "lfSha256": "3482825aa8732d17497d9b2f42a830a4d0a778ff06e112de44fbe4924ad1728a",
+      "historical": true,
+      "approvedHashMatch": "sha256"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "arcade-collection",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "private": true,
   "license": "SEE LICENSE IN LICENSING.md",
   "type": "module",
@@ -16,7 +16,9 @@
     "dev": "node scripts/dev.mjs",
     "start": "node scripts/serve.mjs",
     "test": "npm run build && node --test tests/*.test.mjs",
-    "test:browser": "node tests/browser.mjs"
+    "test:browser": "node tests/browser.mjs",
+    "test:collection": "npm run build:prototypes && node --test tests/collection/*.test.mjs",
+    "test:collection:browser": "node tests/collection/browser.mjs"
   },
   "devDependencies": { "typescript": "7.0.2", "playwright": "1.62.1" }
 }
